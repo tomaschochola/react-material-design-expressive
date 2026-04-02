@@ -1,20 +1,39 @@
-import { createEslintConfigBrowserTypescriptReactStrict, createEslintConfigIgnores, createEslintConfigIgnoresRoot } from '@premierstacks/eslint-stack';
-import { defineConfig, globalIgnores } from 'eslint/config';
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
 
-export default defineConfig([
-  globalIgnores(['dist', 'test-results']),
-  createEslintConfigIgnores(),
-  createEslintConfigIgnoresRoot(),
-  createEslintConfigBrowserTypescriptReactStrict(),
-  {
-    rules: {
-      'sonarjs/cognitive-complexity': 'off',
-    }
-  },
-  {
-    files: ['./storybook/**/*.tsx'],
-    rules: {
-      'react/jsx-no-literals': 'off',
-    }
-  },
-]);
+import { Eslint, selectors } from '@tomaschochola/tooling-eslint';
+import globals from 'globals';
+
+// eslint-disable-next-line no-restricted-exports
+export default new Eslint()
+  .add({
+    files: [...selectors.globalEcmaScript],
+  })
+  .globals({
+    ...globals.node,
+    ...globals.es2024,
+  }, { files: [...selectors.rootEcmaScript] })
+  .globals({
+    ...globals.browser,
+    ...globals.es2024,
+  })
+  .ignores()
+  .ignores(['node_modules', 'dist', 'test-results'])
+  .recommended()
+  .typescript()
+  .stylistic()
+  .react()
+  .jsxA11y()
+  .reactHooks()
+  .sonarjs()
+  .typescriptDisabled({ files: [...selectors.rootEcmaScript] })
+  .build();

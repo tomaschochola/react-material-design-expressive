@@ -5,15 +5,19 @@
 .vscode
 .zed
 
-# svg
-*.svg
-
 # node
 /node_modules
 /package-lock.json
+
+# environment files and secrets
+/.env
+/.secrets
 
 # compiled files
 /dist
 
 # playwright
 /test-results
+
+# icons
+/public/*icon*

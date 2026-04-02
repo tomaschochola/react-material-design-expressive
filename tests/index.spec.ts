@@ -10,10 +10,14 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-import { Stylelint } from '@tomaschochola/tooling-stylelint';
+import { expect, test } from '@playwright/test';
+import { en } from '../src/lang/en';
+import { assertPage } from './test';
 
-// eslint-disable-next-line no-restricted-exports
-export default new Stylelint()
-  .standard()
-  .prettier()
-  .build();
+test('/', async ({ page }) => {
+  await assertPage(page, '/');
+
+  await expect(page).toHaveURL('/');
+
+  await expect(page).toHaveTitle(en['routes.index.seo.title']);
+});

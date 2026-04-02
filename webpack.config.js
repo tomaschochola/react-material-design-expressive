@@ -1,45 +1,38 @@
-import { applyWebpackPluginHtml, createWebpackConfigBrowserTypescriptBabelReactApp, getNodeEnv, getWebpackMode } from '@premierstacks/webpack-stack';
-import { execSync } from 'child_process';
-import webpack from 'webpack';
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
 
+import { Webpack } from '@tomaschochola/tooling-webpack';
+
+// eslint-disable-next-line no-restricted-exports
 export default function (env, argv) {
-  const webpackMode = getWebpackMode(env, argv);
-  const nodeEnv = getNodeEnv(env, argv);
-  const appEnv = env.APP_ENV ?? process.env.APP_ENV ?? webpackMode;
+  let webpack = new Webpack(env, argv)
+    .entry({
+      index: ['./src/index.ts', './src/index.scss'],
+    })
+    .browserslist()
+    .environment()
+    .environment({
+      OTLP_API_KEY: env.OTLP_API_KEY ?? argv.otlpApiKey ?? process.env.OTLP_API_KEY ?? null,
+    })
+    .define()
+    .html({
+      template: './src/index.html',
+      filename: 'index.html',
+    })
+    .copy();
 
-  const config = createWebpackConfigBrowserTypescriptBabelReactApp(env, argv);
-
-  config.devServer = config.devServer ?? {};
-  config.devServer.port = 3000;
-
-  config.entry = {
-    index: './storybook/index.ts',
-  };
-
-  config.plugins = config.plugins ?? [];
-  config.plugins.push(
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: nodeEnv,
-      WEBPACK_MODE: webpackMode,
-      APP_NAME: process.env.npm_package_name ?? 'library',
-      APP_VERSION: process.env.npm_package_version ?? execSync('git rev-parse HEAD').toString().trim() ?? 'latest',
-      APP_ENV: appEnv,
-    }),
-  );
-
-  config.plugins = config.plugins ?? [];
-  config.plugins.push(
-    new webpack.DefinePlugin({
-      global: 'globalThis',
-    }),
-  );
-
-  if (appEnv === 'playwright') {
-    config.devServer.client = config.devServer.client ?? {};
-    config.devServer.client.overlay = false;
+  if (webpack.isProduction) {
+    webpack = webpack.gzip().brotli().pwa();
   }
 
-  applyWebpackPluginHtml(env, argv, config, { inject: true, template: './storybook/index.html', filename: 'index.html', chunks: ['index'], publicPath: '/' });
-
-  return config;
+  return webpack.build();
 }

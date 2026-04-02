@@ -1,0 +1,34 @@
+{
+  "containerUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "Tyriar.sort-lines",
+        "docker.docker",
+        "ms-vscode.makefile-tools"
+      ],
+      "settings": {
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": "always",
+          "source.organizeLinkDefinitions": "always",
+          "source.sort.json": "always"
+        },
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "files.trimTrailingWhitespace": true
+      }
+    }
+  },
+  "dockerComposeFile": [
+    "../docker-compose-devcontainer.yml"
+  ],
+  "init": true,
+  "postCreateCommand": "make postcreate",
+  "remoteUser": "node",
+  "runServices": [
+    "devcontainer"
+  ],
+  "service": "devcontainer",
+  "workspaceFolder": "/workspaces"
+}
