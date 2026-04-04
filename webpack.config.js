@@ -16,16 +16,17 @@ import { Webpack } from '@tomaschochola/tooling-webpack';
 export default function (env, argv) {
   let webpack = new Webpack(env, argv)
     .entry({
-      index: ['./src/index.ts', './src/index.scss'],
+      index: ['./storybook/index.ts', './storybook/index.scss'],
     })
     .browserslist()
     .environment()
     .environment({
-      OTLP_API_KEY: env.OTLP_API_KEY ?? argv.otlpApiKey ?? process.env.OTLP_API_KEY ?? null,
+      APP_NAME: env.APP_NAME ?? argv.appName ?? process.env.APP_NAME ?? process.env.npm_package_name ?? null,
+      APP_VERSION: env.APP_VERSION ?? argv.appVersion ?? process.env.APP_VERSION ?? process.env.npm_package_version ?? null,
     })
     .define()
     .html({
-      template: './src/index.html',
+      template: './storybook/index.html',
       filename: 'index.html',
     })
     .copy();

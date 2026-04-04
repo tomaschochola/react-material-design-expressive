@@ -1,45 +1,40 @@
-import * as stylex from '@stylexjs/stylex';
-import type { ReactElement } from 'react';
-import { Link } from 'react-aria-components';
+import { useRef, type ReactElement } from 'react';
+import { useLink } from 'react-aria';
 import { Outlet } from 'react-router';
 
 function Nav(): ReactElement {
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const { linkProps } = useLink({ href: '/buttons' }, linkRef);
+
   return (
     <nav>
       <div>
-        <Link
-          href="/buttons"
+        <a
+          ref={linkRef}
+          {...linkProps}
         >
           Buttons
-        </Link>
+        </a>
       </div>
     </nav>
   );
 }
 
-const containerStyles = stylex.create({
-  base: {
-    paddingBottom: 24,
-    paddingLeft: 24,
-    paddingRight: 24,
-    paddingTop: 24,
-  },
-});
-
-const gridStyles = stylex.create({
-  base: {
-    display: 'grid',
-    gridTemplateColumns: 'max-content 1fr',
-  },
-});
-
 export function SplitRoute(): ReactElement {
   return (
     <div
-      {...stylex.props(containerStyles.base)}
+      style={{
+        paddingBottom: 24,
+        paddingLeft: 24,
+        paddingRight: 24,
+        paddingTop: 24,
+      }}
     >
       <div
-        {...stylex.props(gridStyles.base)}
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'max-content 1fr',
+        }}
       >
         <Nav />
         <Outlet />

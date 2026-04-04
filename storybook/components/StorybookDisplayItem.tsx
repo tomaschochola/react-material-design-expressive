@@ -1,51 +1,41 @@
-import * as stylex from '@stylexjs/stylex';
 import type { ReactElement, ReactNode } from 'react';
-
-const itemStyles = stylex.create({
-  base: {
-    backgroundImage: `radial-gradient(circle, rgb(0 0 100 / 0.2) 1px, transparent 1px), radial-gradient(circle, rgb(0 0 100 / 0.2) 1px, transparent 1px)`,
-    backgroundPositionX: '0px, 5px',
-    backgroundPositionY: '0px, 5px',
-    backgroundRepeat: 'repeat',
-    backgroundSize: '10px 10px',
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    paddingBottom: '4rem',
-    paddingLeft: '2rem',
-    paddingRight: '2rem',
-    paddingTop: '4rem',
-  },
-});
-
-const labelStyles = stylex.create({
-  base: {
-    marginBottom: '0.5lh',
-    textAlign: 'center',
-  },
-});
 
 interface StorybookDisplayItemProps {
   readonly children: ReactNode;
-  readonly xstyle?: stylex.StyleXStyles;
   readonly label?: ReactNode;
 }
 
-export function StorybookDisplayItem({ children, label, xstyle }: StorybookDisplayItemProps): ReactElement {
+export function StorybookDisplayItem({ children, label }: StorybookDisplayItemProps): ReactElement {
   return (
     <div>
       {label !== undefined
         ? (
             <div
-              {...stylex.props(labelStyles.base)}
+              style={{
+                marginBottom: '0.5lh',
+                textAlign: 'center',
+              }}
             >
               {label}
             </div>
           )
         : null}
       <div
-        {...stylex.props(itemStyles.base, xstyle)}
+        style={{
+          backgroundImage: `radial-gradient(circle, rgb(0 0 100 / 0.2) 1px, transparent 1px), radial-gradient(circle, rgb(0 0 100 / 0.2) 1px, transparent 1px)`,
+          backgroundPositionX: '0px, 5px',
+          backgroundPositionY: '0px, 5px',
+          backgroundRepeat: 'repeat',
+          backgroundSize: '10px 10px',
+          borderBottomLeftRadius: 8,
+          borderBottomRightRadius: 8,
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
+          paddingBottom: '4rem',
+          paddingLeft: '2rem',
+          paddingRight: '2rem',
+          paddingTop: '4rem',
+        }}
       >
         {children}
       </div>

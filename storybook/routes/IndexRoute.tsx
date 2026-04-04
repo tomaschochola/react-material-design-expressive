@@ -3,7 +3,9 @@ import type { ReactElement } from 'react';
 export function IndexRoute(): ReactElement {
   return (
     <main>
-      Vyberte sekci
+      <h1>
+        Vyberte sekci
+      </h1>
     </main>
   );
 }

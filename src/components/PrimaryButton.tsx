@@ -1,22 +1,21 @@
-import { useCallback, type CSSProperties, type ReactElement, type ReactNode } from 'react';
-import { Button, type ButtonProps, type ButtonRenderProps } from 'react-aria-components';
-import { toCssProperties } from '../helpers/styles';
+import { useRef, type ReactElement, type ReactNode } from 'react';
+import type { AriaButtonOptions } from 'react-aria';
+import { useButton } from 'react-aria';
 
-interface PrimaryButtonProps extends Omit<ButtonProps, 'children'> {
+interface PrimaryButtonProps extends Omit<AriaButtonOptions<'button'>, 'children'> {
   readonly label: ReactNode;
 }
 
-export function PrimaryButton({ label, style, ...props }: PrimaryButtonProps): ReactElement {
-  const handleStyle = useCallback((args: ButtonRenderProps & { defaultStyle: CSSProperties | undefined }) => {
-    return toCssProperties(args.defaultStyle, style);
-  }, [style]);
+export function PrimaryButton({ label, ...props }: Readonly<PrimaryButtonProps>): ReactElement {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const { buttonProps } = useButton(props, buttonRef);
 
   return (
-    <Button
-      style={handleStyle}
-      {...props}
+    <button
+      ref={buttonRef}
+      {...buttonProps}
     >
       {label}
-    </Button>
+    </button>
   );
 }

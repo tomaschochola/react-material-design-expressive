@@ -10,10 +10,11 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-@use 'sanitize.css/assets.css';
-@use 'sanitize.css/forms.css';
-@use 'sanitize.css/reduce-motion.css';
-@use 'sanitize.css/sanitize.css';
-@use 'sanitize.css/system-ui.css';
-@use 'sanitize.css/typography.css';
-@use 'sanitize.css/ui-monospace.css';
+import { expect, test } from '@playwright/test';
+import { assertPage } from './test';
+
+test('/not_found', async ({ page }) => {
+  await assertPage(page, '/not_found');
+
+  await expect(page).toHaveURL('/not_found');
+});

@@ -100,10 +100,10 @@ npm_update: ./package.json
 	npm update --ignore-scripts --install-links --include=prod --include=dev --include=peer --include=optional
 
 .PHONY: postcreate
-postcreate: install
+postcreate: install favicons
 
 .PHONY: start serve server dev
-start serve server dev: ./node_modules ./package.json ./package-lock.json
+start serve server dev: ./node_modules ./package.json ./package-lock.json favicons
 	npm exec --ignore-scripts -- webpack-cli serve --mode=${NODE_ENV} --config-node-env=${NODE_ENV} --env APP_ENV=${APP_ENV}
 
 .PHONY: image
@@ -137,8 +137,24 @@ devcontainer:
 	docker compose -f ./docker-compose.yml -f ./docker-compose-devcontainer.yml down --remove-orphans
 
 .PHONY: build
-build:
+build: favicons
 	npm exec --ignore-scripts -- webpack-cli build --mode=${NODE_ENV} --config-node-env=${NODE_ENV} --env APP_ENV=${APP_ENV}
+
+.PHONY: favicons
+favicons: ./assets/icons/icon.svg
+	convert ./assets/icons/icon.svg -background none -density 300 -define icon:auto-resize=16,32,48 ./public/favicon.ico
+	convert ./assets/icons/icon.svg -background none -density 300 -resize 16x16 ./public/favicon-16x16.png
+	convert ./assets/icons/icon.svg -background none -density 300 -resize 32x32 ./public/favicon-32x32.png
+	convert ./assets/icons/icon.svg -background none -density 300 -resize 48x48 ./public/favicon-48x48.png
+	convert ./assets/icons/icon.svg -background none -density 300 -resize 180x180 ./public/apple-touch-icon.png
+	convert ./assets/icons/icon.svg -background none -density 300 -resize 192x192 ./public/icon-192x192.png
+	convert ./assets/icons/icon.svg -background none -density 300 -resize 512x512 ./public/icon-512x512.png
+	convert ./assets/icons/icon.svg -background none -density 300 -resize 154x154 ./temp.png
+	convert -size 192x192 canvas:none ./temp.png -gravity center -composite ./public/icon-192x192-maskable.png
+	convert ./assets/icons/icon.svg -background none -density 300 -resize 410x410 ./temp.png
+	convert -size 512x512 canvas:none ./temp.png -gravity center -composite ./public/icon-512x512-maskable.png
+	cp ./assets/icons/icon.svg ./public/favicon.svg
+	rm ./temp.png
 
 .PHONY: playwright_failed
 playwright_failed: ./node_modules ./playwright.config.js

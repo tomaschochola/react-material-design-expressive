@@ -1,97 +1,59 @@
 {
   "author": {
-    "email": "chocholatom1997@gmail.com",
+    "email": "tomaschochola@tomaschochola.cz",
     "name": "Tomáš Chochola",
-    "url": "https://github.com/tomchochola"
+    "url": "https://github.com/tomaschochola"
   },
   "bugs": {
-    "email": "chocholatom1997@gmail.com",
-    "url": "https://github.com/premierstacks/browser-webpack-typescript-react-library-template/issues"
+    "email": "tomaschochola@tomaschochola.cz",
+    "url": "https://github.com/tomaschochola/template-react-components/issues"
   },
   "contributors": [
     {
-      "email": "chocholatom1997@gmail.com",
+      "email": "tomaschochola@tomaschochola.cz",
       "name": "Tomáš Chochola",
-      "url": "https://github.com/tomchochola"
+      "url": "https://github.com/tomaschochola"
     }
   ],
   "dependencies": {
-    "@stylexjs/stylex": "latest",
-    "react": "^19.1.0",
-    "react-aria": "^3.41.1",
-    "react-aria-components": "^1.10.1",
-    "react-dom": "^19.1.0",
-    "react-router": "^7.7.0",
+    "react": "^19.2.4",
+    "react-aria": "^3.47.0",
+    "react-dom": "^19.2.4",
+    "react-router": "^7.14.0",
+    "react-stately": "^3.45.0",
     "sanitize.css": "^13.0.0"
   },
-  "description": "premierstacks browser webpack typescript react library template",
+  "description": "@tomaschochola/template-react-components",
   "devDependencies": {
-    "@playwright/test": "^1.54.1",
-    "@premierstacks/babel-stack": "github:premierstacks/babel-stack#main",
-    "@premierstacks/eslint-stack": "github:premierstacks/eslint-stack#main",
-    "@premierstacks/postcss-stack": "github:premierstacks/postcss-stack#main",
-    "@premierstacks/prettier-stack": "github:premierstacks/prettier-stack#main",
-    "@premierstacks/stylelint-stack": "github:premierstacks/stylelint-stack#main",
-    "@premierstacks/typescript-stack": "github:premierstacks/typescript-stack#main",
-    "@premierstacks/webpack-stack": "github:premierstacks/webpack-stack#main",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "csstype": "^3.1.3"
+    "@axe-core/playwright": "^4.11.1",
+    "@playwright/test": "^1.59.1",
+    "@tomaschochola/tooling-babel": "github:tomaschochola/tooling-babel#1.x",
+    "@tomaschochola/tooling-eslint": "github:tomaschochola/tooling-eslint#1.x",
+    "@tomaschochola/tooling-postcss": "github:tomaschochola/tooling-postcss#1.x",
+    "@tomaschochola/tooling-prettier": "github:tomaschochola/tooling-prettier#1.x",
+    "@tomaschochola/tooling-stylelint": "github:tomaschochola/tooling-stylelint#1.x",
+    "@tomaschochola/tooling-typescript": "github:tomaschochola/tooling-typescript#1.x",
+    "@tomaschochola/tooling-webpack": "github:tomaschochola/tooling-webpack#1.x",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "csstype": "^3.2.3"
   },
   "funding": {
     "type": "github",
-    "url": "https://github.com/sponsors/tomchochola"
+    "url": "https://github.com/sponsors/tomaschochola"
   },
-  "homepage": "https://github.com/premierstacks/browser-webpack-typescript-react-library-template",
+  "homepage": "https://github.com/tomaschochola/template-react-components",
   "keywords": [
-    "tomchochola",
     "tomaschochola",
-    "premierstacks",
-    "browser-webpack-typescript-react-library-template"
+    "TomasChochola",
+    "Tomas Chochola",
+    "Tomáš Chochola",
+    "template-react-components"
   ],
   "license": "CC-BY-ND-4.0",
   "main": "./src/index.ts",
-  "name": "@premierstacks/browser-webpack-typescript-react-library-template",
-  "repository": "github:premierstacks/browser-webpack-typescript-react-library-template",
-  "scripts": {
-    "check": "npm run stan && npm run lint && npm run test && npm run security",
-    "clean": "npm run clean:npm && npm run clean:dist",
-    "clean:dist": "git clean -xfd ./dist",
-    "clean:npm": "git clean -xfd ./node_modules ./package-lock.json",
-    "commit": "npm run fix && npm run check && npm run local",
-    "fix": "npm run stan && npm run fix:eslint && npm run fix:stylelint && npm run fix:prettier",
-    "fix:eslint": "eslint --fix .",
-    "fix:prettier": "prettier -w .",
-    "fix:stylelint": "stylelint --fix ./**/*.{sass,scss,css}",
-    "lint": "npm run stan && npm run lint:eslint && npm run lint:stylelint && npm run lint:prettier",
-    "lint:eslint": "eslint .",
-    "lint:prettier": "prettier -c .",
-    "lint:stylelint": "stylelint ./**/*.{sass,scss,css}",
-    "local": "npm run npm:install && npm run webpack:build:development -- --env APP_ENV=local",
-    "npm:audit": "npm audit --audit-level info --include prod --include dev --include peer --include optional",
-    "npm:install": "npm install --install-links --include prod --include dev --include peer --include optional --ignore-scripts",
-    "npm:update": "npm update --install-links --include prod --include dev --include peer --include optional --ignore-scripts",
-    "playwright:install": "playwright install",
-    "playwright:start": "npm run webpack:serve:production -- --env APP_ENV=playwright",
-    "playwright:test": "playwright test",
-    "security": "npm run npm:audit",
-    "stan": "npm run stan:typescript",
-    "stan:typescript": "tsc --noEmit",
-    "start": "npm run webpack:serve:development -- --open --env APP_ENV=local",
-    "test": "npm run playwright:install && npm run playwright:test",
-    "webpack:analyze:development": "webpack-cli build --mode=development --config-node-env=development --analyze",
-    "webpack:analyze:production": "webpack-cli build --mode=production --config-node-env=production --analyze",
-    "webpack:build:development": "webpack-cli build --mode=development --config-node-env=development",
-    "webpack:build:production": "webpack-cli build --mode=production --config-node-env=production",
-    "webpack:serve:development": "webpack-cli serve --mode=development --config-node-env=development",
-    "webpack:serve:production": "webpack-cli serve --mode=production --config-node-env=production"
-  },
-  "sideEffects": [
-    "*.sass",
-    "*.scss",
-    "*.css",
-    "./src/css/**/*",
-    "./storybook/**/*"
-  ],
+  "name": "@tomaschochola/template-react-components",
+  "repository": "github:tomaschochola/template-react-components",
+  "sideEffects": true,
   "type": "module"
 }

@@ -10,10 +10,14 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-@use 'sanitize.css/assets.css';
-@use 'sanitize.css/forms.css';
-@use 'sanitize.css/reduce-motion.css';
-@use 'sanitize.css/sanitize.css';
-@use 'sanitize.css/system-ui.css';
-@use 'sanitize.css/typography.css';
-@use 'sanitize.css/ui-monospace.css';
+import type { ReactElement } from 'react';
+
+export function NotFoundRoute(): ReactElement {
+  return (
+    <main>
+      <h1>
+        Not Found
+      </h1>
+    </main>
+  );
+}

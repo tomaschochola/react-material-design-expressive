@@ -1,37 +1,29 @@
 import { createBrowserRouter } from 'react-router';
-import { IndexRoute } from './routes/IndexRoute';
-import { ReactAriaProviderRoute } from './routes/ReactAriaProviderRoute';
-import { ScrollRestorationRoute } from './routes/ScrollRestorationRoute';
-import { SentinelRoute } from './routes/SentinelRoute';
-import { SplitRoute } from './routes/SplitRoute';
 import { ButtonsRoute } from './routes/ButtonsRoute';
+import { IndexRoute } from './routes/IndexRoute';
+import { NotFoundRoute } from './routes/NotFoundRoute';
+import { RootRoute } from './routes/RootRoute';
+import { SplitRoute } from './routes/SplitRoute';
 
 export function createRouter() {
   return createBrowserRouter([
     {
-      element: <SentinelRoute />,
+      element: <RootRoute />,
       children: [
         {
-          element: <ReactAriaProviderRoute />,
+          element: <SplitRoute />,
           children: [
             {
-              element: <ScrollRestorationRoute />,
-              children: [
-                {
-                  element: <SplitRoute />,
-                  children: [
-                    {
-                      index: true,
-                      element: <IndexRoute />,
-                    },
-                    {
-                      path: 'buttons',
-                      element: <ButtonsRoute />,
-                    },
-                  ],
-                },
-
-              ],
+              index: true,
+              element: <IndexRoute />,
+            },
+            {
+              path: 'buttons',
+              element: <ButtonsRoute />,
+            },
+            {
+              path: '*',
+              element: <NotFoundRoute />,
             },
           ],
         },
