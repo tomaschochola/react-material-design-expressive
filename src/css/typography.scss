@@ -1,6 +1,6 @@
 %typography {
   font-family:
-    'Roboto Flex',
+    'Google Sans',
     system-ui,
     -apple-system,
     'Segoe UI',
@@ -19,6 +19,7 @@
   text-decoration: none;
   font-optical-sizing: auto;
   letter-spacing: normal;
+  font-variation-settings: 'GRAD' 0;
 }
 
 %headline {
