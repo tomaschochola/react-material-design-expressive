@@ -8,5 +8,6 @@
 !/postcss.config.js
 !/public
 !/src
+!/storybook
 !/tsconfig.json
 !/webpack.config.js

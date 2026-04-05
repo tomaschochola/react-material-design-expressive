@@ -14,6 +14,8 @@ import { StrictMode } from 'react';
 import { RouterProvider as AriaRouterProvider } from 'react-aria';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, useHref, type NavigateOptions, type To } from 'react-router';
+import { ErrorBoundary } from './boundaries/ErrorBoundary';
+import { LocaleProvider } from './lang/trans';
 import { createRouter } from './router';
 
 const el = document.createElement('div');
@@ -28,13 +30,17 @@ function handleNavigate(to: To, opts: NavigateOptions | undefined): void {
 
 createRoot(el).render(
   <StrictMode>
-    <AriaRouterProvider
-      navigate={handleNavigate}
-      useHref={useHref}
-    >
-      <RouterProvider
-        router={router}
-      />
-    </AriaRouterProvider>
+    <ErrorBoundary>
+      <AriaRouterProvider
+        navigate={handleNavigate}
+        useHref={useHref}
+      >
+        <LocaleProvider>
+          <RouterProvider
+            router={router}
+          />
+        </LocaleProvider>
+      </AriaRouterProvider>
+    </ErrorBoundary>
   </StrictMode>,
 );

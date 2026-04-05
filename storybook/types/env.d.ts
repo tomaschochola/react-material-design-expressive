@@ -26,5 +26,8 @@ declare const process: {
 
     // 'local' | 'playwright' | 'development' | 'sit' | 'uat' | 'production'
     APP_ENV: string;
+
+    // regex: ^[a-zA-Z0-9]+$
+    OTLP_API_KEY: string | null;
   };
 };

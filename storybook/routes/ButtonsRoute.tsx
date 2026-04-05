@@ -1,5 +1,17 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
 import type { ReactElement } from 'react';
-import { PrimaryButton } from '../../src';
+import { ButtonComponent } from '../../src';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
 export function ButtonsRoute(): ReactElement {
@@ -8,7 +20,7 @@ export function ButtonsRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Primary Button"
       >
-        <PrimaryButton
+        <ButtonComponent
           label="Label"
         />
       </StorybookDisplay.Items>

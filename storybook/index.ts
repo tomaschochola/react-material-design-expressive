@@ -18,6 +18,8 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach((link) => {
 
 import 'core-js/actual';
 
+import './observability';
+
 navigator.serviceWorker.register('/sw.js')
   .then(() => {
     console.log('Service Worker registered successfully.');
