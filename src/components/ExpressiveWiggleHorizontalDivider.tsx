@@ -1,22 +1,21 @@
-import * as stylex from '@stylexjs/stylex';
-import type { ReactElement } from 'react';
+import type { CSSProperties, ReactElement } from 'react';
 import { useId } from 'react';
 import { mergeProps, useSeparator, type SeparatorProps } from 'react-aria';
-import { expressiveSysColor } from '../stylex/sys.stylex';
+import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressiveWiggleHorizontalDividerProps extends Omit<SeparatorProps, 'style' | 'className' | 'children'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveWiggleHorizontalDividerProps extends Omit<SeparatorProps, 'style' | 'children'> {
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
-    color: `rgb(${expressiveSysColor.outlineVariant})`,
+    color: expressiveTokens['md.sys.color.outline-variant'],
     display: 'block',
     position: 'relative',
   },
-});
+} as const;
 
-export function ExpressiveWiggleHorizontalDivider({ xstyle, ...props }: ExpressiveWiggleHorizontalDividerProps): ReactElement {
+export function ExpressiveWiggleHorizontalDivider({ style, ...props }: Readonly<ExpressiveWiggleHorizontalDividerProps>): ReactElement {
   const id = useId();
 
   const { separatorProps } = useSeparator(props);
@@ -26,10 +25,18 @@ export function ExpressiveWiggleHorizontalDivider({ xstyle, ...props }: Expressi
       aria-hidden="true"
       width="100%"
       height="8"
-      {...stylex.props(rootStyles.base, xstyle)}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...mergeProps(separatorProps, props)}
+      {...mergeProps(
+        {
+          style: {
+            ...rootStyles.base,
+            ...style,
+          },
+        },
+        separatorProps,
+        props,
+      )}
     >
       <pattern
         id={id}

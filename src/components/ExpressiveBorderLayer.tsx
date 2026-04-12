@@ -1,13 +1,12 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement } from 'react';
-import { expressiveSysColor, expressiveSysOpacity } from '../stylex/sys.stylex';
+import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
+import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressiveBorderLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveBorderLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
   readonly isDisabled?: boolean;
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
     borderBottomColor: 'currentcolor',
     borderBottomLeftRadius: 'inherit',
@@ -25,28 +24,32 @@ const rootStyles = stylex.create({
     borderTopRightRadius: 'inherit',
     borderTopStyle: 'solid',
     borderTopWidth: '1px',
-    bottom: 0,
-    color: `rgb(${expressiveSysColor.outline})`,
-    left: 0,
+    bottom: '0px',
+    color: expressiveTokens['md.sys.color.outline'],
+    left: '0px',
     opacity: 1,
     overflowX: 'hidden',
     overflowY: 'hidden',
     pointerEvents: 'none',
     position: 'absolute',
-    right: 0,
-    top: 0,
+    right: '0px',
+    top: '0px',
     userSelect: 'none',
   },
   isDisabled: {
-    color: `rgb(${expressiveSysColor.onSurfaceVariant})`,
-    opacity: expressiveSysOpacity.disabledOutline,
+    color: expressiveTokens['md.sys.color.on-surface-variant'],
+    opacity: expressiveTokens['md.sys.opacity.disabled-outline'],
   },
-});
+} as const;
 
-export function ExpressiveBorderLayer({ isDisabled = false, xstyle, ...props }: ExpressiveBorderLayerProps): ReactElement {
+export function ExpressiveBorderLayer({ isDisabled = false, style, ...props }: Readonly<ExpressiveBorderLayerProps>): ReactElement {
   return (
     <div
-      {...stylex.props(rootStyles.base, isDisabled ? rootStyles.isDisabled : null, xstyle)}
+      style={{
+        ...rootStyles.base,
+        ...(isDisabled ? rootStyles.isDisabled : null),
+        ...style,
+      }}
       {...props}
     />
   );

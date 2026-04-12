@@ -1,17 +1,16 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLProps, ReactElement } from 'react';
+import type { CSSProperties, HTMLProps, ReactElement } from 'react';
 
-export interface ExpressivePaneGridProps extends Omit<HTMLProps<HTMLDivElement>, 'style' | 'className'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressivePaneGridProps extends Omit<HTMLProps<HTMLDivElement>, 'style'> {
   readonly columns?: string;
   readonly gap?: string | number;
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
-    columnGap: 24,
+    columnGap: '24px',
     display: 'grid',
-    rowGap: 24,
+    rowGap: '24px',
   },
   columns: (columns: string) => ({
     gridTemplateColumns: columns,
@@ -20,17 +19,17 @@ const rootStyles = stylex.create({
     columnGap: gap,
     rowGap: gap,
   }),
-});
+} as const;
 
-export function ExpressivePaneGrid({ xstyle, children, columns, gap, ...props }: ExpressivePaneGridProps): ReactElement {
+export function ExpressivePaneGrid({ children, columns, gap, style, ...props }: Readonly<ExpressivePaneGridProps>): ReactElement {
   return (
     <div
-      {...stylex.props(
-        rootStyles.base,
-        columns !== undefined ? rootStyles.columns(columns) : null,
-        gap !== undefined ? rootStyles.gap(gap) : null,
-        xstyle,
-      )}
+      style={{
+        ...rootStyles.base,
+        ...(columns !== undefined ? rootStyles.columns(columns) : null),
+        ...(gap !== undefined ? rootStyles.gap(gap) : null),
+        ...style,
+      }}
       {...props}
     >
       {children}

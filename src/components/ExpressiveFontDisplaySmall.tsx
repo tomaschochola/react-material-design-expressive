@@ -1,19 +1,18 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes } from 'react';
-import { expressivePresetFont } from '../stylex/preset.stylex';
+import type { CSSProperties, HTMLAttributes } from 'react';
+import { expressivePresets } from '../css/presets';
 
-export interface ExpressiveFontDisplaySmallProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style' | 'className'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveFontDisplaySmallProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style'> {
   readonly top?: boolean | string | number;
   readonly bottom?: boolean | string | number;
   readonly block?: boolean;
   readonly inline?: boolean;
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
-    marginBottom: 0,
-    marginTop: 0,
+    marginBottom: '0px',
+    marginTop: '0px',
   },
   topDefault: {
     marginTop: '0.5lh',
@@ -33,23 +32,31 @@ const rootStyles = stylex.create({
   inline: {
     display: 'inline-block',
   },
-});
+} as const;
 
-export function ExpressiveFontDisplaySmall({ xstyle, top, bottom, block, inline, children, ...props }: ExpressiveFontDisplaySmallProps) {
+export function ExpressiveFontDisplaySmall({
+  top,
+  bottom,
+  block,
+  inline,
+  children,
+  style,
+  ...props
+}: Readonly<ExpressiveFontDisplaySmallProps>) {
   return (
     <span
-      {...stylex.props(
-        expressivePresetFont.displaySmall,
-        rootStyles.base,
-        top === true ? rootStyles.topDefault : null,
-        typeof top === 'string' || typeof top === 'number' ? rootStyles.topCustom(top) : null,
-        bottom === true ? rootStyles.bottomDefault : null,
-        typeof bottom === 'string' || typeof bottom === 'number' ? rootStyles.bottomCustom(bottom) : null,
-        bottom !== undefined || top !== undefined ? rootStyles.inline : null,
-        block === true ? rootStyles.block : null,
-        inline === true ? rootStyles.inline : null,
-        xstyle,
-      )}
+      style={{
+        ...expressivePresets.font.displaySmall,
+        ...rootStyles.base,
+        ...(top === true ? rootStyles.topDefault : null),
+        ...(typeof top === 'string' || typeof top === 'number' ? rootStyles.topCustom(top) : null),
+        ...(bottom === true ? rootStyles.bottomDefault : null),
+        ...(typeof bottom === 'string' || typeof bottom === 'number' ? rootStyles.bottomCustom(bottom) : null),
+        ...(bottom !== undefined || top !== undefined ? rootStyles.inline : null),
+        ...(block === true ? rootStyles.block : null),
+        ...(inline === true ? rootStyles.inline : null),
+        ...style,
+      }}
       {...props}
     >
       {children}

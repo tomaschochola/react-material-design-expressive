@@ -10,43 +10,54 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-import type { ReactElement, ReactNode } from 'react';
+import type { CSSProperties, ReactElement, ReactNode } from 'react';
+import { ExpressiveHeadingHeadlineLarge } from '../../src/components/ExpressiveHeadingHeadlineLarge';
+import { expressiveTokens } from '../../src/css/tokens';
 
 interface StorybookDisplayItemProps {
   readonly children: ReactNode;
   readonly label?: ReactNode;
+  readonly style?: CSSProperties;
 }
 
-export function StorybookDisplayItem({ children, label }: StorybookDisplayItemProps): ReactElement {
+const globalStyles = {
+  base: {
+    backgroundImage: `radial-gradient(circle, oklch(from ${expressiveTokens['md.sys.color.primary']} l c h / 0.2) 1px, transparent 1px), radial-gradient(circle, oklch(from ${expressiveTokens['md.sys.color.primary']} l c h / 0.2) 1px, transparent 1px)`,
+    backgroundPositionX: '0px, 5px',
+    backgroundPositionY: '0px, 5px',
+    backgroundRepeat: 'repeat',
+    backgroundSize: '10px 10px',
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    paddingBottom: '4rem',
+    paddingLeft: '2rem',
+    paddingRight: '2rem',
+    paddingTop: '4rem',
+  },
+} as const;
+
+export function StorybookDisplayItem({ children, label, style }: StorybookDisplayItemProps): ReactElement {
   return (
     <div>
       {label !== undefined
         ? (
-            <div
+            <ExpressiveHeadingHeadlineLarge
+              bottom
+              block
               style={{
-                marginBottom: '0.5lh',
                 textAlign: 'center',
               }}
             >
               {label}
-            </div>
+            </ExpressiveHeadingHeadlineLarge>
           )
         : null}
       <div
         style={{
-          backgroundImage: `radial-gradient(circle, rgb(0 0 100 / 0.2) 1px, transparent 1px), radial-gradient(circle, rgb(0 0 100 / 0.2) 1px, transparent 1px)`,
-          backgroundPositionX: '0px, 5px',
-          backgroundPositionY: '0px, 5px',
-          backgroundRepeat: 'repeat',
-          backgroundSize: '10px 10px',
-          borderBottomLeftRadius: 8,
-          borderBottomRightRadius: 8,
-          borderTopLeftRadius: 8,
-          borderTopRightRadius: 8,
-          paddingBottom: '4rem',
-          paddingLeft: '2rem',
-          paddingRight: '2rem',
-          paddingTop: '4rem',
+          ...globalStyles.base,
+          ...style,
         }}
       >
         {children}

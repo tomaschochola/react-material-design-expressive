@@ -1,46 +1,45 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement } from 'react';
-import { expressiveSysDuration, expressiveSysOpacity, expressiveSysTimingFunction } from '../stylex/sys.stylex';
+import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
+import { expressivePresets } from '../css/presets';
+import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressiveHoveredStateLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
+export interface ExpressiveHoveredStateLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
   readonly isHovered?: boolean;
-  readonly xstyle?: stylex.StyleXStyles;
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
     backgroundColor: 'currentColor',
     borderBottomLeftRadius: 'inherit',
     borderBottomRightRadius: 'inherit',
     borderTopLeftRadius: 'inherit',
     borderTopRightRadius: 'inherit',
-    bottom: 0,
-    left: 0,
+    bottom: '0px',
+    left: '0px',
     opacity: 0,
     overflowX: 'hidden',
     overflowY: 'hidden',
     pointerEvents: 'none',
     position: 'absolute',
-    right: 0,
-    top: 0,
-    transitionDuration: expressiveSysDuration.effectsSlow,
+    right: '0px',
+    top: '0px',
     transitionProperty: 'opacity',
-    transitionTimingFunction: expressiveSysTimingFunction.effectsSlow,
     userSelect: 'none',
   },
   hovered: {
-    opacity: expressiveSysOpacity.hovered,
+    opacity: expressiveTokens['md.sys.opacity.hovered'],
   },
-});
+} as const;
 
-export function ExpressiveHoveredStateLayer({ isHovered = false, xstyle, ...props }: ExpressiveHoveredStateLayerProps): ReactElement {
+export function ExpressiveHoveredStateLayer({ isHovered = false, style, ...props }: Readonly<ExpressiveHoveredStateLayerProps>): ReactElement {
   return (
     <div
-      {...stylex.props(
-        rootStyles.base,
-        isHovered ? rootStyles.hovered : null,
-        xstyle,
-      )}
+      style={{
+        ...rootStyles.base,
+        ...expressivePresets.transition.effectsSlow,
+        ...(isHovered ? rootStyles.hovered : null),
+        ...style,
+      }}
       {...props}
     />
   );

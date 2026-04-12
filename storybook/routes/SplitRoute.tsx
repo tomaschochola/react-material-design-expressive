@@ -1,59 +1,115 @@
-/**
- * @file
- * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
- * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
- *
- * @license CC-BY-ND-4.0
- *
- * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
- * @see {@link https://github.com/tomaschochola} GitHub Profile
- * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
- */
-
-import { useRef, type ReactElement } from 'react';
-import { useLink } from 'react-aria';
+import type { ReactElement } from 'react';
 import { Outlet } from 'react-router';
-import { useTrans } from '../lang/trans';
+import { ExpressiveContainerPadding } from '../../src/components/ExpressiveContainerPadding';
+import { ExpressivePaneGrid } from '../../src/components/ExpressivePaneGrid';
+import { ExpressiveSurface } from '../../src/components/ExpressiveSurface';
+import { ExpressiveSurfacePadding } from '../../src/components/ExpressiveSurfacePadding';
+import { ExpressiveSurfaceRadius } from '../../src/components/ExpressiveSurfaceRadius';
+import { ExpressiveTextLink } from '../../src/components/ExpressiveTextLink';
 
 function Nav(): ReactElement {
-  const linkRef = useRef<HTMLAnchorElement>(null);
-  const { linkProps } = useLink({ href: '/buttons' }, linkRef);
-
-  const trans = useTrans();
-
   return (
-    <nav>
-      <div>
-        <a
-          ref={linkRef}
-          {...linkProps}
-        >
-          {trans.format('Buttons')}
-        </a>
-      </div>
-    </nav>
+    <ExpressiveSurfaceRadius>
+      <ExpressiveSurface>
+        <ExpressiveSurfacePadding>
+          <nav>
+            <div>
+              <ExpressiveTextLink
+                href="/fonts"
+                label="Fonts"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/headings"
+                label="Headings"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/divider"
+                label="Dividers"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/symbols"
+                label="Symbols"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/interactions"
+                label="Interactions"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/buttons"
+                label="Buttons"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/links"
+                label="Links"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/app-bars"
+                label="App Bars"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/navigation-rail"
+                label="Navigation Rail"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/icon-buttons"
+                label="Icon Buttons"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/colors"
+                label="Colors"
+              />
+            </div>
+            <div>
+              <ExpressiveTextLink
+                href="/radius"
+                label="Radius"
+              />
+            </div>
+          </nav>
+        </ExpressiveSurfacePadding>
+      </ExpressiveSurface>
+    </ExpressiveSurfaceRadius>
   );
 }
 
+const styles = { layout: { alignItems: 'start' } } as const;
+
 export function SplitRoute(): ReactElement {
   return (
-    <div
-      style={{
-        paddingBottom: 24,
-        paddingLeft: 24,
-        paddingRight: 24,
-        paddingTop: 24,
-      }}
+    <ExpressiveContainerPadding
+      left
+      right
+      top
+      bottom
+      padding={24}
     >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'max-content 1fr',
-        }}
+      <ExpressivePaneGrid
+        columns="max-content 1fr"
+        style={styles.layout}
       >
         <Nav />
         <Outlet />
-      </div>
-    </div>
+      </ExpressivePaneGrid>
+    </ExpressiveContainerPadding>
   );
 }

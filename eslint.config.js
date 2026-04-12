@@ -41,4 +41,10 @@ export default new Eslint()
       'sonarjs/cognitive-complexity': 'off',
     },
   })
+  .add({
+    rules: {
+      'react/jsx-no-literals': 'off',
+    },
+    files: ['./storybook/**/*'],
+  })
   .build();

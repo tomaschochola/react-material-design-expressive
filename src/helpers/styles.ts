@@ -55,20 +55,20 @@ export function toStyle(
   a: string | null | undefined,
   b: string | null | undefined,
 ): string {
-  const styles: string[] = [];
+  const list: string[] = [];
 
   const normalizedA = normalizePart(a) ?? '';
   const normalizedB = normalizePart(b) ?? '';
 
   if (normalizedA !== '') {
-    styles.push(normalizedA);
+    list.push(normalizedA);
   }
 
   if (normalizedB !== '') {
-    styles.push(normalizedB);
+    list.push(normalizedB);
   }
 
-  return styles.join('; ');
+  return list.join('; ');
 }
 
 export function mergeClassNames(...names: (string | null | undefined | boolean)[]): string {

@@ -1,39 +1,46 @@
-import * as stylex from '@stylexjs/stylex';
-import type { ReactElement } from 'react';
-import type { SeparatorProps } from 'react-aria';
-import { Separator } from 'react-aria-components';
-import { expressiveSysColor } from '../stylex/sys.stylex';
+import type { CSSProperties, ReactElement } from 'react';
+import { mergeProps, useSeparator, type SeparatorProps } from 'react-aria';
+import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressiveHorizontalDividerProps extends Omit<SeparatorProps, 'style' | 'className' | 'children'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveHorizontalDividerProps extends Omit<SeparatorProps, 'style' | 'children'> {
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
     borderBottomStyle: 'none',
-    borderBottomWidth: 0,
+    borderBottomWidth: '0px',
     borderLeftStyle: 'none',
-    borderLeftWidth: 0,
+    borderLeftWidth: '0px',
     borderRightStyle: 'none',
-    borderRightWidth: 0,
+    borderRightWidth: '0px',
     borderTopColor: 'currentColor',
     borderTopStyle: 'solid',
     borderTopWidth: '1px',
-    color: `rgb(${expressiveSysColor.outlineVariant})`,
-    marginBottom: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    marginTop: 0,
+    color: expressiveTokens['md.sys.color.outline-variant'],
+    marginBottom: '0px',
+    marginLeft: '0px',
+    marginRight: '0px',
+    marginTop: '0px',
     position: 'relative',
   },
-});
+} as const;
 
-export function ExpressiveHorizontalDivider({ xstyle, ...props }: ExpressiveHorizontalDividerProps): ReactElement {
+export function ExpressiveHorizontalDivider({ style, ...props }: Readonly<ExpressiveHorizontalDividerProps>): ReactElement {
+  const { separatorProps } = useSeparator(props);
+
   return (
-    <Separator
-      {...stylex.props(rootStyles.base, xstyle)}
-      {...props}
-      orientation="horizontal"
+    <hr
+      {...mergeProps(
+        {
+          style: {
+            ...rootStyles.base,
+            ...style,
+          },
+        },
+        separatorProps,
+        props,
+      )}
     />
   );
 }

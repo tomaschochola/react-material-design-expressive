@@ -1,21 +1,23 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement } from 'react';
+import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
 
-export interface ExpressiveOverscrollProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'className'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveOverscrollProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
     paddingBottom: '50vh',
     position: 'relative',
   },
-});
+} as const;
 
-export function ExpressiveOverscroll({ xstyle, children, ...props }: ExpressiveOverscrollProps): ReactElement {
+export function ExpressiveOverscroll({ children, style, ...props }: Readonly<ExpressiveOverscrollProps>): ReactElement {
   return (
     <div
-      {...stylex.props(rootStyles.base, xstyle)}
+      style={{
+        ...rootStyles.base,
+        ...style,
+      }}
       {...props}
     >
       {children}

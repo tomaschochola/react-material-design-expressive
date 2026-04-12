@@ -1,47 +1,46 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement } from 'react';
-import { expressiveSysDuration, expressiveSysOpacity, expressiveSysTimingFunction } from '../stylex/sys.stylex';
+import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
+import { expressivePresets } from '../css/presets';
+import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressivePressedStateLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
+export interface ExpressivePressedStateLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
   readonly isPressed?: boolean;
-  readonly xstyle?: stylex.StyleXStyles;
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
     backgroundColor: 'currentColor',
     borderBottomLeftRadius: 'inherit',
     borderBottomRightRadius: 'inherit',
     borderTopLeftRadius: 'inherit',
     borderTopRightRadius: 'inherit',
-    bottom: 0,
-    left: 0,
+    bottom: '0px',
+    left: '0px',
     opacity: 0,
     overflowX: 'hidden',
     overflowY: 'hidden',
     pointerEvents: 'none',
     position: 'absolute',
-    right: 0,
-    top: 0,
-    transitionDuration: expressiveSysDuration.effectsSlow,
+    right: '0px',
+    top: '0px',
     transitionProperty: 'opacity',
-    transitionTimingFunction: expressiveSysTimingFunction.effectsSlow,
     userSelect: 'none',
   },
   pressed: {
-    opacity: expressiveSysOpacity.pressed,
+    opacity: expressiveTokens['md.sys.opacity.pressed'],
     transitionDuration: '0ms',
   },
-});
+} as const;
 
-export function ExpressivePressedStateLayer({ isPressed = false, xstyle, ...props }: ExpressivePressedStateLayerProps): ReactElement {
+export function ExpressivePressedStateLayer({ isPressed = false, style, ...props }: Readonly<ExpressivePressedStateLayerProps>): ReactElement {
   return (
     <div
-      {...stylex.props(
-        rootStyles.base,
-        isPressed ? rootStyles.pressed : null,
-        xstyle,
-      )}
+      style={{
+        ...rootStyles.base,
+        ...expressivePresets.transition.effectsSlow,
+        ...(isPressed ? rootStyles.pressed : null),
+        ...style,
+      }}
       {...props}
     />
   );

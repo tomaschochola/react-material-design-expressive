@@ -1,35 +1,34 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement } from 'react';
-import { expressivePresetFont, expressivePresetTransition } from '../stylex/preset.stylex';
-import { expressiveSysColor } from '../stylex/sys.stylex';
+import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
+import { expressivePresets } from '../css/presets';
+import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressiveNavigationBarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'className'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveNavigationBarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
-    backgroundColor: `rgb(${expressiveSysColor.surface})`,
-    color: `rgb(${expressiveSysColor.onSurfaceVariant})`,
-    columnGap: 8,
+    backgroundColor: expressiveTokens['md.sys.color.surface'],
+    color: expressiveTokens['md.sys.color.on-surface-variant'],
+    columnGap: '8px',
     display: 'flex',
-    height: 80,
+    height: '80px',
     overflowX: 'hidden',
     overflowY: 'hidden',
-    rowGap: 8,
+    rowGap: '8px',
     transitionProperty: 'transform',
   },
-});
+} as const;
 
-export function ExpressiveNavigationBar({ xstyle, ...props }: ExpressiveNavigationBarProps): ReactElement {
+export function ExpressiveNavigationBar({ style, ...props }: Readonly<ExpressiveNavigationBarProps>): ReactElement {
   return (
     <div
-      {...stylex.props(
-        rootStyles.base,
-        expressivePresetTransition.spatialDefault,
-        expressivePresetFont.labelMedium,
-        xstyle,
-      )}
+      style={{
+        ...rootStyles.base,
+        ...expressivePresets.transition.spatialDefault,
+        ...expressivePresets.font.labelMedium,
+        ...style,
+      }}
       {...props}
     />
   );

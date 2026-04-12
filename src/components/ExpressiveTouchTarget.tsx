@@ -1,11 +1,10 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement } from 'react';
+import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
 
-export interface ExpressiveTouchTargetProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style' | 'className'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveTouchTargetProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style'> {
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
     alignItems: 'center',
     display: 'inline-flex',
@@ -15,12 +14,15 @@ const rootStyles = stylex.create({
     position: 'relative',
     verticalAlign: 'middle',
   },
-});
+} as const;
 
-export function ExpressiveTouchTarget({ xstyle, children, ...props }: ExpressiveTouchTargetProps): ReactElement {
+export function ExpressiveTouchTarget({ children, style, ...props }: Readonly<ExpressiveTouchTargetProps>): ReactElement {
   return (
     <span
-      {...stylex.props(rootStyles.base, xstyle)}
+      style={{
+        ...rootStyles.base,
+        ...style,
+      }}
       {...props}
     >
       {children}

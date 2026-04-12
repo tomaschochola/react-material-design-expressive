@@ -1,30 +1,37 @@
-import type { HTMLAttributes, ReactElement, ReactNode } from 'react';
-import { styles, toRem } from '../helpers/styles';
+import type { CSSProperties, HTMLAttributes, ReactElement, ReactNode } from 'react';
+import { toRem } from '../helpers/styles';
 
-export interface ExpressiveIconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style' | 'className' | 'children'> {
+export interface ExpressiveIconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style' | 'children'> {
   readonly size?: number | string;
   readonly symbol?: ReactNode;
+  readonly style?: CSSProperties;
 }
 
-export function ExpressiveIcon({ size, symbol, ...props }: ExpressiveIconProps): ReactElement {
+const rootStyles = {
+  base: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    flexShrink: 0,
+    fontSize: toRem(24),
+    height: '1em',
+    maxHeight: '100%',
+    position: 'relative',
+    whiteSpace: 'nowrap',
+  },
+  custom: (size: number | string) => ({
+    fontSize: toRem(size),
+  }),
+} as const;
+
+export function ExpressiveIcon({ size, symbol, style, ...props }: Readonly<ExpressiveIconProps>): ReactElement {
   return (
     <span
+      style={{
+        ...rootStyles.base,
+        ...(size !== undefined ? rootStyles.custom(size) : null),
+        ...style,
+      }}
       {...props}
-      style={styles(
-        {
-          alignItems: 'center',
-          display: 'inline-flex',
-          flexShrink: 0,
-          fontSize: toRem(24),
-          height: '1em',
-          maxHeight: '100%',
-          position: 'relative',
-          whiteSpace: 'nowrap',
-        },
-        size !== undefined
-          ? { fontSize: toRem(size) }
-          : {},
-      )}
     >
       {symbol}
     </span>

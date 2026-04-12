@@ -1,27 +1,113 @@
-/**
- * @file
- * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
- * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
- *
- * @license CC-BY-ND-4.0
- *
- * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
- * @see {@link https://github.com/tomaschochola} GitHub Profile
- * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
- */
-
 import type { ReactElement } from 'react';
-import { ButtonComponent } from '../../src';
+import { ExpressiveElevatedButton } from '../../src/components/ExpressiveElevatedButton';
+import { ExpressiveFilledButton } from '../../src/components/ExpressiveFilledButton';
+import { ExpressiveOutlinedButton } from '../../src/components/ExpressiveOutlinedButton';
+import { ExpressiveRandomSymbol } from '../../src/components/ExpressiveRandomSymbol';
+import { ExpressiveTextButton } from '../../src/components/ExpressiveTextButton';
+import { ExpressiveTonalButton } from '../../src/components/ExpressiveTonalButton';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
 export function ButtonsRoute(): ReactElement {
   return (
     <StorybookDisplay>
       <StorybookDisplay.Items
-        label="Primary Button"
+        label="Elevated Button"
       >
-        <ButtonComponent
-          label="Label"
+        <ExpressiveElevatedButton
+          label="Elevated Button"
+          symbol={<ExpressiveRandomSymbol />}
+        />
+        <ExpressiveElevatedButton
+          label="Elevated Button"
+          symbol={<ExpressiveRandomSymbol />}
+          isDisabled
+        />
+        <ExpressiveElevatedButton
+          label="Elevated Button"
+        />
+        <ExpressiveElevatedButton
+          label="Elevated Button"
+          isDisabled
+        />
+      </StorybookDisplay.Items>
+      <StorybookDisplay.Items
+        label="Tonal Button"
+      >
+        <ExpressiveTonalButton
+          label="Tonal Button"
+          symbol={<ExpressiveRandomSymbol />}
+        />
+        <ExpressiveTonalButton
+          label="Tonal Button"
+          symbol={<ExpressiveRandomSymbol />}
+          isDisabled
+        />
+        <ExpressiveTonalButton
+          label="Tonal Button"
+        />
+        <ExpressiveTonalButton
+          label="Tonal Button"
+          isDisabled
+        />
+      </StorybookDisplay.Items>
+      <StorybookDisplay.Items
+        label="Filled Button"
+      >
+        <ExpressiveFilledButton
+          label="Filled Button"
+          symbol={<ExpressiveRandomSymbol />}
+        />
+        <ExpressiveFilledButton
+          label="Filled Button"
+          symbol={<ExpressiveRandomSymbol />}
+          isDisabled
+        />
+        <ExpressiveFilledButton
+          label="Filled Button"
+        />
+        <ExpressiveFilledButton
+          label="Filled Button"
+          isDisabled
+        />
+      </StorybookDisplay.Items>
+      <StorybookDisplay.Items
+        label="Outlined Button"
+      >
+        <ExpressiveOutlinedButton
+          label="Outlined Button"
+          symbol={<ExpressiveRandomSymbol />}
+        />
+        <ExpressiveOutlinedButton
+          label="Outlined Button"
+          symbol={<ExpressiveRandomSymbol />}
+          isDisabled
+        />
+        <ExpressiveOutlinedButton
+          label="Outlined Button"
+        />
+        <ExpressiveOutlinedButton
+          label="Outlined Button"
+          isDisabled
+        />
+      </StorybookDisplay.Items>
+      <StorybookDisplay.Items
+        label="Text Button"
+      >
+        <ExpressiveTextButton
+          label="Text Button"
+          symbol={<ExpressiveRandomSymbol />}
+        />
+        <ExpressiveTextButton
+          label="Text Button"
+          symbol={<ExpressiveRandomSymbol />}
+          isDisabled
+        />
+        <ExpressiveTextButton
+          label="Text Button"
+        />
+        <ExpressiveTextButton
+          label="Text Button"
+          isDisabled
         />
       </StorybookDisplay.Items>
     </StorybookDisplay>

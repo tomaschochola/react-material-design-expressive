@@ -1,6 +1,7 @@
 import { createContext, useContext, type ReactElement, type ReactNode } from 'react';
+import type { ExpressiveHeadingProps } from './ExpressiveHeading';
 
-type ExpressiveHeadingLevelEnum = 1 | 2 | 3 | 4 | 5 | 6;
+type ExpressiveHeadingLevelEnum = NonNullable<ExpressiveHeadingProps['level']>;
 
 export interface ExpressiveHeadingContextProps {
   readonly children: ReactNode;
@@ -14,7 +15,7 @@ function assertExpressiveHeadingLevel(level: number): asserts level is Expressiv
   }
 }
 
-export function ExpressiveHeadingContext({ children }: ExpressiveHeadingContextProps): ReactElement {
+export function ExpressiveHeadingContext({ children }: Readonly<ExpressiveHeadingContextProps>): ReactElement {
   const parent = useContext(ExpressiveHeadingContextValue) ?? 0;
 
   const level = parent + 1;

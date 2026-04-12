@@ -1,24 +1,26 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement } from 'react';
+import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
 
-export interface ExpressiveNavigationRailItemsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'className'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveNavigationRailItemsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
     display: 'flex',
     flexDirection: 'column',
-    paddingBottom: 18,
-    paddingTop: 18,
-    rowGap: 12,
+    paddingBottom: '18px',
+    paddingTop: '18px',
+    rowGap: '12px',
   },
-});
+} as const;
 
-export function ExpressiveNavigationRailItems({ xstyle, ...props }: ExpressiveNavigationRailItemsProps): ReactElement {
+export function ExpressiveNavigationRailItems({ style, ...props }: Readonly<ExpressiveNavigationRailItemsProps>): ReactElement {
   return (
     <div
-      {...stylex.props(rootStyles.base, xstyle)}
+      style={{
+        ...rootStyles.base,
+        ...style,
+      }}
       {...props}
     />
   );

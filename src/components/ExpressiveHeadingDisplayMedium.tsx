@@ -1,23 +1,19 @@
-import * as stylex from '@stylexjs/stylex';
-import { useContext } from 'react';
-import type { HeadingProps } from 'react-aria-components';
-import { Heading } from 'react-aria-components';
-import { expressivePresetFont } from '../stylex/preset.stylex';
-import { ExpressiveHeadingContextValue } from './ExpressiveHeadingContext';
+import type { CSSProperties } from 'react';
+import { expressivePresets } from '../css/presets';
+import { ExpressiveHeading, type ExpressiveHeadingProps } from './ExpressiveHeading';
 
-export interface ExpressiveHeadingDisplayMediumProps extends Omit<HeadingProps, 'style' | 'className'> {
-  readonly xstyle?: stylex.StyleXStyles;
-  readonly level?: 1 | 2 | 3 | 4 | 5 | 6;
+export interface ExpressiveHeadingDisplayMediumProps extends Omit<ExpressiveHeadingProps, 'style'> {
   readonly top?: boolean | string | number;
   readonly bottom?: boolean | string | number;
   readonly block?: boolean;
   readonly inline?: boolean;
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
-    marginBottom: 0,
-    marginTop: 0,
+    marginBottom: '0px',
+    marginTop: '0px',
   },
   topDefault: {
     marginTop: '0.5lh',
@@ -37,29 +33,27 @@ const rootStyles = stylex.create({
   inline: {
     display: 'inline-block',
   },
-});
+} as const;
 
-export function ExpressiveHeadingDisplayMedium({ xstyle, level, top, bottom, block, inline, children, ...props }: ExpressiveHeadingDisplayMediumProps) {
-  const context = useContext(ExpressiveHeadingContextValue);
-
+export function ExpressiveHeadingDisplayMedium({ level, top, bottom, block, inline, children, style, ...props }: Readonly<ExpressiveHeadingDisplayMediumProps>) {
   return (
-    <Heading
-      {...stylex.props(
-        expressivePresetFont.displayMedium,
-        rootStyles.base,
-        top === true ? rootStyles.topDefault : null,
-        typeof top === 'string' || typeof top === 'number' ? rootStyles.topCustom(top) : null,
-        bottom === true ? rootStyles.bottomDefault : null,
-        typeof bottom === 'string' || typeof bottom === 'number' ? rootStyles.bottomCustom(bottom) : null,
-        bottom !== undefined || top !== undefined ? rootStyles.block : null,
-        block === true ? rootStyles.block : null,
-        inline === true ? rootStyles.inline : null,
-        xstyle,
-      )}
-      level={level ?? context}
+    <ExpressiveHeading
+      style={{
+        ...expressivePresets.font.displayMedium,
+        ...rootStyles.base,
+        ...(top === true ? rootStyles.topDefault : null),
+        ...(typeof top === 'string' || typeof top === 'number' ? rootStyles.topCustom(top) : null),
+        ...(bottom === true ? rootStyles.bottomDefault : null),
+        ...(typeof bottom === 'string' || typeof bottom === 'number' ? rootStyles.bottomCustom(bottom) : null),
+        ...(bottom !== undefined || top !== undefined ? rootStyles.block : null),
+        ...(block === true ? rootStyles.block : null),
+        ...(inline === true ? rootStyles.inline : null),
+        ...style,
+      }}
+      level={level}
       {...props}
     >
       {children}
-    </Heading>
+    </ExpressiveHeading>
   );
 }

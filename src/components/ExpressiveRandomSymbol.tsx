@@ -1,5 +1,4 @@
-import type * as stylex from '@stylexjs/stylex';
-import type { ReactElement, SVGAttributes } from 'react';
+import type { CSSProperties, ReactElement, SVGAttributes } from 'react';
 import { useMemo } from 'react';
 import { ExpressiveSymbolCircle } from '../symbols/ExpressiveSymbolCircle';
 import { ExpressiveSymbolFlower } from '../symbols/ExpressiveSymbolFlower';
@@ -21,11 +20,11 @@ function next(): number {
   return counter++;
 }
 
-interface ExpressiveRandomSymbolProps extends Omit<SVGAttributes<SVGSVGElement>, 'style' | 'className' | 'children'> {
-  readonly xstyle?: stylex.StyleXStyles;
+interface ExpressiveRandomSymbolProps extends Omit<SVGAttributes<SVGSVGElement>, 'style' | 'children'> {
+  readonly style?: CSSProperties;
 }
 
-export function ExpressiveRandomSymbol(props: ExpressiveRandomSymbolProps): ReactElement {
+export function ExpressiveRandomSymbol(props: Readonly<ExpressiveRandomSymbolProps>): ReactElement {
   const draw = useMemo(() => next() % ExpressiveRandomSymbolPool.length, []);
 
   const SymbolComponent = ExpressiveRandomSymbolPool[draw];

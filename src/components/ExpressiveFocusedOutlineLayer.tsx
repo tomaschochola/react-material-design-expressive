@@ -1,70 +1,74 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement } from 'react';
-import { expressiveSysColor, expressiveSysDuration, expressiveSysTimingFunction } from '../stylex/sys.stylex';
+import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
+import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressiveFocusOutlineLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
+export interface ExpressiveFocusOutlineLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
   readonly isFocusVisible?: boolean;
   readonly isInset?: boolean;
-  readonly xstyle?: stylex.StyleXStyles;
+  readonly style?: CSSProperties;
 }
 
-const outlineKeyframes = stylex.keyframes({
-  '0%': {
-    outlineWidth: '0px',
-  },
-  '25%': {
-    outlineWidth: '9px',
-  },
-  '100%': {
-    outlineWidth: '3px',
-  },
-});
+const outlineKeyframes = 'expressive-focused-outline-layer-outline';
+const insetKeyframes = 'expressive-focused-outline-layer-inset';
 
-const insetKeyframes = stylex.keyframes({
-  '0%': {
-    borderBottomWidth: 0,
-    borderLeftWidth: 0,
-    borderRightWidth: 0,
-    borderTopWidth: 0,
-  },
-  '25%': {
-    borderBottomWidth: 9,
-    borderLeftWidth: 9,
-    borderRightWidth: 9,
-    borderTopWidth: 9,
-  },
-  '100%': {
-    borderBottomWidth: 3,
-    borderLeftWidth: 3,
-    borderRightWidth: 3,
-    borderTopWidth: 3,
-  },
-});
+const keyframesStyles = `
+@keyframes ${outlineKeyframes} {
+  0% {
+    outline-width: 0px;
+  }
+  25% {
+    outline-width: 9px;
+  }
+  100% {
+    outline-width: 3px;
+  }
+}
 
-const rootStyles = stylex.create({
+@keyframes ${insetKeyframes} {
+  0% {
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+  }
+  25% {
+    border-bottom-width: 9px;
+    border-left-width: 9px;
+    border-right-width: 9px;
+    border-top-width: 9px;
+  }
+  100% {
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+  }
+}
+`;
+
+const rootStyles = {
   base: {
-    animationDuration: expressiveSysDuration.spatialDefault,
+    animationDuration: expressiveTokens['md.sys.duration.spatial-default'],
     animationFillMode: 'forwards',
-    animationTimingFunction: expressiveSysTimingFunction.effectsDefault,
-    borderBottomColor: `rgb(${expressiveSysColor.secondary})`,
+    animationTimingFunction: expressiveTokens['md.sys.timing-function.effects-default'],
+    borderBottomColor: expressiveTokens['md.sys.color.secondary'],
     borderBottomLeftRadius: 'inherit',
     borderBottomRightRadius: 'inherit',
     borderBottomStyle: 'solid',
-    borderBottomWidth: 0,
-    borderLeftColor: `rgb(${expressiveSysColor.secondary})`,
+    borderBottomWidth: '0px',
+    borderLeftColor: expressiveTokens['md.sys.color.secondary'],
     borderLeftStyle: 'solid',
-    borderLeftWidth: 0,
-    borderRightColor: `rgb(${expressiveSysColor.secondary})`,
+    borderLeftWidth: '0px',
+    borderRightColor: expressiveTokens['md.sys.color.secondary'],
     borderRightStyle: 'solid',
-    borderRightWidth: 0,
-    borderTopColor: `rgb(${expressiveSysColor.secondary})`,
+    borderRightWidth: '0px',
+    borderTopColor: expressiveTokens['md.sys.color.secondary'],
     borderTopLeftRadius: 'inherit',
     borderTopRightRadius: 'inherit',
     borderTopStyle: 'solid',
-    borderTopWidth: 0,
-    bottom: 0,
-    left: 0,
-    outlineColor: `rgb(${expressiveSysColor.secondary})`,
+    borderTopWidth: '0px',
+    bottom: '0px',
+    left: '0px',
+    outlineColor: expressiveTokens['md.sys.color.secondary'],
     outlineOffset: '2px',
     outlineStyle: 'solid',
     outlineWidth: '0px',
@@ -72,31 +76,40 @@ const rootStyles = stylex.create({
     overflowY: 'hidden',
     pointerEvents: 'none',
     position: 'absolute',
-    right: 0,
-    top: 0,
+    right: '0px',
+    top: '0px',
     userSelect: 'none',
     zIndex: 90,
   },
-  isInset: {
+  inset: {
     animationName: insetKeyframes,
-    borderBottomWidth: 3,
-    borderLeftWidth: 3,
-    borderRightWidth: 3,
-    borderTopWidth: 3,
+    borderBottomWidth: '3px',
+    borderLeftWidth: '3px',
+    borderRightWidth: '3px',
+    borderTopWidth: '3px',
   },
-  isOutline: {
+  outline: {
     animationName: outlineKeyframes,
     outlineWidth: '3px',
   },
-});
+} as const;
 
-export function ExpressiveFocusedOutlineLayer({ isFocusVisible = false, isInset = false, xstyle, ...props }: ExpressiveFocusOutlineLayerProps): ReactElement {
-  const variant = isInset ? rootStyles.isInset : rootStyles.isOutline;
+export function ExpressiveFocusedOutlineLayer({ isFocusVisible = false, isInset = false, style, ...props }: Readonly<ExpressiveFocusOutlineLayerProps>): ReactElement {
+  const variant = isInset ? rootStyles.inset : rootStyles.outline;
 
   return (
-    <div
-      {...stylex.props(rootStyles.base, isFocusVisible ? variant : null, xstyle)}
-      {...props}
-    />
+    <>
+      <style>
+        {keyframesStyles}
+      </style>
+      <div
+        style={{
+          ...rootStyles.base,
+          ...(isFocusVisible ? variant : null),
+          ...style,
+        }}
+        {...props}
+      />
+    </>
   );
 }

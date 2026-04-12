@@ -1,49 +1,35 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useSyncExternalStore } from 'react';
+import { expressiveQueries } from '../css/queries';
 
-export const expressiveCompactQuery = 'screen and (max-width: 599px)';
-export const expressiveMediumQuery = 'screen and (min-width: 600px) and (max-width: 839px)';
-export const expressiveExpandedQuery = 'screen and (min-width: 840px) and (max-width: 1199px)';
-export const expressiveLargeQuery = 'screen and (min-width: 1200px) and (max-width: 1599px)';
-export const expressiveExtraLargeQuery = 'screen and (min-width: 1600px)';
-export const expressivePortraitQuery = '(orientation: portrait)';
-export const expressiveLandscapeQuery = '(orientation: landscape)';
-export const expressivePhoneQuery = 'screen and (max-width: 599px)';
-export const expressiveTabletQuery = 'screen and (min-width: 600px) and (max-width: 1199px)';
-export const expressiveDesktopQuery = 'screen and (min-width: 1200px)';
-export const expressivePrefersDarkQuery = '(prefers-color-scheme: dark)';
-export const expressivePrefersReduceMotionQuery = '(prefers-reduced-motion: reduce)';
-
-export const expressiveCompactMedia: MediaQueryList = window.matchMedia(expressiveCompactQuery);
-export const expressiveMediumMedia: MediaQueryList = window.matchMedia(expressiveMediumQuery);
-export const expressiveExpandedMedia: MediaQueryList = window.matchMedia(expressiveExpandedQuery);
-export const expressiveLargeMedia: MediaQueryList = window.matchMedia(expressiveLargeQuery);
-export const expressiveExtraLargeMedia: MediaQueryList = window.matchMedia(expressiveExtraLargeQuery);
-export const expressivePortraitMedia: MediaQueryList = window.matchMedia(expressivePortraitQuery);
-export const expressiveLandscapeMedia: MediaQueryList = window.matchMedia(expressiveLandscapeQuery);
-export const expressivePhoneMedia: MediaQueryList = window.matchMedia(expressivePhoneQuery);
-export const expressiveTabletMedia: MediaQueryList = window.matchMedia(expressiveTabletQuery);
-export const expressiveDesktopMedia: MediaQueryList = window.matchMedia(expressiveDesktopQuery);
-export const expressivePrefersDarkMedia: MediaQueryList = window.matchMedia(expressivePrefersDarkQuery);
-export const expressivePrefersReduceMotionMedia: MediaQueryList = window.matchMedia(expressivePrefersReduceMotionQuery);
+export const expressiveCompactMedia: MediaQueryList = window.matchMedia(expressiveQueries.compact);
+export const expressiveMediumMedia: MediaQueryList = window.matchMedia(expressiveQueries.medium);
+export const expressiveExpandedMedia: MediaQueryList = window.matchMedia(expressiveQueries.expanded);
+export const expressiveLargeMedia: MediaQueryList = window.matchMedia(expressiveQueries.large);
+export const expressiveExtraLargeMedia: MediaQueryList = window.matchMedia(expressiveQueries.extraLarge);
+export const expressivePortraitMedia: MediaQueryList = window.matchMedia(expressiveQueries.portrait);
+export const expressiveLandscapeMedia: MediaQueryList = window.matchMedia(expressiveQueries.landscape);
+export const expressivePhoneMedia: MediaQueryList = window.matchMedia(expressiveQueries.phone);
+export const expressiveTabletMedia: MediaQueryList = window.matchMedia(expressiveQueries.tablet);
+export const expressiveDesktopMedia: MediaQueryList = window.matchMedia(expressiveQueries.desktop);
+export const expressivePrefersDarkMedia: MediaQueryList = window.matchMedia(expressiveQueries.prefersDark);
+export const expressivePrefersReduceMotionMedia: MediaQueryList = window.matchMedia(expressiveQueries.prefersReduceMotion);
 
 export function useExpressiveMedia(media: MediaQueryList): boolean {
-  const [matches, setMatches] = useState<boolean>(media.matches);
+  return useSyncExternalStore(
+    (onStoreChange) => {
+      const handleChange = (): void => {
+        onStoreChange();
+      };
 
-  useEffect(() => {
-    setMatches(media.matches);
+      media.addEventListener('change', handleChange);
 
-    const handleChange = (e: MediaQueryListEvent): void => {
-      setMatches(e.matches);
-    };
-
-    media.addEventListener('change', handleChange);
-
-    return (): void => {
-      media.removeEventListener('change', handleChange);
-    };
-  }, [media]);
-
-  return matches;
+      return (): void => {
+        media.removeEventListener('change', handleChange);
+      };
+    },
+    () => media.matches,
+    () => false,
+  );
 }
 
 export function useExpressiveCompactMedia(): boolean {

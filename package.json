@@ -6,7 +6,7 @@
   },
   "bugs": {
     "email": "tomaschochola@tomaschochola.cz",
-    "url": "https://github.com/tomaschochola/template-react-components/issues"
+    "url": "https://github.com/tomaschochola/react-material-design-expressive/issues"
   },
   "contributors": [
     {
@@ -40,7 +40,7 @@
     "sanitize.css": "^13.0.0",
     "web-vitals": "^5.2.0"
   },
-  "description": "@tomaschochola/template-react-components",
+  "description": "@tomaschochola/react-material-design-expressive",
   "devDependencies": {
     "@axe-core/playwright": "^4.11.1",
     "@playwright/test": "^1.59.1",
@@ -59,17 +59,17 @@
     "type": "github",
     "url": "https://github.com/sponsors/tomaschochola"
   },
-  "homepage": "https://github.com/tomaschochola/template-react-components",
+  "homepage": "https://github.com/tomaschochola/react-material-design-expressive",
   "keywords": [
     "tomaschochola",
     "TomasChochola",
     "Tomas Chochola",
     "Tomáš Chochola",
-    "template-react-components"
+    "react-material-design-expressive"
   ],
   "license": "CC-BY-ND-4.0",
-  "name": "@tomaschochola/template-react-components",
-  "repository": "github:tomaschochola/template-react-components",
+  "name": "@tomaschochola/react-material-design-expressive",
+  "repository": "github:tomaschochola/react-material-design-expressive",
   "sideEffects": true,
   "type": "module"
 }

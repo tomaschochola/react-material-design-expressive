@@ -1,153 +1,168 @@
-import * as stylex from '@stylexjs/stylex';
-import { useCallback, type CSSProperties, type ReactElement, type ReactNode } from 'react';
-import { Link, type LinkProps, type LinkRenderProps } from 'react-aria-components';
-import { mergeClassNames, mergeCssProperties } from '../helpers/styles';
-import { expressivePresetFont, expressivePresetTransition } from '../stylex/preset.stylex';
-import { expressiveSysColor, expressiveSysOpacity, expressiveSysRadius } from '../stylex/sys.stylex';
+import { useRef, type CSSProperties, type ReactElement, type ReactNode } from 'react';
+import { mergeProps, useFocusRing, useHover, useLink, type AriaLinkOptions } from 'react-aria';
+import { expressivePresets } from '../css/presets';
+import { expressiveTokens } from '../css/tokens';
 import { ExpressiveActivationLayer } from './ExpressiveActivationLayer';
-import { ExpressiveFocusedStateLayer } from './ExpressiveFocusedStateLayer';
 import { ExpressiveFocusedOutlineLayer } from './ExpressiveFocusedOutlineLayer';
+import { ExpressiveFocusedStateLayer } from './ExpressiveFocusedStateLayer';
 import { ExpressiveHoveredStateLayer } from './ExpressiveHovererdStateLayer';
 import { ExpressivePressedStateLayer } from './ExpressivePressedStateLayer';
 
-export interface ExpressiveNavigationBarLinkProps extends Omit<LinkProps, 'style' | 'className' | 'children'> {
+export interface ExpressiveNavigationBarLinkProps extends Omit<AriaLinkOptions, 'children' | 'style'> {
   readonly symbol: ReactNode;
   readonly label: ReactNode;
-  readonly xstyle?: stylex.StyleXStyles;
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
-  base: {
-    borderBottomLeftRadius: expressiveSysRadius.large,
-    borderBottomRightRadius: expressiveSysRadius.large,
-    borderBottomStyle: 'none',
-    borderLeftStyle: 'none',
-    borderRightStyle: 'none',
-    borderTopLeftRadius: expressiveSysRadius.large,
-    borderTopRightRadius: expressiveSysRadius.large,
-    borderTopStyle: 'none',
-    color: `rgb(${expressiveSysColor.onSurfaceVariant})`,
-    display: 'block',
-    flexBasis: 0,
-    flexGrow: 1,
-    minWidth: 0,
-    outlineStyle: 'none',
-    outlineWidth: '0px',
-    paddingBottom: 16,
-    paddingTop: 12,
-    position: 'relative',
-    textAlign: 'center',
-    transitionProperty: 'color',
-    whiteSpace: 'nowrap',
+const rootStyles = {
+  link: {
+    base: {
+      borderBottomLeftRadius: expressiveTokens['md.sys.radius.large'],
+      borderBottomRightRadius: expressiveTokens['md.sys.radius.large'],
+      borderBottomStyle: 'none',
+      borderLeftStyle: 'none',
+      borderRightStyle: 'none',
+      borderTopLeftRadius: expressiveTokens['md.sys.radius.large'],
+      borderTopRightRadius: expressiveTokens['md.sys.radius.large'],
+      borderTopStyle: 'none',
+      color: expressiveTokens['md.sys.color.on-surface-variant'],
+      display: 'block',
+      flexBasis: '0px',
+      flexGrow: 1,
+      minWidth: '0px',
+      outlineStyle: 'none',
+      outlineWidth: '0px',
+      paddingBottom: '16px',
+      paddingTop: '12px',
+      position: 'relative',
+      textAlign: 'center',
+      transitionProperty: 'color',
+      whiteSpace: 'nowrap',
+    },
+    active: {
+      color: expressiveTokens['md.sys.color.on-surface'],
+    },
+    disabled: {
+      color: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-content']})`,
+    },
   },
-  isActive: {
-    color: `rgb(${expressiveSysColor.onSurface})`,
+  indicator: {
+    base: {
+      alignItems: 'center',
+      borderBottomLeftRadius: '16px',
+      borderBottomRightRadius: '16px',
+      borderTopLeftRadius: '16px',
+      borderTopRightRadius: '16px',
+      display: 'flex',
+      height: '32px',
+      justifyContent: 'center',
+      lineHeight: 32,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      position: 'relative',
+      textAlign: 'center',
+      width: '56px',
+    },
+    active: {
+      color: expressiveTokens['md.sys.color.on-secondary-container'],
+    },
+    disabled: {
+      color: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-content']})`,
+    },
   },
-  isDisabled: {
-    color: `rgb(${expressiveSysColor.onSurfaceVariant}/${expressiveSysOpacity.disabledContent})`,
+  symbol: {
+    base: {
+      alignItems: 'center',
+      display: 'inline-flex',
+      fontSize: '24px',
+      justifyContent: 'center',
+      lineHeight: 1,
+      maxHeight: '24px',
+      maxWidth: '24px',
+      position: 'relative',
+    },
   },
-});
+  label: {
+    base: {
+      marginTop: '4px',
+      overflowX: 'hidden',
+      overflowY: 'hidden',
+      textOverflow: 'ellipsis',
+    },
+  },
+} as const;
 
-const indicatorStyles = stylex.create({
-  base: {
-    alignItems: 'center',
-    borderBottomLeftRadius: 16,
-    borderBottomRightRadius: 16,
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-    display: 'flex',
-    height: 32,
-    justifyContent: 'center',
-    lineHeight: 32,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    position: 'relative',
-    textAlign: 'center',
-    width: 56,
-  },
-  isActive: {
-    color: `rgb(${expressiveSysColor.onSecondaryContainer})`,
-  },
-  isDisabled: {
-    color: `rgb(${expressiveSysColor.onSurfaceVariant}/${expressiveSysOpacity.disabledContent})`,
-  },
-});
+export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: Readonly<ExpressiveNavigationBarLinkProps>): ReactElement {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const { linkProps, isPressed } = useLink(props, ref);
 
-const symbolStyles = stylex.create({
-  base: {
-    alignItems: 'center',
-    display: 'inline-flex',
-    fontSize: 24,
-    justifyContent: 'center',
-    lineHeight: 1,
-    maxHeight: 24,
-    maxWidth: 24,
-    position: 'relative',
-  },
-});
+  const { hoverProps, isHovered } = useHover({
+    isDisabled: props.isDisabled,
+  });
 
-const labelStyles = stylex.create({
-  base: {
-    marginTop: 4,
-    overflowX: 'hidden',
-    overflowY: 'hidden',
-    textOverflow: 'ellipsis',
-  },
-});
+  const { focusProps, isFocusVisible } = useFocusRing({
+    autoFocus: props.autoFocus,
+  });
 
-export function ExpressiveNavigationBarLink({ label, symbol, xstyle, ...props }: ExpressiveNavigationBarLinkProps): ReactElement {
-  const ariax = useCallback((args: LinkRenderProps) => {
-    return stylex.props(rootStyles.base, args.isCurrent || args.isHovered ? rootStyles.isActive : null, args.isDisabled ? rootStyles.isDisabled : null, expressivePresetFont.labelMedium, expressivePresetTransition.effectsFast, xstyle);
-  }, [xstyle]);
-
-  const handleClassName = useCallback((args: LinkRenderProps & { defaultClassName: string | undefined }) => {
-    return mergeClassNames(args.defaultClassName, ariax(args).className);
-  }, [ariax]);
-
-  const handleStyle = useCallback((args: LinkRenderProps & { defaultStyle: CSSProperties | undefined }) => {
-    return mergeCssProperties(args.defaultStyle, ariax(args).style);
-  }, [ariax]);
+  const isCurrent = Boolean(linkProps['aria-current']);
 
   return (
-    <Link
-      style={handleStyle}
-      className={handleClassName}
-      {...props}
-    >
-      {(args) => (
-        <>
-          <div
-            {...stylex.props(indicatorStyles.base, args.isCurrent ? indicatorStyles.isActive : null, args.isDisabled ? indicatorStyles.isDisabled : null)}
-          >
-            <ExpressiveActivationLayer
-              isActive={args.isCurrent}
-            />
-            <ExpressiveHoveredStateLayer
-              isHovered={args.isHovered}
-            />
-            <ExpressivePressedStateLayer
-              isPressed={args.isPressed}
-            />
-            <ExpressiveFocusedStateLayer
-              isFocused={args.isFocusVisible}
-            />
-            <span
-              {...stylex.props(symbolStyles.base)}
-            >
-              {symbol}
-            </span>
-            <ExpressiveFocusedOutlineLayer
-              isFocusVisible={args.isFocusVisible}
-              isInset
-            />
-          </div>
-          <div
-            {...stylex.props(labelStyles.base)}
-          >
-            {label}
-          </div>
-        </>
+    <a
+      {...mergeProps(
+        {
+          style: {
+            ...expressivePresets.font.labelMedium,
+            ...expressivePresets.transition.effectsFast,
+            ...rootStyles.link.base,
+            ...(isCurrent || isHovered ? rootStyles.link.active : null),
+            ...(props.isDisabled === true ? rootStyles.link.disabled : null),
+            ...style,
+          },
+        },
+        linkProps,
+        hoverProps,
+        focusProps,
       )}
-    </Link>
+      ref={ref}
+    >
+      <div
+        style={{
+          ...rootStyles.indicator.base,
+          ...(isCurrent ? rootStyles.indicator.active : null),
+          ...(props.isDisabled === true ? rootStyles.indicator.disabled : null),
+        }}
+      >
+        <ExpressiveActivationLayer
+          isActive={isCurrent}
+        />
+        <ExpressiveHoveredStateLayer
+          isHovered={isHovered}
+        />
+        <ExpressivePressedStateLayer
+          isPressed={isPressed}
+        />
+        <ExpressiveFocusedStateLayer
+          isFocused={isFocusVisible}
+        />
+        <span
+          style={{
+            ...rootStyles.symbol.base,
+          }}
+        >
+          {symbol}
+        </span>
+        <ExpressiveFocusedOutlineLayer
+          isFocusVisible={isFocusVisible}
+          isInset
+        />
+      </div>
+      <div
+        style={{
+          ...rootStyles.label.base,
+        }}
+      >
+        {label}
+      </div>
+    </a>
   );
 }

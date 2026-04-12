@@ -13,8 +13,8 @@
 :root {
   min-height: 100vh;
   scrollbar-width: none;
-  background-color: white;
-  color: black;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
 }
 
 @media screen and (width >= 600px) and (width <= 1199px) {

@@ -1,14 +1,10 @@
-import * as stylex from '@stylexjs/stylex';
 import type { ReactElement, SVGAttributes } from 'react';
 
-interface ExpressiveSymbolFlowerProps extends Omit<SVGAttributes<SVGSVGElement>, 'style' | 'className' | 'children'> {
-  readonly xstyle?: stylex.StyleXStyles;
-}
+type ExpressiveSymbolFlowerProps = Omit<SVGAttributes<SVGSVGElement>, 'children'>;
 
-export function ExpressiveSymbolFlower({ xstyle, ...props }: ExpressiveSymbolFlowerProps): ReactElement {
+export function ExpressiveSymbolFlower({ ...props }: Readonly<ExpressiveSymbolFlowerProps>): ReactElement {
   return (
     <svg
-      {...stylex.props(xstyle)}
       width="100%"
       height="100%"
       viewBox="0 0 40 40"

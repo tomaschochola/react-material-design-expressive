@@ -1,41 +1,38 @@
-import * as stylex from '@stylexjs/stylex';
-import { useCallback, type CSSProperties, type ReactNode } from 'react';
-import type { ButtonProps, ButtonRenderProps } from 'react-aria-components';
-import { Button } from 'react-aria-components';
-import { mergeClassNames, mergeCssProperties } from '../helpers/styles';
-import { expressivePresetFont, expressivePresetTransition } from '../stylex/preset.stylex';
-import { expressiveSysColor, expressiveSysOpacity, expressiveSysRadius } from '../stylex/sys.stylex';
-import { ExpressiveFocusedStateLayer } from './ExpressiveFocusedStateLayer';
+import { useRef, type CSSProperties, type ReactElement, type ReactNode } from 'react';
+import { mergeProps, useButton, useFocusRing, useHover, type AriaButtonProps } from 'react-aria';
+import { expressivePresets } from '../css/presets';
+import { expressiveTokens } from '../css/tokens';
 import { ExpressiveFocusedOutlineLayer } from './ExpressiveFocusedOutlineLayer';
+import { ExpressiveFocusedStateLayer } from './ExpressiveFocusedStateLayer';
 import { ExpressiveHoveredStateLayer } from './ExpressiveHovererdStateLayer';
 import { ExpressivePressedStateLayer } from './ExpressivePressedStateLayer';
 
-export interface ExpressiveElevatedButtonProps extends Omit<ButtonProps, 'style' | 'className' | 'children'> {
+export interface ExpressiveElevatedButtonProps extends Omit<AriaButtonProps, 'children' | 'style'> {
   readonly symbol?: ReactNode;
   readonly label: ReactNode;
-  readonly xstyle?: stylex.StyleXStyles;
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
     alignItems: 'center',
-    backgroundColor: `rgb(${expressiveSysColor.surfaceContainerLow})`,
-    borderBottomLeftRadius: expressiveSysRadius.full,
-    borderBottomRightRadius: expressiveSysRadius.full,
+    backgroundColor: expressiveTokens['md.sys.color.surface-container-low'],
+    borderBottomLeftRadius: expressiveTokens['md.sys.radius.full'],
+    borderBottomRightRadius: expressiveTokens['md.sys.radius.full'],
     borderBottomStyle: 'none',
     borderLeftStyle: 'none',
     borderRightStyle: 'none',
-    borderTopLeftRadius: expressiveSysRadius.full,
-    borderTopRightRadius: expressiveSysRadius.full,
+    borderTopLeftRadius: expressiveTokens['md.sys.radius.full'],
+    borderTopRightRadius: expressiveTokens['md.sys.radius.full'],
     borderTopStyle: 'none',
-    color: `rgb(${expressiveSysColor.primary})`,
-    columnGap: 8,
+    color: expressiveTokens['md.sys.color.primary'],
+    columnGap: '8px',
     display: 'inline-flex',
-    height: 40,
+    height: '40px',
     justifyContent: 'center',
     outlineStyle: 'none',
-    paddingLeft: 16,
-    paddingRight: 16,
+    paddingLeft: '16px',
+    paddingRight: '16px',
     position: 'relative',
     textAlign: 'center',
     textDecorationLine: 'inherit',
@@ -43,84 +40,90 @@ const rootStyles = stylex.create({
     whiteSpace: 'nowrap',
   },
   isDisabled: {
-    backgroundColor: `rgb(${expressiveSysColor.onSurfaceVariant}/${expressiveSysOpacity.disabledContainer})`,
-    color: `rgb(${expressiveSysColor.onSurfaceVariant}/${expressiveSysOpacity.disabledContent})`,
+    backgroundColor: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-container']})`,
+    color: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-content']})`,
   },
-});
+} as const;
 
-const symbolStyles = stylex.create({
+const symbolStyles = {
   base: {
     alignItems: 'center',
     display: 'inline-flex',
-    fontSize: 18,
+    fontSize: '18px',
     justifyContent: 'center',
-    maxHeight: 18,
-    maxWidth: 18,
+    maxHeight: '18px',
+    maxWidth: '18px',
     position: 'relative',
   },
-});
+} as const;
 
-const labelStyles = stylex.create({
+const labelStyles = {
   base: {
     display: 'inline-block',
     position: 'relative',
   },
-});
+} as const;
 
-export function ExpressiveElevatedButton({ symbol, xstyle, label, ...props }: ExpressiveElevatedButtonProps) {
-  const ariax = useCallback((args: ButtonRenderProps) => {
-    return stylex.props(
-      rootStyles.base,
-      expressivePresetTransition.effectsFast,
-      args.isDisabled || args.isPending ? rootStyles.isDisabled : null,
-      xstyle,
-    );
-  }, [xstyle]);
+export function ExpressiveElevatedButton({
+  symbol,
+  label,
+  style,
+  ...props
+}: Readonly<ExpressiveElevatedButtonProps>): ReactElement {
+  const ref = useRef<HTMLButtonElement>(null);
+  const { buttonProps: ariaButtonProps, isPressed } = useButton(props, ref);
 
-  const handleClassName = useCallback((args: ButtonRenderProps & { defaultClassName: string | undefined }) => {
-    return mergeClassNames(args.defaultClassName, ariax(args).className);
-  }, [ariax]);
+  const { hoverProps, isHovered } = useHover({
+    isDisabled: props.isDisabled,
+  });
 
-  const handleStyle = useCallback((args: ButtonRenderProps & { defaultStyle: CSSProperties | undefined }) => {
-    return mergeCssProperties(args.defaultStyle, ariax(args).style);
-  }, [ariax]);
+  const { focusProps, isFocusVisible } = useFocusRing({
+    autoFocus: props.autoFocus,
+  });
 
   return (
-    <Button
-      style={handleStyle}
-      className={handleClassName}
-      {...props}
+    <button
+      {...mergeProps({
+        style: {
+          ...rootStyles.base,
+          ...expressivePresets.transition.effectsFast,
+          ...(props.isDisabled === true ? rootStyles.isDisabled : null),
+          ...style,
+        },
+      }, ariaButtonProps, hoverProps, focusProps)}
+      ref={ref}
     >
-      {(args) => (
-        <>
-          <ExpressiveHoveredStateLayer
-            isHovered={args.isHovered}
-          />
-          <ExpressivePressedStateLayer
-            isPressed={args.isPressed}
-          />
-          <ExpressiveFocusedStateLayer
-            isFocused={args.isFocusVisible}
-          />
-          {symbol !== undefined
-            ? (
-                <span
-                  {...stylex.props(symbolStyles.base)}
-                >
-                  {symbol}
-                </span>
-              )
-            : null}
-          <span
-            {...stylex.props(labelStyles.base, expressivePresetFont.labelLarge)}
-          >
-            {label}
-          </span>
-          <ExpressiveFocusedOutlineLayer
-            isFocusVisible={args.isFocusVisible}
-          />
-        </>
-      )}
-    </Button>
+      <ExpressiveHoveredStateLayer
+        isHovered={isHovered}
+      />
+      <ExpressivePressedStateLayer
+        isPressed={isPressed}
+      />
+      <ExpressiveFocusedStateLayer
+        isFocused={isFocusVisible}
+      />
+      {symbol !== undefined
+        ? (
+            <span
+              style={{
+                ...symbolStyles.base,
+              }}
+            >
+              {symbol}
+            </span>
+          )
+        : null}
+      <span
+        style={{
+          ...labelStyles.base,
+          ...expressivePresets.font.labelLarge,
+        }}
+      >
+        {label}
+      </span>
+      <ExpressiveFocusedOutlineLayer
+        isFocusVisible={isFocusVisible}
+      />
+    </button>
   );
 }

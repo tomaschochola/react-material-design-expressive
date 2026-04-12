@@ -1,31 +1,30 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement } from 'react';
-import { expressivePresetTransition } from '../stylex/preset.stylex';
-import { expressiveSysColor } from '../stylex/sys.stylex';
+import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
+import { expressivePresets } from '../css/presets';
+import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressiveNavigationRailProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'className'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveNavigationRailProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
+const rootStyles = {
   base: {
-    backgroundColor: `rgb(${expressiveSysColor.surface})`,
-    color: `rgb(${expressiveSysColor.onSurfaceVariant})`,
+    backgroundColor: expressiveTokens['md.sys.color.surface'],
+    color: expressiveTokens['md.sys.color.on-surface-variant'],
     overflowX: 'hidden',
     overflowY: 'hidden',
     transitionProperty: 'transform',
-    width: 88,
+    width: '88px',
   },
-});
+} as const;
 
-export function ExpressiveNavigationRail({ xstyle, ...props }: ExpressiveNavigationRailProps): ReactElement {
+export function ExpressiveNavigationRail({ style, ...props }: Readonly<ExpressiveNavigationRailProps>): ReactElement {
   return (
     <div
-      {...stylex.props(
-        rootStyles.base,
-        expressivePresetTransition.spatialDefault,
-        xstyle,
-      )}
+      style={{
+        ...rootStyles.base,
+        ...expressivePresets.transition.spatialDefault,
+        ...style,
+      }}
       {...props}
     />
   );

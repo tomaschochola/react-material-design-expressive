@@ -1,98 +1,101 @@
-import * as stylex from '@stylexjs/stylex';
-import type { HTMLAttributes, ReactElement, ReactNode } from 'react';
-import { expressivePresetFont, expressivePresetTransition } from '../stylex/preset.stylex';
-import { expressiveSysColor } from '../stylex/sys.stylex';
+import type { CSSProperties, HTMLAttributes, ReactElement, ReactNode } from 'react';
+import { expressivePresets } from '../css/presets';
+import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressiveSmallAppBarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
-  readonly xstyle?: stylex.StyleXStyles;
+export interface ExpressiveSmallAppBarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
   readonly headline?: ReactNode;
   readonly subhead?: ReactNode;
   readonly leading?: ReactNode;
   readonly trailing?: ReactNode;
+  readonly style?: CSSProperties;
 }
 
-const rootStyles = stylex.create({
-  base: {
-    alignItems: 'center',
-    backgroundColor: `rgb(${expressiveSysColor.surface})`,
-    color: `rgb(${expressiveSysColor.onSurface})`,
-    columnGap: 16,
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr auto',
-    minHeight: 64,
-    paddingLeft: 16,
-    paddingRight: 16,
-    position: 'relative',
-    transitionProperty: 'left, right, top, bottom, transform',
+const rootStyles = {
+  root: {
+    base: {
+      alignItems: 'center',
+      backgroundColor: expressiveTokens['md.sys.color.surface'],
+      color: expressiveTokens['md.sys.color.on-surface'],
+      columnGap: '16px',
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr auto',
+      minHeight: '64px',
+      paddingLeft: '16px',
+      paddingRight: '16px',
+      position: 'relative',
+      transitionProperty: 'left, right, top, bottom, transform',
+    },
   },
-});
-
-const leadingStyles = stylex.create({
-  base: {
-    alignItems: 'center',
-    color: `rgb(${expressiveSysColor.onSurface})`,
-    display: 'flex',
+  leading: {
+    base: {
+      alignItems: 'center',
+      color: expressiveTokens['md.sys.color.on-surface'],
+      display: 'flex',
+    },
   },
-});
-
-const contentStyles = stylex.create({
-  base: {
-    color: `rgb(${expressiveSysColor.onSurface})`,
+  content: {
+    base: {
+      color: expressiveTokens['md.sys.color.on-surface'],
+    },
   },
-});
-
-const trailingStyles = stylex.create({
-  base: {
-    alignItems: 'center',
-    color: `rgb(${expressiveSysColor.onSurfaceVariant})`,
-    display: 'flex',
-    justifySelf: 'end',
+  trailing: {
+    base: {
+      alignItems: 'center',
+      color: expressiveTokens['md.sys.color.on-surface-variant'],
+      display: 'flex',
+      justifySelf: 'end',
+    },
   },
-});
-
-const headlineStyles = stylex.create({
-  base: {
-    color: `rgb(${expressiveSysColor.onSurface})`,
-    lineHeight: 1,
+  headline: {
+    base: {
+      color: expressiveTokens['md.sys.color.on-surface'],
+      lineHeight: 1,
+    },
   },
-});
-
-const subheadStyles = stylex.create({
-  base: {
-    color: `rgb(${expressiveSysColor.onSurfaceVariant})`,
-    lineHeight: 1,
+  subhead: {
+    base: {
+      color: expressiveTokens['md.sys.color.on-surface-variant'],
+      lineHeight: 1,
+    },
   },
-});
+} as const;
 
 export function ExpressiveSmallAppBar({
-  xstyle,
   leading,
   trailing,
   headline,
   subhead,
+  style,
   ...props
-}: ExpressiveSmallAppBarProps): ReactElement {
+}: Readonly<ExpressiveSmallAppBarProps>): ReactElement {
   return (
     <div
-      {...stylex.props(
-        rootStyles.base,
-        expressivePresetTransition.spatialDefault,
-        xstyle,
-      )}
+      style={{
+        ...rootStyles.root.base,
+        ...expressivePresets.transition.spatialDefault,
+        ...style,
+      }}
       {...props}
     >
       <div
-        {...stylex.props(leadingStyles.base)}
+        style={{
+          ...rootStyles.leading.base,
+        }}
       >
         {leading}
       </div>
       <div
-        {...stylex.props(contentStyles.base)}
+        style={{
+          ...rootStyles.content.base,
+        }}
       >
         {headline !== undefined
           ? (
               <div
-                {...stylex.props(expressivePresetFont.titleLarge, headlineStyles.base)}
+                style={{
+                  ...expressivePresets.font.titleLarge,
+                  ...rootStyles.headline.base,
+                }}
               >
                 {headline}
               </div>
@@ -101,7 +104,10 @@ export function ExpressiveSmallAppBar({
         {subhead !== undefined
           ? (
               <div
-                {...stylex.props(expressivePresetFont.labelLarge, subheadStyles.base)}
+                style={{
+                  ...expressivePresets.font.labelLarge,
+                  ...rootStyles.subhead.base,
+                }}
               >
                 {subhead}
               </div>
@@ -109,7 +115,9 @@ export function ExpressiveSmallAppBar({
           : null}
       </div>
       <div
-        {...stylex.props(trailingStyles.base)}
+        style={{
+          ...rootStyles.trailing.base,
+        }}
       >
         {trailing}
       </div>
