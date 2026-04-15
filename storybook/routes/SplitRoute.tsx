@@ -1,3 +1,16 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
+import type { StandardLonghandProperties } from 'csstype';
 import type { ReactElement } from 'react';
 import { Outlet } from 'react-router';
 import { ExpressiveContainerPadding } from '../../src/components/ExpressiveContainerPadding';
@@ -92,7 +105,13 @@ function Nav(): ReactElement {
   );
 }
 
-const styles = { layout: { alignItems: 'start' } } as const;
+const styles = {
+  root: {
+    base: {
+      alignItems: 'start',
+    },
+  },
+} as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 export function SplitRoute(): ReactElement {
   return (
@@ -105,7 +124,7 @@ export function SplitRoute(): ReactElement {
     >
       <ExpressivePaneGrid
         columns="max-content 1fr"
-        style={styles.layout}
+        style={styles.root.base}
       >
         <Nav />
         <Outlet />

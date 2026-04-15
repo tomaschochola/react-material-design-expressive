@@ -10,10 +10,18 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-export * from './symbols/ExpressiveSymbolCircle';
-export * from './symbols/ExpressiveSymbolFlower';
-export * from './symbols/ExpressiveSymbolPill';
-export * from './symbols/ExpressiveSymbolRect';
-export * from './symbols/ExpressiveSymbolTriangle';
+:root {
+  scrollbar-width: none;
+}
 
-export * from './hooks/media';
+@media screen and (width >= 600px) and (width <= 1199px) {
+  :root {
+    scrollbar-width: thin;
+  }
+}
+
+@media screen and (width >= 1200px) {
+  :root {
+    scrollbar-width: auto;
+  }
+}

@@ -1,5 +1,19 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
+import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement, ReactNode } from 'react';
-import { toRem } from '../helpers/styles';
+import { mergeStyles, toRem } from '../css/helpers';
+import { expressivePresets } from '../css/presets';
 
 export interface ExpressiveIconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style' | 'children'> {
   readonly size?: number | string;
@@ -7,30 +21,29 @@ export interface ExpressiveIconProps extends Omit<HTMLAttributes<HTMLSpanElement
   readonly style?: CSSProperties;
 }
 
-const rootStyles = {
-  base: {
-    alignItems: 'center',
-    display: 'inline-flex',
-    flexShrink: 0,
-    fontSize: toRem(24),
-    height: '1em',
-    maxHeight: '100%',
-    position: 'relative',
-    whiteSpace: 'nowrap',
+const styles = {
+  root: {
+    base: {
+      alignItems: 'center',
+      display: 'inline-flex',
+      flexShrink: 0,
+      height: '1em',
+      maxHeight: '100%',
+      position: 'relative',
+      verticalAlign: 'middle',
+    },
   },
-  custom: (size: number | string) => ({
-    fontSize: toRem(size),
-  }),
-} as const;
+} as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveIcon({ size, symbol, style, ...props }: Readonly<ExpressiveIconProps>): ReactElement {
+export function ExpressiveIcon({ size = 24, symbol, style, ...props }: Readonly<ExpressiveIconProps>): ReactElement {
   return (
     <span
-      style={{
-        ...rootStyles.base,
-        ...(size !== undefined ? rootStyles.custom(size) : null),
-        ...style,
-      }}
+      style={mergeStyles(
+        expressivePresets.base.oneliner,
+        styles.root.base,
+        size !== undefined ? { fontSize: toRem(size) } : null,
+        style,
+      )}
       {...props}
     >
       {symbol}

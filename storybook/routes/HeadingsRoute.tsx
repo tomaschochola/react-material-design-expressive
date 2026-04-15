@@ -1,3 +1,15 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
 import type { ReactElement } from 'react';
 import { ExpressiveHeadingBodyLarge } from '../../src/components/ExpressiveHeadingBodyLarge';
 import { ExpressiveHeadingBodyMedium } from '../../src/components/ExpressiveHeadingBodyMedium';
@@ -128,7 +140,6 @@ export function HeadingsRoute(): ReactElement {
           Label Small
         </ExpressiveHeadingLabelSmall>
       </StorybookDisplay.Item>
-
       <StorybookDisplay.Item
         label="H2"
       >
@@ -238,7 +249,6 @@ export function HeadingsRoute(): ReactElement {
           Label Small
         </ExpressiveHeadingLabelSmall>
       </StorybookDisplay.Item>
-
       <StorybookDisplay.Item
         label="H3"
       >
@@ -348,7 +358,6 @@ export function HeadingsRoute(): ReactElement {
           Label Small
         </ExpressiveHeadingLabelSmall>
       </StorybookDisplay.Item>
-
       <StorybookDisplay.Item
         label="H4"
       >
@@ -458,7 +467,6 @@ export function HeadingsRoute(): ReactElement {
           Label Small
         </ExpressiveHeadingLabelSmall>
       </StorybookDisplay.Item>
-
       <StorybookDisplay.Item
         label="H5"
       >
@@ -568,7 +576,6 @@ export function HeadingsRoute(): ReactElement {
           Label Small
         </ExpressiveHeadingLabelSmall>
       </StorybookDisplay.Item>
-
       <StorybookDisplay.Item
         label="H6"
       >

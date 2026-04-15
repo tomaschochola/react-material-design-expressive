@@ -1,3 +1,15 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
 import type { ReactElement } from 'react';
 import { ExpressiveIcon } from '../../src/components/ExpressiveIcon';
 import { ExpressiveSymbolCircle } from '../../src/symbols/ExpressiveSymbolCircle';
@@ -7,13 +19,6 @@ import { ExpressiveSymbolRect } from '../../src/symbols/ExpressiveSymbolRect';
 import { ExpressiveSymbolTriangle } from '../../src/symbols/ExpressiveSymbolTriangle';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
-const styles = {
-  base: {
-    height: '4rem',
-    width: '4rem',
-  },
-} as const;
-
 export function SymbolsRoute(): ReactElement {
   return (
     <StorybookDisplay>
@@ -21,10 +26,9 @@ export function SymbolsRoute(): ReactElement {
         label="Circle"
       >
         <ExpressiveIcon
+          size={64}
           symbol={(
-            <ExpressiveSymbolCircle
-              style={styles.base}
-            />
+            <ExpressiveSymbolCircle />
           )}
         />
       </StorybookDisplay.Item>
@@ -32,10 +36,9 @@ export function SymbolsRoute(): ReactElement {
         label="Flower"
       >
         <ExpressiveIcon
+          size={64}
           symbol={(
-            <ExpressiveSymbolFlower
-              style={styles.base}
-            />
+            <ExpressiveSymbolFlower />
           )}
         />
       </StorybookDisplay.Item>
@@ -43,10 +46,9 @@ export function SymbolsRoute(): ReactElement {
         label="Pill"
       >
         <ExpressiveIcon
+          size={64}
           symbol={(
-            <ExpressiveSymbolPill
-              style={styles.base}
-            />
+            <ExpressiveSymbolPill />
           )}
         />
       </StorybookDisplay.Item>
@@ -54,10 +56,9 @@ export function SymbolsRoute(): ReactElement {
         label="Rect"
       >
         <ExpressiveIcon
+          size={64}
           symbol={(
-            <ExpressiveSymbolRect
-              style={styles.base}
-            />
+            <ExpressiveSymbolRect />
           )}
         />
       </StorybookDisplay.Item>
@@ -65,10 +66,9 @@ export function SymbolsRoute(): ReactElement {
         label="Triangle"
       >
         <ExpressiveIcon
+          size={64}
           symbol={(
-            <ExpressiveSymbolTriangle
-              style={styles.base}
-            />
+            <ExpressiveSymbolTriangle />
           )}
         />
       </StorybookDisplay.Item>

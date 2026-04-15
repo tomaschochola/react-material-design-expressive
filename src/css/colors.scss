@@ -10,10 +10,8 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-export * from './symbols/ExpressiveSymbolCircle';
-export * from './symbols/ExpressiveSymbolFlower';
-export * from './symbols/ExpressiveSymbolPill';
-export * from './symbols/ExpressiveSymbolRect';
-export * from './symbols/ExpressiveSymbolTriangle';
-
-export * from './hooks/media';
+:root {
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  scrollbar-color: var(--md-sys-color-outline) transparent;
+}

@@ -19,8 +19,6 @@ const en = {
   'routes.not_found.seo.description': 'Page not found, error 404',
   'routes.not_found.seo.keywords': 'Page not found, error 404',
   'routes.not_found.seo.title': 'Page not found',
-
-  'Buttons': 'Buttons',
 };
 
 export type Strings = typeof en;

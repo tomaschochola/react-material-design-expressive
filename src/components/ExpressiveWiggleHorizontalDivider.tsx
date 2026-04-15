@@ -1,19 +1,35 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
+import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, ReactElement } from 'react';
 import { useId } from 'react';
 import { mergeProps, useSeparator, type SeparatorProps } from 'react-aria';
+import { mergeStyles } from '../css/helpers';
 import { expressiveTokens } from '../css/tokens';
 
 export interface ExpressiveWiggleHorizontalDividerProps extends Omit<SeparatorProps, 'style' | 'children'> {
   readonly style?: CSSProperties;
 }
 
-const rootStyles = {
-  base: {
-    color: expressiveTokens['md.sys.color.outline-variant'],
-    display: 'block',
-    position: 'relative',
+const styles = {
+  root: {
+    base: {
+      color: expressiveTokens['md.sys.color.outline-variant'],
+      display: 'block',
+      position: 'relative',
+    },
   },
-} as const;
+} as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 export function ExpressiveWiggleHorizontalDivider({ style, ...props }: Readonly<ExpressiveWiggleHorizontalDividerProps>): ReactElement {
   const id = useId();
@@ -28,14 +44,12 @@ export function ExpressiveWiggleHorizontalDivider({ style, ...props }: Readonly<
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...mergeProps(
-        {
-          style: {
-            ...rootStyles.base,
-            ...style,
-          },
-        },
         separatorProps,
         props,
+      )}
+      style={mergeStyles(
+        styles.root.base,
+        style,
       )}
     >
       <pattern

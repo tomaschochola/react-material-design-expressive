@@ -1,57 +1,38 @@
-import type { CSSProperties, HTMLAttributes } from 'react';
-import { expressivePresets } from '../css/presets';
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
 
-export interface ExpressiveFontHeadlineMediumProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style'> {
-  readonly top?: boolean | string | number;
-  readonly bottom?: boolean | string | number;
-  readonly block?: boolean;
-  readonly inline?: boolean;
+import type { CSSProperties, ReactElement } from 'react';
+import { mergeStyles } from '../css/helpers';
+import { expressivePresets } from '../css/presets';
+import { ExpressiveFont, type ExpressiveFontProps } from './ExpressiveFont';
+
+export interface ExpressiveFontHeadlineMediumProps extends Omit<ExpressiveFontProps, 'style'> {
   readonly style?: CSSProperties;
 }
 
-const rootStyles = {
-  base: {
-    marginBottom: '0px',
-    marginTop: '0px',
-  },
-  topDefault: {
-    marginTop: '0.5lh',
-  },
-  bottomDefault: {
-    marginBottom: '0.5lh',
-  },
-  topCustom: (value: string | number) => ({
-    marginTop: value,
-  }),
-  bottomCustom: (value: string | number) => ({
-    marginBottom: value,
-  }),
-  block: {
-    display: 'block',
-  },
-  inline: {
-    display: 'inline-block',
-  },
-} as const;
-
-export function ExpressiveFontHeadlineMedium({ top, bottom, block, inline, children, style, ...props }: Readonly<ExpressiveFontHeadlineMediumProps>) {
+export function ExpressiveFontHeadlineMedium({
+  children,
+  style,
+  ...props
+}: Readonly<ExpressiveFontHeadlineMediumProps>): ReactElement {
   return (
-    <span
-      style={{
-        ...expressivePresets.font.headlineMedium,
-        ...rootStyles.base,
-        ...(top === true ? rootStyles.topDefault : null),
-        ...(typeof top === 'string' || typeof top === 'number' ? rootStyles.topCustom(top) : null),
-        ...(bottom === true ? rootStyles.bottomDefault : null),
-        ...(typeof bottom === 'string' || typeof bottom === 'number' ? rootStyles.bottomCustom(bottom) : null),
-        ...(bottom !== undefined || top !== undefined ? rootStyles.inline : null),
-        ...(block === true ? rootStyles.block : null),
-        ...(inline === true ? rootStyles.inline : null),
-        ...style,
-      }}
+    <ExpressiveFont
+      style={mergeStyles(
+        expressivePresets.font.headlineMedium,
+        style,
+      )}
       {...props}
     >
       {children}
-    </span>
+    </ExpressiveFont>
   );
 }

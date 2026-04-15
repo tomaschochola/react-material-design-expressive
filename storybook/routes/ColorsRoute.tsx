@@ -1,31 +1,44 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
+import type { StandardLonghandProperties } from 'csstype';
 import type { ReactElement } from 'react';
 import { ExpressiveBorderLayer } from '../../src/components/ExpressiveBorderLayer';
 import { ExpressiveFontLabelLarge } from '../../src/components/ExpressiveFontLabelLarge';
+import { mergeStyles } from '../../src/css/helpers';
 import { expressiveTokens } from '../../src/css/tokens';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
-const globalStyles = {
+const styles = {
   box: {
-    alignItems: 'center',
-    borderBottomLeftRadius: expressiveTokens['md.sys.radius.large'],
-    borderBottomRightRadius: expressiveTokens['md.sys.radius.large'],
-    borderTopLeftRadius: expressiveTokens['md.sys.radius.large'],
-    borderTopRightRadius: expressiveTokens['md.sys.radius.large'],
-    display: 'flex',
-    height: '140px',
-    justifyContent: 'center',
-    paddingBottom: '16px',
-    paddingLeft: '16px',
-    paddingRight: '16px',
-    paddingTop: '16px',
-    position: 'relative',
-    textAlign: 'center',
-    width: '140px',
+    base: {
+      alignItems: 'center',
+      borderBottomLeftRadius: expressiveTokens['md.sys.radius.large'],
+      borderBottomRightRadius: expressiveTokens['md.sys.radius.large'],
+      borderTopLeftRadius: expressiveTokens['md.sys.radius.large'],
+      borderTopRightRadius: expressiveTokens['md.sys.radius.large'],
+      display: 'flex',
+      height: '140px',
+      justifyContent: 'center',
+      paddingBottom: '16px',
+      paddingLeft: '16px',
+      paddingRight: '16px',
+      paddingTop: '16px',
+      position: 'relative',
+      textAlign: 'center',
+      width: '140px',
+    },
   },
-  color: (color: string) => ({
-    color,
-  }),
-} as const;
+} as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 interface ColorBoxProps {
   readonly name: string;
@@ -33,16 +46,20 @@ interface ColorBoxProps {
   readonly text: string;
 }
 
-function ColorBox({ name, color, text }: ColorBoxProps): ReactElement {
+function ColorBox({ name, color, text }: Readonly<ColorBoxProps>): ReactElement {
   return (
     <div
-      style={{
-        backgroundColor: color,
-        ...globalStyles.box,
-      }}
+      style={mergeStyles(
+        styles.box.base,
+        {
+          backgroundColor: color,
+        },
+      )}
     >
       <ExpressiveFontLabelLarge
-        style={globalStyles.color(text)}
+        style={mergeStyles({
+          color: text,
+        })}
       >
         {name}
       </ExpressiveFontLabelLarge>
@@ -78,7 +95,6 @@ export function ColorsRoute(): ReactElement {
           text={expressiveTokens['md.sys.color.primary-container']}
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Secondary colors"
       >
@@ -103,7 +119,6 @@ export function ColorsRoute(): ReactElement {
           text={expressiveTokens['md.sys.color.secondary-container']}
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Tertiary colors"
       >
@@ -128,7 +143,6 @@ export function ColorsRoute(): ReactElement {
           text={expressiveTokens['md.sys.color.tertiary-container']}
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Error colors"
       >
@@ -153,7 +167,6 @@ export function ColorsRoute(): ReactElement {
           text={expressiveTokens['md.sys.color.error-container']}
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Surface colors"
       >
@@ -218,7 +231,6 @@ export function ColorsRoute(): ReactElement {
           text={expressiveTokens['md.sys.color.on-primary']}
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Outline colors"
       >
@@ -233,7 +245,6 @@ export function ColorsRoute(): ReactElement {
           text={expressiveTokens['md.sys.color.on-surface']}
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Add-ons / Primary colors"
       >
@@ -263,7 +274,6 @@ export function ColorsRoute(): ReactElement {
           text={expressiveTokens['md.sys.color.inverse-surface']}
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Add-ons / Secondary colors"
       >
@@ -288,7 +298,6 @@ export function ColorsRoute(): ReactElement {
           text={expressiveTokens['md.sys.color.secondary-fixed']}
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Add-ons / Tertiary colors"
       >
@@ -313,7 +322,6 @@ export function ColorsRoute(): ReactElement {
           text={expressiveTokens['md.sys.color.tertiary-fixed']}
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Add-ons / Surface colors"
       >

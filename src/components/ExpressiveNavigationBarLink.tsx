@@ -1,11 +1,26 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
+import type { StandardLonghandProperties } from 'csstype';
 import { useRef, type CSSProperties, type ReactElement, type ReactNode } from 'react';
 import { mergeProps, useFocusRing, useHover, useLink, type AriaLinkOptions } from 'react-aria';
+import { mergeStyles } from '../css/helpers';
 import { expressivePresets } from '../css/presets';
 import { expressiveTokens } from '../css/tokens';
 import { ExpressiveActivationLayer } from './ExpressiveActivationLayer';
 import { ExpressiveFocusedOutlineLayer } from './ExpressiveFocusedOutlineLayer';
 import { ExpressiveFocusedStateLayer } from './ExpressiveFocusedStateLayer';
 import { ExpressiveHoveredStateLayer } from './ExpressiveHovererdStateLayer';
+import { ExpressiveIcon } from './ExpressiveIcon';
 import { ExpressivePressedStateLayer } from './ExpressivePressedStateLayer';
 
 export interface ExpressiveNavigationBarLinkProps extends Omit<AriaLinkOptions, 'children' | 'style'> {
@@ -14,24 +29,18 @@ export interface ExpressiveNavigationBarLinkProps extends Omit<AriaLinkOptions, 
   readonly style?: CSSProperties;
 }
 
-const rootStyles = {
-  link: {
+const styles = {
+  root: {
     base: {
       borderBottomLeftRadius: expressiveTokens['md.sys.radius.large'],
       borderBottomRightRadius: expressiveTokens['md.sys.radius.large'],
-      borderBottomStyle: 'none',
-      borderLeftStyle: 'none',
-      borderRightStyle: 'none',
       borderTopLeftRadius: expressiveTokens['md.sys.radius.large'],
       borderTopRightRadius: expressiveTokens['md.sys.radius.large'],
-      borderTopStyle: 'none',
       color: expressiveTokens['md.sys.color.on-surface-variant'],
       display: 'block',
       flexBasis: '0px',
       flexGrow: 1,
       minWidth: '0px',
-      outlineStyle: 'none',
-      outlineWidth: '0px',
       paddingBottom: '16px',
       paddingTop: '12px',
       position: 'relative',
@@ -56,7 +65,7 @@ const rootStyles = {
       display: 'flex',
       height: '32px',
       justifyContent: 'center',
-      lineHeight: 32,
+      lineHeight: '32px',
       marginLeft: 'auto',
       marginRight: 'auto',
       position: 'relative',
@@ -70,30 +79,17 @@ const rootStyles = {
       color: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-content']})`,
     },
   },
-  symbol: {
-    base: {
-      alignItems: 'center',
-      display: 'inline-flex',
-      fontSize: '24px',
-      justifyContent: 'center',
-      lineHeight: 1,
-      maxHeight: '24px',
-      maxWidth: '24px',
-      position: 'relative',
-    },
-  },
   label: {
     base: {
       marginTop: '4px',
-      overflowX: 'hidden',
-      overflowY: 'hidden',
-      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
     },
   },
-} as const;
+} as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: Readonly<ExpressiveNavigationBarLinkProps>): ReactElement {
   const ref = useRef<HTMLAnchorElement>(null);
+
   const { linkProps, isPressed } = useLink(props, ref);
 
   const { hoverProps, isHovered } = useHover({
@@ -109,28 +105,27 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
   return (
     <a
       {...mergeProps(
-        {
-          style: {
-            ...expressivePresets.font.labelMedium,
-            ...expressivePresets.transition.effectsFast,
-            ...rootStyles.link.base,
-            ...(isCurrent || isHovered ? rootStyles.link.active : null),
-            ...(props.isDisabled === true ? rootStyles.link.disabled : null),
-            ...style,
-          },
-        },
         linkProps,
         hoverProps,
         focusProps,
       )}
       ref={ref}
+      style={mergeStyles(
+        expressivePresets.base.anchor,
+        expressivePresets.font.labelMedium,
+        expressivePresets.transition.effectsFast,
+        styles.root.base,
+        isCurrent || isHovered ? styles.root.active : null,
+        Boolean(linkProps['aria-disabled']) ? styles.root.disabled : null,
+        style,
+      )}
     >
       <div
-        style={{
-          ...rootStyles.indicator.base,
-          ...(isCurrent ? rootStyles.indicator.active : null),
-          ...(props.isDisabled === true ? rootStyles.indicator.disabled : null),
-        }}
+        style={mergeStyles(
+          styles.indicator.base,
+          isCurrent ? styles.indicator.active : null,
+          Boolean(linkProps['aria-disabled']) ? styles.indicator.disabled : null,
+        )}
       >
         <ExpressiveActivationLayer
           isActive={isCurrent}
@@ -144,22 +139,20 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
         <ExpressiveFocusedStateLayer
           isFocused={isFocusVisible}
         />
-        <span
-          style={{
-            ...rootStyles.symbol.base,
-          }}
-        >
-          {symbol}
-        </span>
+        <ExpressiveIcon
+          size={24}
+          symbol={symbol}
+        />
         <ExpressiveFocusedOutlineLayer
           isFocusVisible={isFocusVisible}
           isInset
         />
       </div>
       <div
-        style={{
-          ...rootStyles.label.base,
-        }}
+        style={mergeStyles(
+          expressivePresets.base.ellipsis,
+          styles.label.base,
+        )}
       >
         {label}
       </div>

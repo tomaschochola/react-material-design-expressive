@@ -1,4 +1,18 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
+import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement, ReactNode } from 'react';
+import { mergeStyles } from '../css/helpers';
 import { expressivePresets } from '../css/presets';
 import { expressiveTokens } from '../css/tokens';
 
@@ -10,7 +24,7 @@ export interface ExpressiveSmallAppBarProps extends Omit<HTMLAttributes<HTMLDivE
   readonly style?: CSSProperties;
 }
 
-const rootStyles = {
+const styles = {
   root: {
     base: {
       alignItems: 'center',
@@ -49,16 +63,16 @@ const rootStyles = {
   headline: {
     base: {
       color: expressiveTokens['md.sys.color.on-surface'],
-      lineHeight: 1,
+      lineHeight: '1',
     },
   },
   subhead: {
     base: {
       color: expressiveTokens['md.sys.color.on-surface-variant'],
-      lineHeight: 1,
+      lineHeight: '1',
     },
   },
-} as const;
+} as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 export function ExpressiveSmallAppBar({
   leading,
@@ -70,32 +84,32 @@ export function ExpressiveSmallAppBar({
 }: Readonly<ExpressiveSmallAppBarProps>): ReactElement {
   return (
     <div
-      style={{
-        ...rootStyles.root.base,
-        ...expressivePresets.transition.spatialDefault,
-        ...style,
-      }}
+      style={mergeStyles(
+        expressivePresets.transition.spatialDefault,
+        styles.root.base,
+        style,
+      )}
       {...props}
     >
       <div
-        style={{
-          ...rootStyles.leading.base,
-        }}
+        style={mergeStyles(
+          styles.leading.base,
+        )}
       >
         {leading}
       </div>
       <div
-        style={{
-          ...rootStyles.content.base,
-        }}
+        style={mergeStyles(
+          styles.content.base,
+        )}
       >
         {headline !== undefined
           ? (
               <div
-                style={{
-                  ...expressivePresets.font.titleLarge,
-                  ...rootStyles.headline.base,
-                }}
+                style={mergeStyles(
+                  expressivePresets.font.titleLarge,
+                  styles.headline.base,
+                )}
               >
                 {headline}
               </div>
@@ -104,10 +118,10 @@ export function ExpressiveSmallAppBar({
         {subhead !== undefined
           ? (
               <div
-                style={{
-                  ...expressivePresets.font.labelLarge,
-                  ...rootStyles.subhead.base,
-                }}
+                style={mergeStyles(
+                  expressivePresets.font.labelLarge,
+                  styles.subhead.base,
+                )}
               >
                 {subhead}
               </div>
@@ -115,9 +129,9 @@ export function ExpressiveSmallAppBar({
           : null}
       </div>
       <div
-        style={{
-          ...rootStyles.trailing.base,
-        }}
+        style={mergeStyles(
+          styles.trailing.base,
+        )}
       >
         {trailing}
       </div>

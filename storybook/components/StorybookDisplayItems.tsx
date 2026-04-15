@@ -10,8 +10,10 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
+import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import { ExpressiveHeadingHeadlineLarge } from '../../src/components/ExpressiveHeadingHeadlineLarge';
+import { mergeStyles } from '../../src/css/helpers';
 import { expressiveTokens } from '../../src/css/tokens';
 
 interface StorybookDisplayItemsProps {
@@ -20,29 +22,36 @@ interface StorybookDisplayItemsProps {
   readonly style?: CSSProperties;
 }
 
-const globalStyles = {
-  base: {
-    backgroundImage: `radial-gradient(circle, oklch(from ${expressiveTokens['md.sys.color.primary']} l c h / 0.2) 1px, transparent 1px), radial-gradient(circle, oklch(from ${expressiveTokens['md.sys.color.primary']} l c h / 0.2) 1px, transparent 1px)`,
-    backgroundPositionX: '0px, 5px',
-    backgroundPositionY: '0px, 5px',
-    backgroundRepeat: 'repeat',
-    backgroundSize: '10px 10px',
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    columnGap: '2rem',
-    display: 'flex',
-    flexWrap: 'wrap',
-    paddingBottom: '4rem',
-    paddingLeft: '2rem',
-    paddingRight: '2rem',
-    paddingTop: '4rem',
-    rowGap: '2rem',
+const styles = {
+  root: {
+    base: {
+      backgroundImage: `radial-gradient(circle, oklch(from ${expressiveTokens['md.sys.color.primary']} l c h / 0.2) 1px, transparent 1px), radial-gradient(circle, oklch(from ${expressiveTokens['md.sys.color.primary']} l c h / 0.2) 1px, transparent 1px)`,
+      backgroundPositionX: '0px, 5px',
+      backgroundPositionY: '0px, 5px',
+      backgroundRepeat: 'repeat',
+      backgroundSize: '10px 10px',
+      borderBottomLeftRadius: '8px',
+      borderBottomRightRadius: '8px',
+      borderTopLeftRadius: '8px',
+      borderTopRightRadius: '8px',
+      columnGap: 'calc(32 / 16 * 1rem)',
+      display: 'flex',
+      flexWrap: 'wrap',
+      paddingBottom: 'calc(64 / 16 * 1rem)',
+      paddingLeft: 'calc(32 / 16 * 1rem)',
+      paddingRight: 'calc(32 / 16 * 1rem)',
+      paddingTop: 'calc(64 / 16 * 1rem)',
+      rowGap: 'calc(32 / 16 * 1rem)',
+    },
   },
-} as const;
+  heading: {
+    base: {
+      textAlign: 'center',
+    },
+  },
+} as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function StorybookDisplayItems({ children, label, style }: StorybookDisplayItemsProps): ReactElement {
+export function StorybookDisplayItems({ children, label, style }: Readonly<StorybookDisplayItemsProps>): ReactElement {
   return (
     <div>
       {label !== undefined
@@ -50,19 +59,19 @@ export function StorybookDisplayItems({ children, label, style }: StorybookDispl
             <ExpressiveHeadingHeadlineLarge
               bottom
               block
-              style={{
-                textAlign: 'center',
-              }}
+              style={mergeStyles(
+                styles.heading.base,
+              )}
             >
               {label}
             </ExpressiveHeadingHeadlineLarge>
           )
         : null}
       <div
-        style={{
-          ...globalStyles.base,
-          ...style,
-        }}
+        style={mergeStyles(
+          styles.root.base,
+          style,
+        )}
       >
         {children}
       </div>

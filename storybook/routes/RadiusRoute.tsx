@@ -1,56 +1,44 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
+import type { StandardLonghandProperties } from 'csstype';
 import type { ReactElement } from 'react';
 import { ExpressiveFontLabelLarge } from '../../src/components/ExpressiveFontLabelLarge';
+import { mergeStyles } from '../../src/css/helpers';
 import { expressiveTokens } from '../../src/css/tokens';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
 const styles = {
   box: {
-    alignItems: 'center',
-    backgroundColor: expressiveTokens['md.sys.color.primary-container'],
-    display: 'flex',
-    height: '140px',
-    justifyContent: 'center',
-    paddingBottom: '16px',
-    paddingLeft: '16px',
-    paddingRight: '16px',
-    paddingTop: '16px',
-    textAlign: 'center',
-    width: '140px',
+    base: {
+      alignItems: 'center',
+      backgroundColor: expressiveTokens['md.sys.color.primary-container'],
+      display: 'flex',
+      height: '140px',
+      justifyContent: 'center',
+      paddingBottom: '16px',
+      paddingLeft: '16px',
+      paddingRight: '16px',
+      paddingTop: '16px',
+      textAlign: 'center',
+      width: '140px',
+    },
   },
-  color: {
-    color: expressiveTokens['md.sys.color.on-primary-container'],
+  label: {
+    base: {
+      color: expressiveTokens['md.sys.color.on-primary-container'],
+    },
   },
-  topLeft: (radius: string | number) => ({
-    borderBottomLeftRadius: '0px',
-    borderBottomRightRadius: '0px',
-    borderTopLeftRadius: radius,
-    borderTopRightRadius: '0px',
-  }),
-  topRight: (radius: string | number) => ({
-    borderBottomLeftRadius: '0px',
-    borderBottomRightRadius: '0px',
-    borderTopLeftRadius: '0px',
-    borderTopRightRadius: radius,
-  }),
-  bottomLeft: (radius: string | number) => ({
-    borderBottomLeftRadius: radius,
-    borderBottomRightRadius: '0px',
-    borderTopLeftRadius: '0px',
-    borderTopRightRadius: '0px',
-  }),
-  bottomRight: (radius: string | number) => ({
-    borderBottomLeftRadius: '0px',
-    borderBottomRightRadius: radius,
-    borderTopLeftRadius: '0px',
-    borderTopRightRadius: '0px',
-  }),
-  allCorners: (radius: string | number) => ({
-    borderBottomLeftRadius: radius,
-    borderBottomRightRadius: radius,
-    borderTopLeftRadius: radius,
-    borderTopRightRadius: radius,
-  }),
-} as const;
+} as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 interface RadiusBoxProps {
   readonly label: string;
@@ -58,20 +46,23 @@ interface RadiusBoxProps {
   readonly corner: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'all';
 }
 
-function RadiusBox({ label, radius, corner }: RadiusBoxProps): ReactElement {
+function RadiusBox({ label, radius, corner }: Readonly<RadiusBoxProps>): ReactElement {
   return (
     <div
-      style={{
-        ...styles.box,
-        ...(corner === 'topLeft' ? styles.topLeft(radius) : null),
-        ...(corner === 'topRight' ? styles.topRight(radius) : null),
-        ...(corner === 'bottomLeft' ? styles.bottomLeft(radius) : null),
-        ...(corner === 'bottomRight' ? styles.bottomRight(radius) : null),
-        ...(corner === 'all' ? styles.allCorners(radius) : null),
-      }}
+      style={mergeStyles(
+        styles.box.base,
+        {
+          borderBottomLeftRadius: corner === 'bottomLeft' || corner === 'all' ? radius : '0px',
+          borderBottomRightRadius: corner === 'bottomRight' || corner === 'all' ? radius : '0px',
+          borderTopLeftRadius: corner === 'topLeft' || corner === 'all' ? radius : '0px',
+          borderTopRightRadius: corner === 'topRight' || corner === 'all' ? radius : '0px',
+        },
+      )}
     >
       <ExpressiveFontLabelLarge
-        style={styles.color}
+        style={mergeStyles(
+          styles.label.base,
+        )}
       >
         {label}
       </ExpressiveFontLabelLarge>
@@ -111,7 +102,6 @@ export function RadiusRoute(): ReactElement {
           corner="all"
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Extra Small"
       >
@@ -141,7 +131,6 @@ export function RadiusRoute(): ReactElement {
           corner="all"
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Small"
       >
@@ -171,7 +160,6 @@ export function RadiusRoute(): ReactElement {
           corner="all"
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Medium"
       >
@@ -201,7 +189,6 @@ export function RadiusRoute(): ReactElement {
           corner="all"
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Large"
       >
@@ -231,7 +218,6 @@ export function RadiusRoute(): ReactElement {
           corner="all"
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Large Increased"
       >
@@ -261,7 +247,6 @@ export function RadiusRoute(): ReactElement {
           corner="all"
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Extra Large"
       >
@@ -291,7 +276,6 @@ export function RadiusRoute(): ReactElement {
           corner="all"
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Extra Large Increased"
       >
@@ -321,7 +305,6 @@ export function RadiusRoute(): ReactElement {
           corner="all"
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Extra Extra Large"
       >
@@ -351,7 +334,6 @@ export function RadiusRoute(): ReactElement {
           corner="all"
         />
       </StorybookDisplay.Items>
-
       <StorybookDisplay.Items
         label="Full"
       >

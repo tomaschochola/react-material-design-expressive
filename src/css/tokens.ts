@@ -1,5 +1,32 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
+export const expressiveQueries = {
+  compact: 'screen and (max-width: 599px)',
+  medium: 'screen and (min-width: 600px) and (max-width: 839px)',
+  expanded: 'screen and (min-width: 840px) and (max-width: 1199px)',
+  large: 'screen and (min-width: 1200px) and (max-width: 1599px)',
+  extraLarge: 'screen and (min-width: 1600px)',
+  portrait: '(orientation: portrait)',
+  landscape: '(orientation: landscape)',
+  phone: 'screen and (max-width: 599px)',
+  tablet: 'screen and (min-width: 600px) and (max-width: 1199px)',
+  desktop: 'screen and (min-width: 1200px)',
+  prefersDark: '(prefers-color-scheme: dark)',
+  prefersReduceMotion: '(prefers-reduced-motion: reduce)',
+} as const;
+
 export const expressiveTokens = {
-  'md.ref.typography.sans.font-family': 'var(--md-ref-typography-sans-font-family)',
+  'md.ref.typography.font-family': 'var(--md-ref-typeface-brand)',
   'md.sys.radius.full': 'var(--md-sys-radius-full)',
   'md.sys.radius.extra-extra-large': 'var(--md-sys-radius-extra-extra-large)',
   'md.sys.radius.extra-large-increased': 'var(--md-sys-radius-extra-large-increased)',

@@ -1,4 +1,17 @@
+/**
+ * @file
+ * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
+ *
+ * @license CC-BY-ND-4.0
+ *
+ * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
+ * @see {@link https://github.com/tomaschochola} GitHub Profile
+ * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
+ */
+
 import type { CSSProperties, HTMLProps, ReactElement } from 'react';
+import { mergeStyles } from '../css/helpers';
 import { expressiveTokens } from '../css/tokens';
 
 type RadiusValue = number | string;
@@ -12,22 +25,7 @@ export interface ExpressiveSurfaceRadiusProps extends Omit<HTMLProps<HTMLDivElem
   readonly style?: CSSProperties;
 }
 
-const rootStyles = {
-  topleft: (radius: RadiusValue) => ({
-    borderTopLeftRadius: radius,
-  }),
-  topright: (radius: RadiusValue) => ({
-    borderTopRightRadius: radius,
-  }),
-  bottomleft: (radius: RadiusValue) => ({
-    borderBottomLeftRadius: radius,
-  }),
-  bottomright: (radius: RadiusValue) => ({
-    borderBottomRightRadius: radius,
-  }),
-} as const;
-
-export function ExpressiveSurfaceRadius({ radius = expressiveTokens['md.sys.radius.large'], topleft, topright, bottomleft, bottomright, style, ...props }: Readonly<ExpressiveSurfaceRadiusProps>): ReactElement {
+export function ExpressiveSurfaceRadius({ radius = ExpressiveSurfaceRadius.radius, topleft, topright, bottomleft, bottomright, style, ...props }: Readonly<ExpressiveSurfaceRadiusProps>): ReactElement {
   if (topleft === undefined && topright === undefined && bottomleft === undefined && bottomright === undefined) {
     topleft = true;
     topright = true;
@@ -37,18 +35,20 @@ export function ExpressiveSurfaceRadius({ radius = expressiveTokens['md.sys.radi
 
   return (
     <div
-      style={{
-        ...(bottomright === true ? rootStyles.bottomright(radius) : null),
-        ...(topleft === true ? rootStyles.topleft(radius) : null),
-        ...(topright === true ? rootStyles.topright(radius) : null),
-        ...(bottomleft === true ? rootStyles.bottomleft(radius) : null),
-        ...(typeof bottomright === 'number' || typeof bottomright === 'string' ? rootStyles.bottomright(bottomright) : null),
-        ...(typeof topleft === 'number' || typeof topleft === 'string' ? rootStyles.topleft(topleft) : null),
-        ...(typeof topright === 'number' || typeof topright === 'string' ? rootStyles.topright(topright) : null),
-        ...(typeof bottomleft === 'number' || typeof bottomleft === 'string' ? rootStyles.bottomleft(bottomleft) : null),
-        ...style,
-      }}
+      style={mergeStyles(
+        bottomright === true ? { borderBottomRightRadius: radius } : null,
+        topleft === true ? { borderTopLeftRadius: radius } : null,
+        topright === true ? { borderTopRightRadius: radius } : null,
+        bottomleft === true ? { borderBottomLeftRadius: radius } : null,
+        typeof bottomright === 'number' || typeof bottomright === 'string' ? { borderBottomRightRadius: bottomright } : null,
+        typeof topleft === 'number' || typeof topleft === 'string' ? { borderTopLeftRadius: topleft } : null,
+        typeof topright === 'number' || typeof topright === 'string' ? { borderTopRightRadius: topright } : null,
+        typeof bottomleft === 'number' || typeof bottomleft === 'string' ? { borderBottomLeftRadius: bottomleft } : null,
+        style,
+      )}
       {...props}
     />
   );
 }
+
+ExpressiveSurfaceRadius.radius = expressiveTokens['md.sys.radius.large'];

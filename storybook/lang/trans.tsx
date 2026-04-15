@@ -80,7 +80,7 @@ interface LocaleProviderProps {
   readonly children: ReactElement;
 }
 
-export function LocaleProvider({ children }: LocaleProviderProps): ReactElement {
+export function LocaleProvider({ children }: Readonly<LocaleProviderProps>): ReactElement {
   const { locale: defaultLocale } = useLocale();
 
   const [locale, setLocale] = useState<string | null>(() => filterLocale(localStorage.getItem('locale')));
