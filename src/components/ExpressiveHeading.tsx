@@ -43,7 +43,7 @@ export function ExpressiveHeading({
   const resolvedLevel = level ?? context ?? 1;
 
   const headingStyle = mergeStyles(
-    font !== undefined ? expressivePresets.font[font] : null,
+    font !== undefined ? expressivePresets.typography[font] : null,
     style,
   );
 

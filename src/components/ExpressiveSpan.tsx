@@ -25,7 +25,7 @@ export function ExpressiveSpan({ font, children, style, ...props }: Readonly<Exp
   return (
     <span
       style={mergeStyles(
-        font !== undefined ? expressivePresets.font[font] : null,
+        font !== undefined ? expressivePresets.typography[font] : null,
         style,
       )}
       {...props}

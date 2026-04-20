@@ -14,6 +14,7 @@ import type { StandardLonghandProperties } from 'csstype';
 import { useRef, type CSSProperties, type ReactElement, type ReactNode } from 'react';
 import { mergeProps, useFocusRing, useHover, useLink, type AriaLinkOptions } from 'react-aria';
 import { mergeStyles } from '../css/helpers';
+import { internalPresets } from '../css/internal';
 import { expressivePresets } from '../css/presets';
 import { expressiveTokens } from '../css/tokens';
 import { ExpressiveButtonShapeEnum, ExpressiveButtonSizeEnum, ExpressiveButtonVariantEnum } from '../enums';
@@ -40,21 +41,21 @@ const iconSizeByButtonSize = {
 } as const;
 
 const fontPresetByButtonSize = {
-  [ExpressiveButtonSizeEnum.ExtraSmall]: expressivePresets.font.labelLarge,
-  [ExpressiveButtonSizeEnum.Small]: expressivePresets.font.labelLarge,
-  [ExpressiveButtonSizeEnum.Medium]: expressivePresets.font.titleMedium,
-  [ExpressiveButtonSizeEnum.Large]: expressivePresets.font.headlineSmall,
-  [ExpressiveButtonSizeEnum.ExtraLarge]: expressivePresets.font.headlineLarge,
+  [ExpressiveButtonSizeEnum.ExtraSmall]: expressivePresets.typography.labelLarge,
+  [ExpressiveButtonSizeEnum.Small]: expressivePresets.typography.labelLarge,
+  [ExpressiveButtonSizeEnum.Medium]: expressivePresets.typography.titleMedium,
+  [ExpressiveButtonSizeEnum.Large]: expressivePresets.typography.headlineSmall,
+  [ExpressiveButtonSizeEnum.ExtraLarge]: expressivePresets.typography.headlineLarge,
 } as const;
 
 const styles = {
   root: {
     base: {
       alignItems: 'center',
-      borderBottomLeftRadius: expressiveTokens['md.sys.radius.full'],
-      borderBottomRightRadius: expressiveTokens['md.sys.radius.full'],
-      borderTopLeftRadius: expressiveTokens['md.sys.radius.full'],
-      borderTopRightRadius: expressiveTokens['md.sys.radius.full'],
+      borderBottomLeftRadius: expressiveTokens['md.sys.corner.radius.full'],
+      borderBottomRightRadius: expressiveTokens['md.sys.corner.radius.full'],
+      borderTopLeftRadius: expressiveTokens['md.sys.corner.radius.full'],
+      borderTopRightRadius: expressiveTokens['md.sys.corner.radius.full'],
       display: 'inline-flex',
       justifyContent: 'center',
       position: 'relative',
@@ -206,28 +207,28 @@ export function ExpressiveLink({ variant = ExpressiveButtonVariantEnum.Text, siz
       )}
       ref={ref}
       style={mergeStyles(
-        expressivePresets.base.anchor,
-        expressivePresets.transition.effectsFast,
+        internalPresets.base.anchor,
+        expressivePresets.motion.effectsFast,
         styles.root.base,
         styles.root[variant],
         styles.root[size],
         variant === ExpressiveButtonVariantEnum.Text ? styles.textPadding[size] : null,
         shape === ExpressiveButtonShapeEnum.Square ? styles.squareRadius[size] : null,
-        isDisabled && variant !== ExpressiveButtonVariantEnum.Text ? expressivePresets.disabled.container : null,
-        isDisabled ? expressivePresets.disabled.content : null,
+        isDisabled && variant !== ExpressiveButtonVariantEnum.Text ? internalPresets.disabled.container : null,
+        isDisabled ? internalPresets.disabled.content : null,
         style,
       )}
     >
       <ExpressiveStateLayer
-        opacity={expressiveTokens['md.sys.opacity.hovered']}
+        opacity={expressiveTokens['md.sys.opacity.state.hovered']}
         isVisible={isHovered}
       />
       <ExpressiveStateLayer
-        opacity={expressiveTokens['md.sys.opacity.pressed']}
+        opacity={expressiveTokens['md.sys.opacity.state.pressed']}
         isVisible={isPressed}
       />
       <ExpressiveStateLayer
-        opacity={expressiveTokens['md.sys.opacity.focused']}
+        opacity={expressiveTokens['md.sys.opacity.state.focused']}
         isVisible={isFocusVisible}
       />
       {symbol !== undefined

@@ -85,7 +85,7 @@ export function ExpressiveSmallAppBar({
   return (
     <div
       style={mergeStyles(
-        expressivePresets.transition.spatialDefault,
+        expressivePresets.motion.spatialDefault,
         styles.root.base,
         style,
       )}
@@ -107,7 +107,7 @@ export function ExpressiveSmallAppBar({
           ? (
               <div
                 style={mergeStyles(
-                  expressivePresets.font.titleLarge,
+                  expressivePresets.typography.titleLarge,
                   styles.headline.base,
                 )}
               >
@@ -119,7 +119,7 @@ export function ExpressiveSmallAppBar({
           ? (
               <div
                 style={mergeStyles(
-                  expressivePresets.font.labelLarge,
+                  expressivePresets.typography.labelLarge,
                   styles.subhead.base,
                 )}
               >

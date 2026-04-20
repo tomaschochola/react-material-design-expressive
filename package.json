@@ -16,7 +16,6 @@
     }
   ],
   "dependencies": {
-    "@material/material-color-utilities": "github:material-foundation/material-color-utilities#main",
     "@opentelemetry/api": "^1.9.1",
     "@opentelemetry/api-logs": "^0.214.0",
     "@opentelemetry/auto-instrumentations-web": "^0.59.0",

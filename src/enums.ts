@@ -86,3 +86,21 @@ export enum ExpressiveTypographyEnum {
   LabelMedium = 'labelMedium',
   LabelSmall = 'labelSmall',
 }
+
+export enum ExpressiveMotionEnum {
+  SpatialFast = 'spatialFast',
+  SpatialDefault = 'spatialDefault',
+  SpatialSlow = 'spatialSlow',
+  EffectsFast = 'effectsFast',
+  EffectsDefault = 'effectsDefault',
+  EffectsSlow = 'effectsSlow',
+}
+
+export enum ExpressiveElevationEnum {
+  Level0 = 'level0',
+  Level1 = 'level1',
+  Level2 = 'level2',
+  Level3 = 'level3',
+  Level4 = 'level4',
+  Level5 = 'level5',
+}

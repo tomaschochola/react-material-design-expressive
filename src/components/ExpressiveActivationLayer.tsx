@@ -53,7 +53,7 @@ export function ExpressiveActivationLayer({ isActive = false, style, ...props }:
   return (
     <div
       style={mergeStyles(
-        expressivePresets.transition.spatialFast,
+        expressivePresets.motion.spatialFast,
         styles.root.base,
         isActive ? styles.root.active : styles.root.inactive,
         style,

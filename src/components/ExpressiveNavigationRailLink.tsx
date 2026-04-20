@@ -14,6 +14,7 @@ import type { StandardLonghandProperties } from 'csstype';
 import { useRef, type CSSProperties, type ReactElement, type ReactNode } from 'react';
 import { mergeProps, useFocusRing, useHover, useLink, type AriaLinkOptions } from 'react-aria';
 import { mergeStyles } from '../css/helpers';
+import { internalPresets } from '../css/internal';
 import { expressivePresets } from '../css/presets';
 import { expressiveTokens } from '../css/tokens';
 import { ExpressiveActivationLayer } from './ExpressiveActivationLayer';
@@ -30,10 +31,10 @@ export interface ExpressiveNavigationRailLinkProps extends Omit<AriaLinkOptions,
 const styles = {
   root: {
     base: {
-      borderBottomLeftRadius: expressiveTokens['md.sys.radius.large'],
-      borderBottomRightRadius: expressiveTokens['md.sys.radius.large'],
-      borderTopLeftRadius: expressiveTokens['md.sys.radius.large'],
-      borderTopRightRadius: expressiveTokens['md.sys.radius.large'],
+      borderBottomLeftRadius: expressiveTokens['md.sys.corner.radius.large'],
+      borderBottomRightRadius: expressiveTokens['md.sys.corner.radius.large'],
+      borderTopLeftRadius: expressiveTokens['md.sys.corner.radius.large'],
+      borderTopRightRadius: expressiveTokens['md.sys.corner.radius.large'],
       color: expressiveTokens['md.sys.color.on-surface-variant'],
       display: 'block',
       minWidth: '0px',
@@ -98,12 +99,12 @@ export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }:
       )}
       ref={ref}
       style={mergeStyles(
-        expressivePresets.base.anchor,
-        expressivePresets.font.labelMedium,
-        expressivePresets.transition.effectsFast,
+        internalPresets.base.anchor,
+        expressivePresets.typography.labelMedium,
+        expressivePresets.motion.effectsFast,
         styles.root.base,
         isCurrent || isHovered ? styles.root.active : null,
-        isDisabled ? expressivePresets.disabled.content : null,
+        isDisabled ? internalPresets.disabled.content : null,
         style,
       )}
     >
@@ -111,22 +112,22 @@ export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }:
         style={mergeStyles(
           styles.indicator.base,
           isCurrent ? styles.indicator.active : null,
-          isDisabled ? expressivePresets.disabled.content : null,
+          isDisabled ? internalPresets.disabled.content : null,
         )}
       >
         <ExpressiveActivationLayer
           isActive={isCurrent}
         />
         <ExpressiveStateLayer
-          opacity={expressiveTokens['md.sys.opacity.hovered']}
+          opacity={expressiveTokens['md.sys.opacity.state.hovered']}
           isVisible={isHovered}
         />
         <ExpressiveStateLayer
-          opacity={expressiveTokens['md.sys.opacity.pressed']}
+          opacity={expressiveTokens['md.sys.opacity.state.pressed']}
           isVisible={isPressed}
         />
         <ExpressiveStateLayer
-          opacity={expressiveTokens['md.sys.opacity.focused']}
+          opacity={expressiveTokens['md.sys.opacity.state.focused']}
           isVisible={isFocusVisible}
         />
         <ExpressiveIcon
@@ -139,7 +140,7 @@ export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }:
       </div>
       <div
         style={mergeStyles(
-          expressivePresets.base.ellipsis,
+          internalPresets.base.ellipsis,
           styles.label.base,
         )}
       >

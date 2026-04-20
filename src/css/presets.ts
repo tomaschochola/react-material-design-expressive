@@ -10,74 +10,15 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-import { ExpressiveTypographyEnum } from '../enums';
+import {
+  ExpressiveElevationEnum,
+  ExpressiveMotionEnum,
+  ExpressiveTypographyEnum,
+} from '../enums';
 import { expressiveTokens } from './tokens';
 
 export const expressivePresets = {
-  base: {
-    button: {
-      borderBottomStyle: 'none',
-      borderLeftStyle: 'none',
-      borderRightStyle: 'none',
-      borderTopStyle: 'none',
-      outlineStyle: 'none',
-      paddingBottom: '0px',
-      paddingLeft: '0px',
-      paddingRight: '0px',
-      paddingTop: '0px',
-    },
-    anchor: {
-      color: 'inherit',
-      textDecorationLine: 'none',
-      borderBottomStyle: 'none',
-      borderLeftStyle: 'none',
-      borderRightStyle: 'none',
-      borderTopStyle: 'none',
-      outlineStyle: 'none',
-      paddingBottom: '0px',
-      paddingLeft: '0px',
-      paddingRight: '0px',
-      paddingTop: '0px',
-    },
-    border: {
-      borderBottomColor: expressiveTokens['md.sys.color.outline'],
-      borderBottomStyle: 'solid',
-      borderLeftColor: expressiveTokens['md.sys.color.outline'],
-      borderLeftStyle: 'solid',
-      borderRightColor: expressiveTokens['md.sys.color.outline'],
-      borderRightStyle: 'solid',
-      borderTopColor: expressiveTokens['md.sys.color.outline'],
-      borderTopStyle: 'solid',
-    },
-    ellipsis: {
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-      overflowX: 'hidden',
-      overflowY: 'hidden',
-    },
-    oneliner: {
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-      lineHeight: 1,
-      overflowX: 'hidden',
-      overflowY: 'hidden',
-    },
-  },
-  disabled: {
-    content: {
-      color: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-content']})`,
-    },
-    container: {
-      backgroundColor: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-container']})`,
-    },
-    outline: {
-      borderBottomColor: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-outline']})`,
-      borderLeftColor: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-outline']})`,
-      borderRightColor: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-outline']})`,
-      borderTopColor: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-outline']})`,
-    },
-  },
-  font: {
+  typography: {
     [ExpressiveTypographyEnum.DisplayLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.display-large.font-family'],
       fontSize: expressiveTokens['md.sys.typography.display-large.font-size'],
@@ -229,30 +170,50 @@ export const expressivePresets = {
       textTransform: expressiveTokens['md.sys.typography.label-small.text-transform'],
     },
   },
-  transition: {
-    spatialFast: {
-      transitionDuration: expressiveTokens['md.sys.duration.spatial-fast'],
-      transitionTimingFunction: expressiveTokens['md.sys.timing-function.spatial-fast'],
+  motion: {
+    [ExpressiveMotionEnum.SpatialFast]: {
+      transitionDuration: expressiveTokens['md.sys.motion.duration.short4'],
+      transitionTimingFunction: expressiveTokens['md.sys.motion.easing.spatial-fast'],
     },
-    spatialDefault: {
-      transitionDuration: expressiveTokens['md.sys.duration.spatial-default'],
-      transitionTimingFunction: expressiveTokens['md.sys.timing-function.spatial-default'],
+    [ExpressiveMotionEnum.SpatialDefault]: {
+      transitionDuration: expressiveTokens['md.sys.motion.duration.medium2'],
+      transitionTimingFunction: expressiveTokens['md.sys.motion.easing.spatial'],
     },
-    spatialSlow: {
-      transitionDuration: expressiveTokens['md.sys.duration.spatial-slow'],
-      transitionTimingFunction: expressiveTokens['md.sys.timing-function.spatial-slow'],
+    [ExpressiveMotionEnum.SpatialSlow]: {
+      transitionDuration: expressiveTokens['md.sys.motion.duration.long1'],
+      transitionTimingFunction: expressiveTokens['md.sys.motion.easing.spatial-slow'],
     },
-    effectsFast: {
-      transitionDuration: expressiveTokens['md.sys.duration.effects-fast'],
-      transitionTimingFunction: expressiveTokens['md.sys.timing-function.effects-fast'],
+    [ExpressiveMotionEnum.EffectsFast]: {
+      transitionDuration: expressiveTokens['md.sys.motion.duration.short2'],
+      transitionTimingFunction: expressiveTokens['md.sys.motion.easing.effects-fast'],
     },
-    effectsDefault: {
-      transitionDuration: expressiveTokens['md.sys.duration.effects-default'],
-      transitionTimingFunction: expressiveTokens['md.sys.timing-function.effects-default'],
+    [ExpressiveMotionEnum.EffectsDefault]: {
+      transitionDuration: expressiveTokens['md.sys.motion.duration.short3'],
+      transitionTimingFunction: expressiveTokens['md.sys.motion.easing.effects'],
     },
-    effectsSlow: {
-      transitionDuration: expressiveTokens['md.sys.duration.effects-slow'],
-      transitionTimingFunction: expressiveTokens['md.sys.timing-function.effects-slow'],
+    [ExpressiveMotionEnum.EffectsSlow]: {
+      transitionDuration: expressiveTokens['md.sys.motion.duration.medium1'],
+      transitionTimingFunction: expressiveTokens['md.sys.motion.easing.effects-slow'],
+    },
+  },
+  elevation: {
+    [ExpressiveElevationEnum.Level0]: {
+      boxShadow: `oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.2) 0px 0px 0px 0px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.14) 0px 0px 0px 0px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.12) 0px 0px 0px 0px`,
+    },
+    [ExpressiveElevationEnum.Level1]: {
+      boxShadow: `oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.2) 0px 2px 1px -1px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.14) 0px 1px 1px 0px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.12) 0px 1px 3px 0px`,
+    },
+    [ExpressiveElevationEnum.Level2]: {
+      boxShadow: `oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.2) 0px 3px 3px -2px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.14) 0px 3px 4px 0px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.12) 0px 1px 8px 0px`,
+    },
+    [ExpressiveElevationEnum.Level3]: {
+      boxShadow: `oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.2) 0px 3px 5px -1px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.14) 0px 6px 10px 0px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.12) 0px 1px 18px 0px`,
+    },
+    [ExpressiveElevationEnum.Level4]: {
+      boxShadow: `oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.2) 0px 5px 5px -3px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.14) 0px 8px 10px 1px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.12) 0px 3px 14px 2px`,
+    },
+    [ExpressiveElevationEnum.Level5]: {
+      boxShadow: `oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.2) 0px 7px 8px -4px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.14) 0px 12px 17px 2px, oklch(from ${expressiveTokens['md.sys.color.shadow']} l c h / 0.12) 0px 5px 22px 4px`,
     },
   },
 } as const;

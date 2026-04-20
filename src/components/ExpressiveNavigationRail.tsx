@@ -37,7 +37,7 @@ export function ExpressiveNavigationRail({ style, ...props }: Readonly<Expressiv
   return (
     <div
       style={mergeStyles(
-        expressivePresets.transition.spatialDefault,
+        expressivePresets.motion.spatialDefault,
         styles.root.base,
         style,
       )}

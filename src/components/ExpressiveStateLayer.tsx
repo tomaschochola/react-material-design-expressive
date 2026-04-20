@@ -51,7 +51,7 @@ export function ExpressiveStateLayer({ isVisible = false, opacity, style, ...pro
   return (
     <div
       style={mergeStyles(
-        expressivePresets.transition.effectsSlow,
+        expressivePresets.motion.effectsSlow,
         styles.root.base,
         isVisible ? styles.root.visible : null,
         isVisible ? { opacity } : null,

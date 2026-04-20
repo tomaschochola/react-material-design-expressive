@@ -13,7 +13,7 @@
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement, ReactNode } from 'react';
 import { mergeStyles, toRem } from '../css/helpers';
-import { expressivePresets } from '../css/presets';
+import { internalPresets } from '../css/internal';
 
 export interface ExpressiveIconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style' | 'children'> {
   readonly size?: number | string;
@@ -39,7 +39,7 @@ export function ExpressiveIcon({ size = 24, symbol, style, ...props }: Readonly<
   return (
     <span
       style={mergeStyles(
-        expressivePresets.base.oneliner,
+        internalPresets.base.oneliner,
         styles.root.base,
         { fontSize: toRem(size) },
         style,

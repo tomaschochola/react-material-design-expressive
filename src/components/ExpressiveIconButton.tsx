@@ -15,6 +15,7 @@ import { useRef, type CSSProperties, type ReactElement, type ReactNode } from 'r
 import { mergeProps, useButton, useFocusRing, useHover, type AriaButtonProps } from 'react-aria';
 import { mergeStyles } from '../css/helpers';
 import { expressivePresets } from '../css/presets';
+import { internalPresets } from '../css/internal';
 import { expressiveTokens } from '../css/tokens';
 import { ExpressiveIconButtonVariantEnum } from '../enums';
 import { ExpressiveFocusedOutlineLayer } from './ExpressiveFocusedOutlineLayer';
@@ -31,13 +32,13 @@ const styles = {
   root: {
     base: {
       alignItems: 'center',
-      borderBottomLeftRadius: expressiveTokens['md.sys.radius.full'],
-      borderBottomRightRadius: expressiveTokens['md.sys.radius.full'],
+      borderBottomLeftRadius: expressiveTokens['md.sys.corner.radius.full'],
+      borderBottomRightRadius: expressiveTokens['md.sys.corner.radius.full'],
       borderBottomStyle: 'none',
       borderLeftStyle: 'none',
       borderRightStyle: 'none',
-      borderTopLeftRadius: expressiveTokens['md.sys.radius.full'],
-      borderTopRightRadius: expressiveTokens['md.sys.radius.full'],
+      borderTopLeftRadius: expressiveTokens['md.sys.corner.radius.full'],
+      borderTopRightRadius: expressiveTokens['md.sys.corner.radius.full'],
       borderTopStyle: 'none',
       display: 'inline-flex',
       height: '40px',
@@ -104,26 +105,26 @@ export function ExpressiveIconButton({ variant = ExpressiveIconButtonVariantEnum
       )}
       ref={ref}
       style={mergeStyles(
-        expressivePresets.base.button,
-        expressivePresets.transition.effectsFast,
+        internalPresets.base.button,
+        expressivePresets.motion.effectsFast,
         styles.root.base,
         styles.root[variant],
-        isDisabled && (variant === ExpressiveIconButtonVariantEnum.Filled || variant === ExpressiveIconButtonVariantEnum.Tonal) ? expressivePresets.disabled.container : null,
-        isDisabled && variant === ExpressiveIconButtonVariantEnum.Outlined ? expressivePresets.disabled.outline : null,
-        isDisabled ? expressivePresets.disabled.content : null,
+        isDisabled && (variant === ExpressiveIconButtonVariantEnum.Filled || variant === ExpressiveIconButtonVariantEnum.Tonal) ? internalPresets.disabled.container : null,
+        isDisabled && variant === ExpressiveIconButtonVariantEnum.Outlined ? internalPresets.disabled.outline : null,
+        isDisabled ? internalPresets.disabled.content : null,
         style,
       )}
     >
       <ExpressiveStateLayer
-        opacity={expressiveTokens['md.sys.opacity.hovered']}
+        opacity={expressiveTokens['md.sys.opacity.state.hovered']}
         isVisible={isHovered}
       />
       <ExpressiveStateLayer
-        opacity={expressiveTokens['md.sys.opacity.pressed']}
+        opacity={expressiveTokens['md.sys.opacity.state.pressed']}
         isVisible={isPressed}
       />
       <ExpressiveStateLayer
-        opacity={expressiveTokens['md.sys.opacity.focused']}
+        opacity={expressiveTokens['md.sys.opacity.state.focused']}
         isVisible={isFocusVisible}
       />
       <ExpressiveIcon

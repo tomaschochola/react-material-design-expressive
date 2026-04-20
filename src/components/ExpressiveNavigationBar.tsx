@@ -23,7 +23,7 @@ export interface ExpressiveNavigationBarProps extends Omit<HTMLAttributes<HTMLDi
 const styles = {
   root: {
     base: {
-      backgroundColor: expressiveTokens['md.sys.color.surface'],
+      backgroundColor: expressiveTokens['md.sys.color.surface-container'],
       color: expressiveTokens['md.sys.color.on-surface-variant'],
       columnGap: '8px',
       display: 'flex',
@@ -32,6 +32,10 @@ const styles = {
       overflowY: 'hidden',
       rowGap: '8px',
       transitionProperty: 'transform',
+      position: 'fixed',
+      left: 0,
+      right: 0,
+      bottom: 0,
     },
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
@@ -40,8 +44,8 @@ export function ExpressiveNavigationBar({ style, ...props }: Readonly<Expressive
   return (
     <div
       style={mergeStyles(
-        expressivePresets.transition.spatialDefault,
-        expressivePresets.font.labelMedium,
+        expressivePresets.motion.spatialDefault,
+        expressivePresets.typography.labelMedium,
         styles.root.base,
         style,
       )}

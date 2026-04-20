@@ -25,13 +25,13 @@ const styles = {
   root: {
     base: {
       appearance: 'none',
-      borderBottomLeftRadius: expressiveTokens['md.sys.radius.medium'],
-      borderBottomRightRadius: expressiveTokens['md.sys.radius.medium'],
+      borderBottomLeftRadius: expressiveTokens['md.sys.corner.radius.medium'],
+      borderBottomRightRadius: expressiveTokens['md.sys.corner.radius.medium'],
       borderBottomStyle: 'none',
       borderLeftStyle: 'none',
       borderRightStyle: 'none',
-      borderTopLeftRadius: expressiveTokens['md.sys.radius.medium'],
-      borderTopRightRadius: expressiveTokens['md.sys.radius.medium'],
+      borderTopLeftRadius: expressiveTokens['md.sys.corner.radius.medium'],
+      borderTopRightRadius: expressiveTokens['md.sys.corner.radius.medium'],
       borderTopStyle: 'none',
       boxShadow: 'none',
       color: expressiveTokens['md.sys.color.on-surface'],

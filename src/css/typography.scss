@@ -1,172 +1,18 @@
-/**
- * @file
- * @author Tomáš Chochola <tomaschochola@tomaschochola.cz>
- * @copyright © 2026 Tomáš Chochola <tomaschochola@tomaschochola.cz>
- *
- * @license CC-BY-ND-4.0
- *
- * @see {@link https://creativecommons.org/licenses/by-nd/4.0/} License
- * @see {@link https://github.com/tomaschochola} GitHub Profile
- * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
- */
-
-%typography {
-  font-family: var(--md-ref-typeface-plain);
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-variation-settings: normal;
-  font-weight: normal;
-  letter-spacing: normal;
-  line-height: normal;
-  text-decoration: none;
-  text-transform: none;
+:root {
+  font-family: 'Google Sans', 'Roboto', 'Noto Sans', system-ui, sans-serif;
 }
 
-%body {
-  @extend %typography;
-
-  line-height: 1.6;
-}
-
-%headline {
-  @extend %typography;
-
-  font-family: var(--md-ref-typeface-brand);
-  line-height: 1.3;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0.5lh;
   margin-bottom: 0.5lh;
 }
 
-:root {
-  font-size: initial;
-}
-
-body,
-.body {
-  @extend %typography;
-
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-h1,
-.h1 {
-  @extend %headline;
-
-  font-size: calc(32 / 16 * 1rem);
-}
-
-h2,
-.h2 {
-  @extend %headline;
-
-  font-size: calc(28 / 16 * 1rem);
-}
-
-h3,
-.h3 {
-  @extend %headline;
-
-  font-size: calc(25 / 16 * 1rem);
-}
-
-h4,
-.h4 {
-  @extend %headline;
-
-  font-size: calc(22 / 16 * 1rem);
-}
-
-h5,
-.h5 {
-  @extend %headline;
-
-  font-size: calc(20 / 16 * 1rem);
-}
-
-h6,
-.h6 {
-  @extend %headline;
-
-  font-size: calc(18 / 16 * 1rem);
-}
-
-p,
-.p {
-  margin-top: 1.5lh;
-  margin-bottom: 1.5lh;
-}
-
-@media screen and (width >= 1200px) {
-  body,
-  .body {
-    font-size: calc(1rem * 1.125);
-  }
-
-  h1,
-  .h1 {
-    font-size: calc(40 / 16 * 1rem);
-  }
-
-  h2,
-  .h2 {
-    font-size: calc(36 / 16 * 1rem);
-  }
-
-  h3,
-  .h3 {
-    font-size: calc(32 / 16 * 1rem);
-  }
-
-  h4,
-  .h4 {
-    font-size: calc(28 / 16 * 1rem);
-  }
-
-  h5,
-  .h5 {
-    font-size: calc(25 / 16 * 1rem);
-  }
-
-  h6,
-  .h6 {
-    font-size: calc(22 / 16 * 1rem);
-  }
-}
-
-@media screen and (width >= 600px) and (width <= 1199px) {
-  body,
-  .body {
-    font-size: calc(1rem * 1.0625);
-  }
-
-  h1,
-  .h1 {
-    font-size: calc(36 / 16 * 1rem);
-  }
-
-  h2,
-  .h2 {
-    font-size: calc(32 / 16 * 1rem);
-  }
-
-  h3,
-  .h3 {
-    font-size: calc(28 / 16 * 1rem);
-  }
-
-  h4,
-  .h4 {
-    font-size: calc(25 / 16 * 1rem);
-  }
-
-  h5,
-  .h5 {
-    font-size: calc(22 / 16 * 1rem);
-  }
-
-  h6,
-  .h6 {
-    font-size: calc(20 / 16 * 1rem);
-  }
+p {
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
