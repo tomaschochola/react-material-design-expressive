@@ -11,8 +11,8 @@
  */
 
 import type { ReactElement } from 'react';
+import { ExpressiveIconButton } from '../../src/components/ExpressiveIconButton';
 import { ExpressiveRandomSymbol } from '../../src/components/ExpressiveRandomSymbol';
-import { ExpressiveStandardIconButton } from '../../src/components/ExpressiveStandardIconButton';
 import { ExpressiveTouchTarget } from '../../src/components/ExpressiveTouchTarget';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
@@ -20,15 +20,68 @@ export function IconButtonsRoute(): ReactElement {
   return (
     <StorybookDisplay>
       <StorybookDisplay.Items
-        label="Standard Icon Button"
+        label="Standard"
       >
         <ExpressiveTouchTarget>
-          <ExpressiveStandardIconButton
+          <ExpressiveIconButton
+            variant={ExpressiveIconButton.variant.Standard}
             symbol={<ExpressiveRandomSymbol />}
           />
         </ExpressiveTouchTarget>
         <ExpressiveTouchTarget>
-          <ExpressiveStandardIconButton
+          <ExpressiveIconButton
+            variant={ExpressiveIconButton.variant.Standard}
+            symbol={<ExpressiveRandomSymbol />}
+            isDisabled
+          />
+        </ExpressiveTouchTarget>
+      </StorybookDisplay.Items>
+      <StorybookDisplay.Items
+        label="Filled"
+      >
+        <ExpressiveTouchTarget>
+          <ExpressiveIconButton
+            variant={ExpressiveIconButton.variant.Filled}
+            symbol={<ExpressiveRandomSymbol />}
+          />
+        </ExpressiveTouchTarget>
+        <ExpressiveTouchTarget>
+          <ExpressiveIconButton
+            variant={ExpressiveIconButton.variant.Filled}
+            symbol={<ExpressiveRandomSymbol />}
+            isDisabled
+          />
+        </ExpressiveTouchTarget>
+      </StorybookDisplay.Items>
+      <StorybookDisplay.Items
+        label="Tonal"
+      >
+        <ExpressiveTouchTarget>
+          <ExpressiveIconButton
+            variant={ExpressiveIconButton.variant.Tonal}
+            symbol={<ExpressiveRandomSymbol />}
+          />
+        </ExpressiveTouchTarget>
+        <ExpressiveTouchTarget>
+          <ExpressiveIconButton
+            variant={ExpressiveIconButton.variant.Tonal}
+            symbol={<ExpressiveRandomSymbol />}
+            isDisabled
+          />
+        </ExpressiveTouchTarget>
+      </StorybookDisplay.Items>
+      <StorybookDisplay.Items
+        label="Outlined"
+      >
+        <ExpressiveTouchTarget>
+          <ExpressiveIconButton
+            variant={ExpressiveIconButton.variant.Outlined}
+            symbol={<ExpressiveRandomSymbol />}
+          />
+        </ExpressiveTouchTarget>
+        <ExpressiveTouchTarget>
+          <ExpressiveIconButton
+            variant={ExpressiveIconButton.variant.Outlined}
             symbol={<ExpressiveRandomSymbol />}
             isDisabled
           />

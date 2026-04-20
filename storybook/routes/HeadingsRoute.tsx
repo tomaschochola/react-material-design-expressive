@@ -11,22 +11,105 @@
  */
 
 import type { ReactElement } from 'react';
-import { ExpressiveHeadingBodyLarge } from '../../src/components/ExpressiveHeadingBodyLarge';
-import { ExpressiveHeadingBodyMedium } from '../../src/components/ExpressiveHeadingBodyMedium';
-import { ExpressiveHeadingBodySmall } from '../../src/components/ExpressiveHeadingBodySmall';
-import { ExpressiveHeadingDisplayLarge } from '../../src/components/ExpressiveHeadingDisplayLarge';
-import { ExpressiveHeadingDisplayMedium } from '../../src/components/ExpressiveHeadingDisplayMedium';
-import { ExpressiveHeadingDisplaySmall } from '../../src/components/ExpressiveHeadingDisplaySmall';
-import { ExpressiveHeadingHeadlineLarge } from '../../src/components/ExpressiveHeadingHeadlineLarge';
-import { ExpressiveHeadingHeadlineMedium } from '../../src/components/ExpressiveHeadingHeadlineMedium';
-import { ExpressiveHeadingHeadlineSmall } from '../../src/components/ExpressiveHeadingHeadlineSmall';
-import { ExpressiveHeadingLabelLarge } from '../../src/components/ExpressiveHeadingLabelLarge';
-import { ExpressiveHeadingLabelMedium } from '../../src/components/ExpressiveHeadingLabelMedium';
-import { ExpressiveHeadingLabelSmall } from '../../src/components/ExpressiveHeadingLabelSmall';
-import { ExpressiveHeadingTitleLarge } from '../../src/components/ExpressiveHeadingTitleLarge';
-import { ExpressiveHeadingTitleMedium } from '../../src/components/ExpressiveHeadingTitleMedium';
-import { ExpressiveHeadingTitleSmall } from '../../src/components/ExpressiveHeadingTitleSmall';
+import { ExpressiveHeading } from '../../src/components/ExpressiveHeading';
 import { StorybookDisplay } from '../components/StorybookDisplay';
+
+function HeadingLevel({ level }: { readonly level: 1 | 2 | 3 | 4 | 5 | 6 }): ReactElement {
+  return (
+    <>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.DisplayLarge}
+        level={level}
+      >
+        Display Large
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.DisplayMedium}
+        level={level}
+      >
+        Display Medium
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.DisplaySmall}
+        level={level}
+      >
+        Display Small
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.HeadlineLarge}
+        level={level}
+      >
+        Headline Large
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.HeadlineMedium}
+        level={level}
+      >
+        Headline Medium
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.HeadlineSmall}
+        level={level}
+      >
+        Headline Small
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.TitleLarge}
+        level={level}
+      >
+        Title Large
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.TitleMedium}
+        level={level}
+      >
+        Title Medium
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.TitleSmall}
+        level={level}
+      >
+        Title Small
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.BodyLarge}
+        level={level}
+      >
+        Body Large
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.BodyMedium}
+        level={level}
+      >
+        Body Medium
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.BodySmall}
+        level={level}
+      >
+        Body Small
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.LabelLarge}
+        level={level}
+      >
+        Label Large
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.LabelMedium}
+        level={level}
+      >
+        Label Medium
+      </ExpressiveHeading>
+      <ExpressiveHeading
+        font={ExpressiveHeading.font.LabelSmall}
+        level={level}
+      >
+        Label Small
+      </ExpressiveHeading>
+    </>
+  );
+}
 
 export function HeadingsRoute(): ReactElement {
   return (
@@ -34,656 +117,44 @@ export function HeadingsRoute(): ReactElement {
       <StorybookDisplay.Item
         label="H1"
       >
-        <ExpressiveHeadingDisplayLarge
+        <HeadingLevel
           level={1}
-          top
-          bottom
-        >
-          Display Large
-        </ExpressiveHeadingDisplayLarge>
-        <ExpressiveHeadingDisplayMedium
-          level={1}
-          top
-          bottom
-        >
-          Display Medium
-        </ExpressiveHeadingDisplayMedium>
-        <ExpressiveHeadingDisplaySmall
-          level={1}
-          top
-          bottom
-        >
-          Display Small
-        </ExpressiveHeadingDisplaySmall>
-        <ExpressiveHeadingHeadlineLarge
-          level={1}
-          top
-          bottom
-        >
-          Headline Large
-        </ExpressiveHeadingHeadlineLarge>
-        <ExpressiveHeadingHeadlineMedium
-          level={1}
-          top
-          bottom
-        >
-          Headline Medium
-        </ExpressiveHeadingHeadlineMedium>
-        <ExpressiveHeadingHeadlineSmall
-          level={1}
-          top
-          bottom
-        >
-          Headline Small
-        </ExpressiveHeadingHeadlineSmall>
-        <ExpressiveHeadingTitleLarge
-          level={1}
-          top
-          bottom
-        >
-          Title Large
-        </ExpressiveHeadingTitleLarge>
-        <ExpressiveHeadingTitleMedium
-          level={1}
-          top
-          bottom
-        >
-          Title Medium
-        </ExpressiveHeadingTitleMedium>
-        <ExpressiveHeadingTitleSmall
-          level={1}
-          top
-          bottom
-        >
-          Title Small
-        </ExpressiveHeadingTitleSmall>
-        <ExpressiveHeadingBodyLarge
-          level={1}
-          top
-          bottom
-        >
-          Body Large
-        </ExpressiveHeadingBodyLarge>
-        <ExpressiveHeadingBodyMedium
-          level={1}
-          top
-          bottom
-        >
-          Body Medium
-        </ExpressiveHeadingBodyMedium>
-        <ExpressiveHeadingBodySmall
-          level={1}
-          top
-          bottom
-        >
-          Body Small
-        </ExpressiveHeadingBodySmall>
-        <ExpressiveHeadingLabelLarge
-          level={1}
-          top
-          bottom
-        >
-          Label Large
-        </ExpressiveHeadingLabelLarge>
-        <ExpressiveHeadingLabelMedium
-          level={1}
-          top
-          bottom
-        >
-          Label Medium
-        </ExpressiveHeadingLabelMedium>
-        <ExpressiveHeadingLabelSmall
-          level={1}
-          top
-          bottom
-        >
-          Label Small
-        </ExpressiveHeadingLabelSmall>
+        />
       </StorybookDisplay.Item>
       <StorybookDisplay.Item
         label="H2"
       >
-        <ExpressiveHeadingDisplayLarge
+        <HeadingLevel
           level={2}
-          top
-          bottom
-        >
-          Display Large
-        </ExpressiveHeadingDisplayLarge>
-        <ExpressiveHeadingDisplayMedium
-          level={2}
-          top
-          bottom
-        >
-          Display Medium
-        </ExpressiveHeadingDisplayMedium>
-        <ExpressiveHeadingDisplaySmall
-          level={2}
-          top
-          bottom
-        >
-          Display Small
-        </ExpressiveHeadingDisplaySmall>
-        <ExpressiveHeadingHeadlineLarge
-          level={2}
-          top
-          bottom
-        >
-          Headline Large
-        </ExpressiveHeadingHeadlineLarge>
-        <ExpressiveHeadingHeadlineMedium
-          level={2}
-          top
-          bottom
-        >
-          Headline Medium
-        </ExpressiveHeadingHeadlineMedium>
-        <ExpressiveHeadingHeadlineSmall
-          level={2}
-          top
-          bottom
-        >
-          Headline Small
-        </ExpressiveHeadingHeadlineSmall>
-        <ExpressiveHeadingTitleLarge
-          level={2}
-          top
-          bottom
-        >
-          Title Large
-        </ExpressiveHeadingTitleLarge>
-        <ExpressiveHeadingTitleMedium
-          level={2}
-          top
-          bottom
-        >
-          Title Medium
-        </ExpressiveHeadingTitleMedium>
-        <ExpressiveHeadingTitleSmall
-          level={2}
-          top
-          bottom
-        >
-          Title Small
-        </ExpressiveHeadingTitleSmall>
-        <ExpressiveHeadingBodyLarge
-          level={2}
-          top
-          bottom
-        >
-          Body Large
-        </ExpressiveHeadingBodyLarge>
-        <ExpressiveHeadingBodyMedium
-          level={2}
-          top
-          bottom
-        >
-          Body Medium
-        </ExpressiveHeadingBodyMedium>
-        <ExpressiveHeadingBodySmall
-          level={2}
-          top
-          bottom
-        >
-          Body Small
-        </ExpressiveHeadingBodySmall>
-        <ExpressiveHeadingLabelLarge
-          level={2}
-          top
-          bottom
-        >
-          Label Large
-        </ExpressiveHeadingLabelLarge>
-        <ExpressiveHeadingLabelMedium
-          level={2}
-          top
-          bottom
-        >
-          Label Medium
-        </ExpressiveHeadingLabelMedium>
-        <ExpressiveHeadingLabelSmall
-          level={2}
-          top
-          bottom
-        >
-          Label Small
-        </ExpressiveHeadingLabelSmall>
+        />
       </StorybookDisplay.Item>
       <StorybookDisplay.Item
         label="H3"
       >
-        <ExpressiveHeadingDisplayLarge
+        <HeadingLevel
           level={3}
-          top
-          bottom
-        >
-          Display Large
-        </ExpressiveHeadingDisplayLarge>
-        <ExpressiveHeadingDisplayMedium
-          level={3}
-          top
-          bottom
-        >
-          Display Medium
-        </ExpressiveHeadingDisplayMedium>
-        <ExpressiveHeadingDisplaySmall
-          level={3}
-          top
-          bottom
-        >
-          Display Small
-        </ExpressiveHeadingDisplaySmall>
-        <ExpressiveHeadingHeadlineLarge
-          level={3}
-          top
-          bottom
-        >
-          Headline Large
-        </ExpressiveHeadingHeadlineLarge>
-        <ExpressiveHeadingHeadlineMedium
-          level={3}
-          top
-          bottom
-        >
-          Headline Medium
-        </ExpressiveHeadingHeadlineMedium>
-        <ExpressiveHeadingHeadlineSmall
-          level={3}
-          top
-          bottom
-        >
-          Headline Small
-        </ExpressiveHeadingHeadlineSmall>
-        <ExpressiveHeadingTitleLarge
-          level={3}
-          top
-          bottom
-        >
-          Title Large
-        </ExpressiveHeadingTitleLarge>
-        <ExpressiveHeadingTitleMedium
-          level={3}
-          top
-          bottom
-        >
-          Title Medium
-        </ExpressiveHeadingTitleMedium>
-        <ExpressiveHeadingTitleSmall
-          level={3}
-          top
-          bottom
-        >
-          Title Small
-        </ExpressiveHeadingTitleSmall>
-        <ExpressiveHeadingBodyLarge
-          level={3}
-          top
-          bottom
-        >
-          Body Large
-        </ExpressiveHeadingBodyLarge>
-        <ExpressiveHeadingBodyMedium
-          level={3}
-          top
-          bottom
-        >
-          Body Medium
-        </ExpressiveHeadingBodyMedium>
-        <ExpressiveHeadingBodySmall
-          level={3}
-          top
-          bottom
-        >
-          Body Small
-        </ExpressiveHeadingBodySmall>
-        <ExpressiveHeadingLabelLarge
-          level={3}
-          top
-          bottom
-        >
-          Label Large
-        </ExpressiveHeadingLabelLarge>
-        <ExpressiveHeadingLabelMedium
-          level={3}
-          top
-          bottom
-        >
-          Label Medium
-        </ExpressiveHeadingLabelMedium>
-        <ExpressiveHeadingLabelSmall
-          level={3}
-          top
-          bottom
-        >
-          Label Small
-        </ExpressiveHeadingLabelSmall>
+        />
       </StorybookDisplay.Item>
       <StorybookDisplay.Item
         label="H4"
       >
-        <ExpressiveHeadingDisplayLarge
+        <HeadingLevel
           level={4}
-          top
-          bottom
-        >
-          Display Large
-        </ExpressiveHeadingDisplayLarge>
-        <ExpressiveHeadingDisplayMedium
-          level={4}
-          top
-          bottom
-        >
-          Display Medium
-        </ExpressiveHeadingDisplayMedium>
-        <ExpressiveHeadingDisplaySmall
-          level={4}
-          top
-          bottom
-        >
-          Display Small
-        </ExpressiveHeadingDisplaySmall>
-        <ExpressiveHeadingHeadlineLarge
-          level={4}
-          top
-          bottom
-        >
-          Headline Large
-        </ExpressiveHeadingHeadlineLarge>
-        <ExpressiveHeadingHeadlineMedium
-          level={4}
-          top
-          bottom
-        >
-          Headline Medium
-        </ExpressiveHeadingHeadlineMedium>
-        <ExpressiveHeadingHeadlineSmall
-          level={4}
-          top
-          bottom
-        >
-          Headline Small
-        </ExpressiveHeadingHeadlineSmall>
-        <ExpressiveHeadingTitleLarge
-          level={4}
-          top
-          bottom
-        >
-          Title Large
-        </ExpressiveHeadingTitleLarge>
-        <ExpressiveHeadingTitleMedium
-          level={4}
-          top
-          bottom
-        >
-          Title Medium
-        </ExpressiveHeadingTitleMedium>
-        <ExpressiveHeadingTitleSmall
-          level={4}
-          top
-          bottom
-        >
-          Title Small
-        </ExpressiveHeadingTitleSmall>
-        <ExpressiveHeadingBodyLarge
-          level={4}
-          top
-          bottom
-        >
-          Body Large
-        </ExpressiveHeadingBodyLarge>
-        <ExpressiveHeadingBodyMedium
-          level={4}
-          top
-          bottom
-        >
-          Body Medium
-        </ExpressiveHeadingBodyMedium>
-        <ExpressiveHeadingBodySmall
-          level={4}
-          top
-          bottom
-        >
-          Body Small
-        </ExpressiveHeadingBodySmall>
-        <ExpressiveHeadingLabelLarge
-          level={4}
-          top
-          bottom
-        >
-          Label Large
-        </ExpressiveHeadingLabelLarge>
-        <ExpressiveHeadingLabelMedium
-          level={4}
-          top
-          bottom
-        >
-          Label Medium
-        </ExpressiveHeadingLabelMedium>
-        <ExpressiveHeadingLabelSmall
-          level={4}
-          top
-          bottom
-        >
-          Label Small
-        </ExpressiveHeadingLabelSmall>
+        />
       </StorybookDisplay.Item>
       <StorybookDisplay.Item
         label="H5"
       >
-        <ExpressiveHeadingDisplayLarge
+        <HeadingLevel
           level={5}
-          top
-          bottom
-        >
-          Display Large
-        </ExpressiveHeadingDisplayLarge>
-        <ExpressiveHeadingDisplayMedium
-          level={5}
-          top
-          bottom
-        >
-          Display Medium
-        </ExpressiveHeadingDisplayMedium>
-        <ExpressiveHeadingDisplaySmall
-          level={5}
-          top
-          bottom
-        >
-          Display Small
-        </ExpressiveHeadingDisplaySmall>
-        <ExpressiveHeadingHeadlineLarge
-          level={5}
-          top
-          bottom
-        >
-          Headline Large
-        </ExpressiveHeadingHeadlineLarge>
-        <ExpressiveHeadingHeadlineMedium
-          level={5}
-          top
-          bottom
-        >
-          Headline Medium
-        </ExpressiveHeadingHeadlineMedium>
-        <ExpressiveHeadingHeadlineSmall
-          level={5}
-          top
-          bottom
-        >
-          Headline Small
-        </ExpressiveHeadingHeadlineSmall>
-        <ExpressiveHeadingTitleLarge
-          level={5}
-          top
-          bottom
-        >
-          Title Large
-        </ExpressiveHeadingTitleLarge>
-        <ExpressiveHeadingTitleMedium
-          level={5}
-          top
-          bottom
-        >
-          Title Medium
-        </ExpressiveHeadingTitleMedium>
-        <ExpressiveHeadingTitleSmall
-          level={5}
-          top
-          bottom
-        >
-          Title Small
-        </ExpressiveHeadingTitleSmall>
-        <ExpressiveHeadingBodyLarge
-          level={5}
-          top
-          bottom
-        >
-          Body Large
-        </ExpressiveHeadingBodyLarge>
-        <ExpressiveHeadingBodyMedium
-          level={5}
-          top
-          bottom
-        >
-          Body Medium
-        </ExpressiveHeadingBodyMedium>
-        <ExpressiveHeadingBodySmall
-          level={5}
-          top
-          bottom
-        >
-          Body Small
-        </ExpressiveHeadingBodySmall>
-        <ExpressiveHeadingLabelLarge
-          level={5}
-          top
-          bottom
-        >
-          Label Large
-        </ExpressiveHeadingLabelLarge>
-        <ExpressiveHeadingLabelMedium
-          level={5}
-          top
-          bottom
-        >
-          Label Medium
-        </ExpressiveHeadingLabelMedium>
-        <ExpressiveHeadingLabelSmall
-          level={5}
-          top
-          bottom
-        >
-          Label Small
-        </ExpressiveHeadingLabelSmall>
+        />
       </StorybookDisplay.Item>
       <StorybookDisplay.Item
         label="H6"
       >
-        <ExpressiveHeadingDisplayLarge
+        <HeadingLevel
           level={6}
-          top
-          bottom
-        >
-          Display Large
-        </ExpressiveHeadingDisplayLarge>
-        <ExpressiveHeadingDisplayMedium
-          level={6}
-          top
-          bottom
-        >
-          Display Medium
-        </ExpressiveHeadingDisplayMedium>
-        <ExpressiveHeadingDisplaySmall
-          level={6}
-          top
-          bottom
-        >
-          Display Small
-        </ExpressiveHeadingDisplaySmall>
-        <ExpressiveHeadingHeadlineLarge
-          level={6}
-          top
-          bottom
-        >
-          Headline Large
-        </ExpressiveHeadingHeadlineLarge>
-        <ExpressiveHeadingHeadlineMedium
-          level={6}
-          top
-          bottom
-        >
-          Headline Medium
-        </ExpressiveHeadingHeadlineMedium>
-        <ExpressiveHeadingHeadlineSmall
-          level={6}
-          top
-          bottom
-        >
-          Headline Small
-        </ExpressiveHeadingHeadlineSmall>
-        <ExpressiveHeadingTitleLarge
-          level={6}
-          top
-          bottom
-        >
-          Title Large
-        </ExpressiveHeadingTitleLarge>
-        <ExpressiveHeadingTitleMedium
-          level={6}
-          top
-          bottom
-        >
-          Title Medium
-        </ExpressiveHeadingTitleMedium>
-        <ExpressiveHeadingTitleSmall
-          level={6}
-          top
-          bottom
-        >
-          Title Small
-        </ExpressiveHeadingTitleSmall>
-        <ExpressiveHeadingBodyLarge
-          level={6}
-          top
-          bottom
-        >
-          Body Large
-        </ExpressiveHeadingBodyLarge>
-        <ExpressiveHeadingBodyMedium
-          level={6}
-          top
-          bottom
-        >
-          Body Medium
-        </ExpressiveHeadingBodyMedium>
-        <ExpressiveHeadingBodySmall
-          level={6}
-          top
-          bottom
-        >
-          Body Small
-        </ExpressiveHeadingBodySmall>
-        <ExpressiveHeadingLabelLarge
-          level={6}
-          top
-          bottom
-        >
-          Label Large
-        </ExpressiveHeadingLabelLarge>
-        <ExpressiveHeadingLabelMedium
-          level={6}
-          top
-          bottom
-        >
-          Label Medium
-        </ExpressiveHeadingLabelMedium>
-        <ExpressiveHeadingLabelSmall
-          level={6}
-          top
-          bottom
-        >
-          Label Small
-        </ExpressiveHeadingLabelSmall>
+        />
       </StorybookDisplay.Item>
     </StorybookDisplay>
   );

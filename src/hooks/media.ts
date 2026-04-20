@@ -12,6 +12,7 @@
 
 import { useMemo, useSyncExternalStore } from 'react';
 import { expressiveQueries } from '../css/tokens';
+import { ExpressiveDeviceEnum, ExpressiveScreenEnum } from '../enums';
 
 export const expressiveCompactMedia: MediaQueryList = window.matchMedia(expressiveQueries.compact);
 export const expressiveMediumMedia: MediaQueryList = window.matchMedia(expressiveQueries.medium);
@@ -84,7 +85,7 @@ export function useExpressiveDesktopMedia(): boolean {
   return useExpressiveMedia(expressiveDesktopMedia);
 }
 
-export function useExpressiveDarkDarkMedia(): boolean {
+export function useExpressiveDarkMedia(): boolean {
   return useExpressiveMedia(expressivePrefersDarkMedia);
 }
 
@@ -92,40 +93,36 @@ export function useExpressivePrefersReduceMotionMedia(): boolean {
   return useExpressiveMedia(expressivePrefersReduceMotionMedia);
 }
 
+export function useExpressiveDevice(): ExpressiveDeviceEnum {
+  const isPhone = useExpressiveMedia(expressivePhoneMedia);
+  const isTablet = useExpressiveMedia(expressiveTabletMedia);
+
+  if (isPhone) return ExpressiveDeviceEnum.Phone;
+
+  if (isTablet) return ExpressiveDeviceEnum.Tablet;
+
+  return ExpressiveDeviceEnum.Desktop;
+}
+
+export function useExpressiveScreen(): ExpressiveScreenEnum {
+  const isCompact = useExpressiveMedia(expressiveCompactMedia);
+  const isMedium = useExpressiveMedia(expressiveMediumMedia);
+  const isExpanded = useExpressiveMedia(expressiveExpandedMedia);
+  const isLarge = useExpressiveMedia(expressiveLargeMedia);
+
+  if (isCompact) return ExpressiveScreenEnum.Compact;
+
+  if (isMedium) return ExpressiveScreenEnum.Medium;
+
+  if (isExpanded) return ExpressiveScreenEnum.Expanded;
+
+  if (isLarge) return ExpressiveScreenEnum.Large;
+
+  return ExpressiveScreenEnum.ExtraLarge;
+}
+
 export function useExpressiveMediaQuery(query: string): boolean {
   const media = useMemo(() => window.matchMedia(query), [query]);
 
   return useExpressiveMedia(media);
-}
-
-export interface ExpressiveDevices {
-  phone: boolean;
-  tablet: boolean;
-  desktop: boolean;
-}
-
-export function useExpressiveDevices(): ExpressiveDevices {
-  return {
-    phone: useExpressivePhoneMedia(),
-    tablet: useExpressiveTabletMedia(),
-    desktop: useExpressiveDesktopMedia(),
-  };
-}
-
-export interface ExpressiveScreens {
-  compact: boolean;
-  medium: boolean;
-  expanded: boolean;
-  large: boolean;
-  extraLarge: boolean;
-}
-
-export function useExpressiveScreens(): ExpressiveScreens {
-  return {
-    compact: useExpressiveCompactMedia(),
-    medium: useExpressiveMediumMedia(),
-    expanded: useExpressiveExpandedMedia(),
-    large: useExpressiveLargeMedia(),
-    extraLarge: useExpressiveExtraLargeMedia(),
-  };
 }

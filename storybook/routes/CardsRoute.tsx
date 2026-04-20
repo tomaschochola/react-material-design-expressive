@@ -11,7 +11,7 @@
  */
 
 import type { ReactElement } from 'react';
-import { ExpressiveFilledCard } from '../../src/components/ExpressiveFilledCard';
+import { ExpressiveCard } from '../../src/components/ExpressiveCard';
 import { ExpressiveSurfacePadding } from '../../src/components/ExpressiveSurfacePadding';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
@@ -19,13 +19,48 @@ export function CardsRoute(): ReactElement {
   return (
     <StorybookDisplay>
       <StorybookDisplay.Item
-        label="Filled Card"
+        label="Filled"
       >
-        <ExpressiveFilledCard>
+        <ExpressiveCard
+          variant={ExpressiveCard.variant.Filled}
+        >
           <ExpressiveSurfacePadding>
             Filled Card
           </ExpressiveSurfacePadding>
-        </ExpressiveFilledCard>
+        </ExpressiveCard>
+      </StorybookDisplay.Item>
+      <StorybookDisplay.Item
+        label="Elevated"
+      >
+        <ExpressiveCard
+          variant={ExpressiveCard.variant.Elevated}
+        >
+          <ExpressiveSurfacePadding>
+            Elevated Card
+          </ExpressiveSurfacePadding>
+        </ExpressiveCard>
+      </StorybookDisplay.Item>
+      <StorybookDisplay.Item
+        label="Outlined"
+      >
+        <ExpressiveCard
+          variant={ExpressiveCard.variant.Outlined}
+        >
+          <ExpressiveSurfacePadding>
+            Outlined Card
+          </ExpressiveSurfacePadding>
+        </ExpressiveCard>
+      </StorybookDisplay.Item>
+      <StorybookDisplay.Item
+        label="Tonal"
+      >
+        <ExpressiveCard
+          variant={ExpressiveCard.variant.Tonal}
+        >
+          <ExpressiveSurfacePadding>
+            Tonal Card
+          </ExpressiveSurfacePadding>
+        </ExpressiveCard>
       </StorybookDisplay.Item>
     </StorybookDisplay>
   );

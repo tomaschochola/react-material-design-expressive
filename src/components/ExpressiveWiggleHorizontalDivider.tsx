@@ -13,7 +13,7 @@
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, ReactElement } from 'react';
 import { useId } from 'react';
-import { mergeProps, useSeparator, type SeparatorProps } from 'react-aria';
+import { useSeparator, type SeparatorProps } from 'react-aria';
 import { mergeStyles } from '../css/helpers';
 import { expressiveTokens } from '../css/tokens';
 
@@ -43,10 +43,7 @@ export function ExpressiveWiggleHorizontalDivider({ style, ...props }: Readonly<
       height="8"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...mergeProps(
-        separatorProps,
-        props,
-      )}
+      {...separatorProps}
       style={mergeStyles(
         styles.root.base,
         style,

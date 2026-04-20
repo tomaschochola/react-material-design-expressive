@@ -12,7 +12,7 @@
 
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
-import { ExpressiveHeadingHeadlineLarge } from '../../src/components/ExpressiveHeadingHeadlineLarge';
+import { ExpressiveHeading } from '../../src/components/ExpressiveHeading';
 import { mergeStyles } from '../../src/css/helpers';
 import { expressiveTokens } from '../../src/css/tokens';
 
@@ -52,15 +52,14 @@ export function StorybookDisplayItem({ children, label, style }: Readonly<Storyb
     <div>
       {label !== undefined
         ? (
-            <ExpressiveHeadingHeadlineLarge
-              bottom
-              block
+            <ExpressiveHeading
+              font={ExpressiveHeading.font.HeadlineLarge}
               style={mergeStyles(
                 styles.heading.base,
               )}
             >
               {label}
-            </ExpressiveHeadingHeadlineLarge>
+            </ExpressiveHeading>
           )
         : null}
       <div

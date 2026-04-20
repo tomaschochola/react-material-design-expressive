@@ -14,9 +14,10 @@ import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLProps, ReactElement } from 'react';
 import { mergeStyles } from '../css/helpers';
 import { expressiveTokens } from '../css/tokens';
+import { ExpressiveSurfaceEnum } from '../enums';
 
 export interface ExpressiveSurfaceProps extends Omit<HTMLProps<HTMLDivElement>, 'style'> {
-  readonly surface?: -1 | 0 | 1 | 2 | 3 | 4 | 5;
+  readonly surface?: ExpressiveSurfaceEnum;
   readonly style?: CSSProperties;
 }
 
@@ -30,41 +31,43 @@ const styles = {
       borderTopRightRadius: 'inherit',
       color: expressiveTokens['md.sys.color.on-surface'],
     },
-    surface: {
+  },
+  level: {
+    [ExpressiveSurfaceEnum.Transparent]: {
+      backgroundColor: 'transparent',
+    },
+    [ExpressiveSurfaceEnum.Surface]: {
       backgroundColor: expressiveTokens['md.sys.color.surface'],
     },
-    surfaceContainerLowest: {
+    [ExpressiveSurfaceEnum.Lowest]: {
       backgroundColor: expressiveTokens['md.sys.color.surface-container-lowest'],
     },
-    surfaceContainerLow: {
+    [ExpressiveSurfaceEnum.Low]: {
       backgroundColor: expressiveTokens['md.sys.color.surface-container-low'],
     },
-    surfaceContainer: {
+    [ExpressiveSurfaceEnum.Container]: {
       backgroundColor: expressiveTokens['md.sys.color.surface-container'],
     },
-    surfaceContainerHigh: {
+    [ExpressiveSurfaceEnum.High]: {
       backgroundColor: expressiveTokens['md.sys.color.surface-container-high'],
     },
-    surfaceContainerHighest: {
+    [ExpressiveSurfaceEnum.Highest]: {
       backgroundColor: expressiveTokens['md.sys.color.surface-container-highest'],
     },
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveSurface({ surface = 1, style, ...props }: Readonly<ExpressiveSurfaceProps>): ReactElement {
+export function ExpressiveSurface({ surface = ExpressiveSurfaceEnum.Surface, style, ...props }: Readonly<ExpressiveSurfaceProps>): ReactElement {
   return (
     <div
       style={mergeStyles(
         styles.root.base,
-        surface === 0 ? styles.root.surfaceContainerLowest : null,
-        surface === 1 ? styles.root.surface : null,
-        surface === 2 ? styles.root.surfaceContainerLow : null,
-        surface === 3 ? styles.root.surfaceContainer : null,
-        surface === 4 ? styles.root.surfaceContainerHigh : null,
-        surface === 5 ? styles.root.surfaceContainerHighest : null,
+        styles.level[surface],
         style,
       )}
       {...props}
     />
   );
 }
+
+ExpressiveSurface.level = ExpressiveSurfaceEnum;

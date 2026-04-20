@@ -13,7 +13,7 @@
 import type { StandardLonghandProperties } from 'csstype';
 import type { ReactElement } from 'react';
 import { ExpressiveBorderLayer } from '../../src/components/ExpressiveBorderLayer';
-import { ExpressiveFontLabelLarge } from '../../src/components/ExpressiveFontLabelLarge';
+import { ExpressiveSpan } from '../../src/components/ExpressiveSpan';
 import { mergeStyles } from '../../src/css/helpers';
 import { expressiveTokens } from '../../src/css/tokens';
 import { StorybookDisplay } from '../components/StorybookDisplay';
@@ -56,13 +56,14 @@ function ColorBox({ name, color, text }: Readonly<ColorBoxProps>): ReactElement 
         },
       )}
     >
-      <ExpressiveFontLabelLarge
+      <ExpressiveSpan
+        font={ExpressiveSpan.font.LabelLarge}
         style={mergeStyles({
           color: text,
         })}
       >
         {name}
-      </ExpressiveFontLabelLarge>
+      </ExpressiveSpan>
       <ExpressiveBorderLayer />
     </div>
   );

@@ -11,21 +11,7 @@
  */
 
 import type { ReactElement } from 'react';
-import { ExpressiveFontBodyLarge } from '../../src/components/ExpressiveFontBodyLarge';
-import { ExpressiveFontBodyMedium } from '../../src/components/ExpressiveFontBodyMedium';
-import { ExpressiveFontBodySmall } from '../../src/components/ExpressiveFontBodySmall';
-import { ExpressiveFontDisplayLarge } from '../../src/components/ExpressiveFontDisplayLarge';
-import { ExpressiveFontDisplayMedium } from '../../src/components/ExpressiveFontDisplayMedium';
-import { ExpressiveFontDisplaySmall } from '../../src/components/ExpressiveFontDisplaySmall';
-import { ExpressiveFontHeadlineLarge } from '../../src/components/ExpressiveFontHeadlineLarge';
-import { ExpressiveFontHeadlineMedium } from '../../src/components/ExpressiveFontHeadlineMedium';
-import { ExpressiveFontHeadlineSmall } from '../../src/components/ExpressiveFontHeadlineSmall';
-import { ExpressiveFontLabelLarge } from '../../src/components/ExpressiveFontLabelLarge';
-import { ExpressiveFontLabelMedium } from '../../src/components/ExpressiveFontLabelMedium';
-import { ExpressiveFontLabelSmall } from '../../src/components/ExpressiveFontLabelSmall';
-import { ExpressiveFontTitleLarge } from '../../src/components/ExpressiveFontTitleLarge';
-import { ExpressiveFontTitleMedium } from '../../src/components/ExpressiveFontTitleMedium';
-import { ExpressiveFontTitleSmall } from '../../src/components/ExpressiveFontTitleSmall';
+import { ExpressiveSpan } from '../../src/components/ExpressiveSpan';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
 export function FontsRoute(): ReactElement {
@@ -34,81 +20,96 @@ export function FontsRoute(): ReactElement {
       <StorybookDisplay.Item
         label="Typography"
       >
-        <ExpressiveFontDisplayLarge
-          block
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.DisplayLarge}
+          style={{ display: 'block' }}
         >
           Display Large
-        </ExpressiveFontDisplayLarge>
-        <ExpressiveFontDisplayMedium
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.DisplayMedium}
+          style={{ display: 'block' }}
         >
           Display Medium
-        </ExpressiveFontDisplayMedium>
-        <ExpressiveFontDisplaySmall
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.DisplaySmall}
+          style={{ display: 'block' }}
         >
           Display Small
-        </ExpressiveFontDisplaySmall>
-        <ExpressiveFontHeadlineLarge
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.HeadlineLarge}
+          style={{ display: 'block' }}
         >
           Headline Large
-        </ExpressiveFontHeadlineLarge>
-        <ExpressiveFontHeadlineMedium
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.HeadlineMedium}
+          style={{ display: 'block' }}
         >
           Headline Medium
-        </ExpressiveFontHeadlineMedium>
-        <ExpressiveFontHeadlineSmall
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.HeadlineSmall}
+          style={{ display: 'block' }}
         >
           Headline Small
-        </ExpressiveFontHeadlineSmall>
-        <ExpressiveFontTitleLarge
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.TitleLarge}
+          style={{ display: 'block' }}
         >
           Title Large
-        </ExpressiveFontTitleLarge>
-        <ExpressiveFontTitleMedium
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.TitleMedium}
+          style={{ display: 'block' }}
         >
           Title Medium
-        </ExpressiveFontTitleMedium>
-        <ExpressiveFontTitleSmall
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.TitleSmall}
+          style={{ display: 'block' }}
         >
           Title Small
-        </ExpressiveFontTitleSmall>
-        <ExpressiveFontBodyLarge
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.BodyLarge}
+          style={{ display: 'block' }}
         >
           Body Large
-        </ExpressiveFontBodyLarge>
-        <ExpressiveFontBodyMedium
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.BodyMedium}
+          style={{ display: 'block' }}
         >
           Body Medium
-        </ExpressiveFontBodyMedium>
-        <ExpressiveFontBodySmall
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.BodySmall}
+          style={{ display: 'block' }}
         >
           Body Small
-        </ExpressiveFontBodySmall>
-        <ExpressiveFontLabelLarge
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.LabelLarge}
+          style={{ display: 'block' }}
         >
           Label Large
-        </ExpressiveFontLabelLarge>
-        <ExpressiveFontLabelMedium
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.LabelMedium}
+          style={{ display: 'block' }}
         >
           Label Medium
-        </ExpressiveFontLabelMedium>
-        <ExpressiveFontLabelSmall
-          block
+        </ExpressiveSpan>
+        <ExpressiveSpan
+          font={ExpressiveSpan.font.LabelSmall}
+          style={{ display: 'block' }}
         >
           Label Small
-        </ExpressiveFontLabelSmall>
+        </ExpressiveSpan>
       </StorybookDisplay.Item>
     </StorybookDisplay>
   );

@@ -18,10 +18,8 @@ import { expressivePresets } from '../css/presets';
 import { expressiveTokens } from '../css/tokens';
 import { ExpressiveActivationLayer } from './ExpressiveActivationLayer';
 import { ExpressiveFocusedOutlineLayer } from './ExpressiveFocusedOutlineLayer';
-import { ExpressiveFocusedStateLayer } from './ExpressiveFocusedStateLayer';
-import { ExpressiveHoveredStateLayer } from './ExpressiveHovererdStateLayer';
 import { ExpressiveIcon } from './ExpressiveIcon';
-import { ExpressivePressedStateLayer } from './ExpressivePressedStateLayer';
+import { ExpressiveStateLayer } from './ExpressiveStateLayer';
 
 export interface ExpressiveNavigationRailLinkProps extends Omit<AriaLinkOptions, 'children' | 'style'> {
   readonly symbol?: ReactNode;
@@ -46,9 +44,6 @@ const styles = {
     active: {
       color: expressiveTokens['md.sys.color.on-surface'],
     },
-    disabled: {
-      color: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-container']})`,
-    },
   },
   indicator: {
     base: {
@@ -69,9 +64,6 @@ const styles = {
     active: {
       color: expressiveTokens['md.sys.color.on-secondary-container'],
     },
-    disabled: {
-      color: `oklch(from ${expressiveTokens['md.sys.color.on-surface-variant']} l c h / ${expressiveTokens['md.sys.opacity.disabled-container']})`,
-    },
   },
   label: {
     base: {
@@ -85,15 +77,17 @@ export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }:
 
   const { linkProps, isPressed } = useLink(props, ref);
 
+  const isCurrent = Boolean(linkProps['aria-current']);
+  const isAutoFocus = Boolean(props.autoFocus);
+  const isDisabled = Boolean(props.isDisabled);
+
   const { hoverProps, isHovered } = useHover({
-    isDisabled: props.isDisabled,
+    isDisabled: isDisabled,
   });
 
   const { focusProps, isFocusVisible } = useFocusRing({
-    autoFocus: props.autoFocus,
+    autoFocus: isAutoFocus,
   });
-
-  const isCurrent = Boolean(linkProps['aria-current']);
 
   return (
     <a
@@ -109,7 +103,7 @@ export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }:
         expressivePresets.transition.effectsFast,
         styles.root.base,
         isCurrent || isHovered ? styles.root.active : null,
-        Boolean(linkProps['aria-disabled']) ? styles.root.disabled : null,
+        isDisabled ? expressivePresets.disabled.content : null,
         style,
       )}
     >
@@ -117,20 +111,23 @@ export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }:
         style={mergeStyles(
           styles.indicator.base,
           isCurrent ? styles.indicator.active : null,
-          Boolean(linkProps['aria-disabled']) ? styles.indicator.disabled : null,
+          isDisabled ? expressivePresets.disabled.content : null,
         )}
       >
         <ExpressiveActivationLayer
           isActive={isCurrent}
         />
-        <ExpressiveHoveredStateLayer
-          isHovered={isHovered}
+        <ExpressiveStateLayer
+          opacity={expressiveTokens['md.sys.opacity.hovered']}
+          isVisible={isHovered}
         />
-        <ExpressivePressedStateLayer
-          isPressed={isPressed}
+        <ExpressiveStateLayer
+          opacity={expressiveTokens['md.sys.opacity.pressed']}
+          isVisible={isPressed}
         />
-        <ExpressiveFocusedStateLayer
-          isFocused={isFocusVisible}
+        <ExpressiveStateLayer
+          opacity={expressiveTokens['md.sys.opacity.focused']}
+          isVisible={isFocusVisible}
         />
         <ExpressiveIcon
           size={24}

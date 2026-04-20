@@ -11,12 +11,8 @@
  */
 
 import type { ReactElement } from 'react';
-import { ExpressiveElevatedButton } from '../../src/components/ExpressiveElevatedButton';
-import { ExpressiveFilledButton } from '../../src/components/ExpressiveFilledButton';
-import { ExpressiveOutlinedButton } from '../../src/components/ExpressiveOutlinedButton';
+import { ExpressiveButton } from '../../src/components/ExpressiveButton';
 import { ExpressiveRandomSymbol } from '../../src/components/ExpressiveRandomSymbol';
-import { ExpressiveTextButton } from '../../src/components/ExpressiveTextButton';
-import { ExpressiveTonalButton } from '../../src/components/ExpressiveTonalButton';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
 export function ButtonsRoute(): ReactElement {
@@ -25,19 +21,23 @@ export function ButtonsRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Elevated Button"
       >
-        <ExpressiveElevatedButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Elevated}
           label="Elevated Button"
           symbol={<ExpressiveRandomSymbol />}
         />
-        <ExpressiveElevatedButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Elevated}
           label="Elevated Button"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
         />
-        <ExpressiveElevatedButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Elevated}
           label="Elevated Button"
         />
-        <ExpressiveElevatedButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Elevated}
           label="Elevated Button"
           isDisabled
         />
@@ -45,19 +45,23 @@ export function ButtonsRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Tonal Button"
       >
-        <ExpressiveTonalButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Tonal}
           label="Tonal Button"
           symbol={<ExpressiveRandomSymbol />}
         />
-        <ExpressiveTonalButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Tonal}
           label="Tonal Button"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
         />
-        <ExpressiveTonalButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Tonal}
           label="Tonal Button"
         />
-        <ExpressiveTonalButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Tonal}
           label="Tonal Button"
           isDisabled
         />
@@ -65,19 +69,23 @@ export function ButtonsRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Filled Button"
       >
-        <ExpressiveFilledButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Filled}
           label="Filled Button"
           symbol={<ExpressiveRandomSymbol />}
         />
-        <ExpressiveFilledButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Filled}
           label="Filled Button"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
         />
-        <ExpressiveFilledButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Filled}
           label="Filled Button"
         />
-        <ExpressiveFilledButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Filled}
           label="Filled Button"
           isDisabled
         />
@@ -85,19 +93,23 @@ export function ButtonsRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Outlined Button"
       >
-        <ExpressiveOutlinedButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Outlined}
           label="Outlined Button"
           symbol={<ExpressiveRandomSymbol />}
         />
-        <ExpressiveOutlinedButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Outlined}
           label="Outlined Button"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
         />
-        <ExpressiveOutlinedButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Outlined}
           label="Outlined Button"
         />
-        <ExpressiveOutlinedButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Outlined}
           label="Outlined Button"
           isDisabled
         />
@@ -105,19 +117,23 @@ export function ButtonsRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Text Button"
       >
-        <ExpressiveTextButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Text}
           label="Text Button"
           symbol={<ExpressiveRandomSymbol />}
         />
-        <ExpressiveTextButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Text}
           label="Text Button"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
         />
-        <ExpressiveTextButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Text}
           label="Text Button"
         />
-        <ExpressiveTextButton
+        <ExpressiveButton
+          variant={ExpressiveButton.variant.Text}
           label="Text Button"
           isDisabled
         />

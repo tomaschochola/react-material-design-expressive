@@ -14,10 +14,10 @@ import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
 import { mergeStyles } from '../css/helpers';
 import { expressivePresets } from '../css/presets';
-import { expressiveTokens } from '../css/tokens';
 
-export interface ExpressiveHoveredStateLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
-  readonly isHovered?: boolean;
+export interface ExpressiveStateLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
+  readonly isVisible?: boolean;
+  readonly opacity?: CSSProperties['opacity'];
   readonly style?: CSSProperties;
 }
 
@@ -41,20 +41,20 @@ const styles = {
       transitionProperty: 'opacity',
       userSelect: 'none',
     },
-    hovered: {
-      opacity: expressiveTokens['md.sys.opacity.hovered'],
+    visible: {
       transitionDuration: '0ms',
     },
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveHoveredStateLayer({ isHovered = false, style, ...props }: Readonly<ExpressiveHoveredStateLayerProps>): ReactElement {
+export function ExpressiveStateLayer({ isVisible = false, opacity, style, ...props }: Readonly<ExpressiveStateLayerProps>): ReactElement {
   return (
     <div
       style={mergeStyles(
         expressivePresets.transition.effectsSlow,
         styles.root.base,
-        isHovered ? styles.root.hovered : null,
+        isVisible ? styles.root.visible : null,
+        isVisible ? { opacity } : null,
         style,
       )}
       {...props}

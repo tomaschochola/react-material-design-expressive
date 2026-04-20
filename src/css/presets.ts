@@ -10,6 +10,7 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
+import { ExpressiveTypographyEnum } from '../enums';
 import { expressiveTokens } from './tokens';
 
 export const expressivePresets = {
@@ -77,180 +78,150 @@ export const expressivePresets = {
     },
   },
   font: {
-    displayLarge: {
+    [ExpressiveTypographyEnum.DisplayLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.display-large.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.display-large.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.display-large.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.display-large.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.display-large.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.display-large.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.display-large.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.display-large.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.display-large.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.display-large.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.display-large.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.display-large.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.display-large.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.display-large.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.display-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.display-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.display-large.text-transform'],
     },
-    displayMedium: {
+    [ExpressiveTypographyEnum.DisplayMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.display-medium.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.display-medium.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.display-medium.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.display-medium.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.display-medium.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.display-medium.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.display-medium.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.display-medium.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.display-medium.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.display-medium.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.display-medium.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.display-medium.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.display-medium.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.display-medium.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.display-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.display-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.display-medium.text-transform'],
     },
-    displaySmall: {
+    [ExpressiveTypographyEnum.DisplaySmall]: {
       fontFamily: expressiveTokens['md.sys.typography.display-small.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.display-small.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.display-small.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.display-small.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.display-small.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.display-small.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.display-small.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.display-small.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.display-small.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.display-small.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.display-small.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.display-small.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.display-small.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.display-small.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.display-small.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.display-small.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.display-small.text-transform'],
     },
-    headlineLarge: {
+    [ExpressiveTypographyEnum.HeadlineLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.headline-large.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.headline-large.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.headline-large.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.headline-large.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.headline-large.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.headline-large.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.headline-large.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.headline-large.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.headline-large.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.headline-large.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.headline-large.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.headline-large.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.headline-large.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.headline-large.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.headline-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.headline-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.headline-large.text-transform'],
     },
-    headlineMedium: {
+    [ExpressiveTypographyEnum.HeadlineMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.headline-medium.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.headline-medium.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.headline-medium.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.headline-medium.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.headline-medium.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.headline-medium.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.headline-medium.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.headline-medium.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.headline-medium.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.headline-medium.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.headline-medium.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.headline-medium.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.headline-medium.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.headline-medium.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.headline-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.headline-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.headline-medium.text-transform'],
     },
-    headlineSmall: {
+    [ExpressiveTypographyEnum.HeadlineSmall]: {
       fontFamily: expressiveTokens['md.sys.typography.headline-small.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.headline-small.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.headline-small.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.headline-small.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.headline-small.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.headline-small.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.headline-small.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.headline-small.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.headline-small.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.headline-small.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.headline-small.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.headline-small.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.headline-small.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.headline-small.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.headline-small.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.headline-small.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.headline-small.text-transform'],
     },
-    titleLarge: {
+    [ExpressiveTypographyEnum.TitleLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.title-large.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.title-large.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.title-large.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.title-large.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.title-large.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.title-large.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.title-large.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.title-large.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.title-large.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.title-large.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.title-large.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.title-large.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.title-large.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.title-large.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.title-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.title-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.title-large.text-transform'],
     },
-    titleMedium: {
+    [ExpressiveTypographyEnum.TitleMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.title-medium.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.title-medium.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.title-medium.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.title-medium.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.title-medium.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.title-medium.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.title-medium.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.title-medium.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.title-medium.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.title-medium.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.title-medium.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.title-medium.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.title-medium.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.title-medium.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.title-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.title-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.title-medium.text-transform'],
     },
-    titleSmall: {
+    [ExpressiveTypographyEnum.TitleSmall]: {
       fontFamily: expressiveTokens['md.sys.typography.title-small.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.title-small.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.title-small.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.title-small.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.title-small.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.title-small.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.title-small.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.title-small.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.title-small.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.title-small.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.title-small.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.title-small.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.title-small.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.title-small.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.title-small.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.title-small.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.title-small.text-transform'],
     },
-    bodyLarge: {
+    [ExpressiveTypographyEnum.BodyLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.body-large.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.body-large.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.body-large.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.body-large.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.body-large.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.body-large.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.body-large.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.body-large.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.body-large.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.body-large.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.body-large.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.body-large.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.body-large.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.body-large.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.body-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.body-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.body-large.text-transform'],
     },
-    bodyMedium: {
+    [ExpressiveTypographyEnum.BodyMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.body-medium.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.body-medium.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.body-medium.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.body-medium.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.body-medium.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.body-medium.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.body-medium.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.body-medium.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.body-medium.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.body-medium.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.body-medium.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.body-medium.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.body-medium.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.body-medium.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.body-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.body-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.body-medium.text-transform'],
     },
-    bodySmall: {
+    [ExpressiveTypographyEnum.BodySmall]: {
       fontFamily: expressiveTokens['md.sys.typography.body-small.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.body-small.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.body-small.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.body-small.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.body-small.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.body-small.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.body-small.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.body-small.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.body-small.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.body-small.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.body-small.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.body-small.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.body-small.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.body-small.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.body-small.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.body-small.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.body-small.text-transform'],
     },
-    labelLarge: {
+    [ExpressiveTypographyEnum.LabelLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.label-large.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.label-large.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.label-large.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.label-large.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.label-large.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.label-large.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.label-large.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.label-large.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.label-large.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.label-large.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.label-large.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.label-large.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.label-large.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.label-large.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.label-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.label-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.label-large.text-transform'],
     },
-    labelMedium: {
+    [ExpressiveTypographyEnum.LabelMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.label-medium.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.label-medium.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.label-medium.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.label-medium.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.label-medium.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.label-medium.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.label-medium.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.label-medium.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.label-medium.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.label-medium.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.label-medium.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.label-medium.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.label-medium.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.label-medium.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.label-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.label-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.label-medium.text-transform'],
     },
-    labelSmall: {
+    [ExpressiveTypographyEnum.LabelSmall]: {
       fontFamily: expressiveTokens['md.sys.typography.label-small.font-family'],
-      fontOpticalSizing: 'auto',
       fontSize: expressiveTokens['md.sys.typography.label-small.font-size'],
       fontStyle: expressiveTokens['md.sys.typography.label-small.font-style'],
-      fontVariationSettings: `'wght' ${expressiveTokens['md.sys.typography.label-small.wght']}, 'GRAD' ${expressiveTokens['md.sys.typography.label-small.grad']}, 'wdth' ${expressiveTokens['md.sys.typography.label-small.wdth']}, 'ROND' ${expressiveTokens['md.sys.typography.label-small.rond']}, 'opsz' ${expressiveTokens['md.sys.typography.label-small.opsz']}, 'CRSV' ${expressiveTokens['md.sys.typography.label-small.crsv']}, 'slnt' ${expressiveTokens['md.sys.typography.label-small.slnt']}, 'FILL' ${expressiveTokens['md.sys.typography.label-small.fill']}, 'HEXP' ${expressiveTokens['md.sys.typography.label-small.hexp']}`,
       fontWeight: expressiveTokens['md.sys.typography.label-small.font-weight'],
       letterSpacing: expressiveTokens['md.sys.typography.label-small.letter-spacing'],
       lineHeight: expressiveTokens['md.sys.typography.label-small.line-height'],

@@ -10,29 +10,29 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-import type { CSSProperties, ReactElement } from 'react';
+import type { CSSProperties, HTMLAttributes, ReactElement, ReactNode } from 'react';
 import { mergeStyles } from '../css/helpers';
 import { expressivePresets } from '../css/presets';
-import { ExpressiveHeading, type ExpressiveHeadingProps } from './ExpressiveHeading';
+import { ExpressiveTypographyEnum } from '../enums';
 
-export interface ExpressiveHeadingBodySmallProps extends Omit<ExpressiveHeadingProps, 'style'> {
+export interface ExpressiveSpanProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style'> {
+  readonly font?: ExpressiveTypographyEnum;
+  readonly children?: ReactNode;
   readonly style?: CSSProperties;
 }
 
-export function ExpressiveHeadingBodySmall({
-  children,
-  style,
-  ...props
-}: Readonly<ExpressiveHeadingBodySmallProps>): ReactElement {
+export function ExpressiveSpan({ font, children, style, ...props }: Readonly<ExpressiveSpanProps>): ReactElement {
   return (
-    <ExpressiveHeading
+    <span
       style={mergeStyles(
-        expressivePresets.font.bodySmall,
+        font !== undefined ? expressivePresets.font[font] : null,
         style,
       )}
       {...props}
     >
       {children}
-    </ExpressiveHeading>
+    </span>
   );
 }
+
+ExpressiveSpan.font = ExpressiveTypographyEnum;

@@ -41,7 +41,7 @@ export function ExpressiveIcon({ size = 24, symbol, style, ...props }: Readonly<
       style={mergeStyles(
         expressivePresets.base.oneliner,
         styles.root.base,
-        size !== undefined ? { fontSize: toRem(size) } : null,
+        { fontSize: toRem(size) },
         style,
       )}
       {...props}

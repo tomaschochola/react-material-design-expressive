@@ -12,7 +12,7 @@
 
 import type { StandardLonghandProperties } from 'csstype';
 import type { ReactElement } from 'react';
-import { ExpressiveFontLabelLarge } from '../../src/components/ExpressiveFontLabelLarge';
+import { ExpressiveSpan } from '../../src/components/ExpressiveSpan';
 import { mergeStyles } from '../../src/css/helpers';
 import { expressiveTokens } from '../../src/css/tokens';
 import { StorybookDisplay } from '../components/StorybookDisplay';
@@ -59,13 +59,14 @@ function RadiusBox({ label, radius, corner }: Readonly<RadiusBoxProps>): ReactEl
         },
       )}
     >
-      <ExpressiveFontLabelLarge
+      <ExpressiveSpan
+        font={ExpressiveSpan.font.LabelLarge}
         style={mergeStyles(
           styles.label.base,
         )}
       >
         {label}
-      </ExpressiveFontLabelLarge>
+      </ExpressiveSpan>
     </div>
   );
 }

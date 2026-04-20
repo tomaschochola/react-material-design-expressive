@@ -13,6 +13,7 @@
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
 import { mergeStyles } from '../css/helpers';
+import { expressivePresets } from '../css/presets';
 import { expressiveTokens } from '../css/tokens';
 
 export interface ExpressiveBorderLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
@@ -51,10 +52,6 @@ const styles = {
       top: '0px',
       userSelect: 'none',
     },
-    disabled: {
-      color: expressiveTokens['md.sys.color.on-surface-variant'],
-      opacity: expressiveTokens['md.sys.opacity.disabled-outline'],
-    },
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
@@ -63,7 +60,7 @@ export function ExpressiveBorderLayer({ isDisabled = false, style, ...props }: R
     <div
       style={mergeStyles(
         styles.root.base,
-        isDisabled ? styles.root.disabled : null,
+        isDisabled ? expressivePresets.disabled.outline : null,
         style,
       )}
       {...props}

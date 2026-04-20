@@ -14,11 +14,11 @@ import type { StandardLonghandProperties } from 'csstype';
 import type { ReactElement } from 'react';
 import { Outlet } from 'react-router';
 import { ExpressiveContainerPadding } from '../../src/components/ExpressiveContainerPadding';
+import { ExpressiveLink } from '../../src/components/ExpressiveLink';
 import { ExpressivePaneGrid } from '../../src/components/ExpressivePaneGrid';
 import { ExpressiveSurface } from '../../src/components/ExpressiveSurface';
 import { ExpressiveSurfacePadding } from '../../src/components/ExpressiveSurfacePadding';
 import { ExpressiveSurfaceRadius } from '../../src/components/ExpressiveSurfaceRadius';
-import { ExpressiveTextLink } from '../../src/components/ExpressiveTextLink';
 
 function Nav(): ReactElement {
   return (
@@ -27,73 +27,85 @@ function Nav(): ReactElement {
         <ExpressiveSurfacePadding>
           <nav>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/fonts"
                 label="Fonts"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/headings"
                 label="Headings"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/divider"
                 label="Dividers"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/symbols"
                 label="Symbols"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/interactions"
                 label="Interactions"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/buttons"
                 label="Buttons"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/links"
                 label="Links"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/app-bars"
                 label="App Bars"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/navigation-rail"
                 label="Navigation Rail"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/icon-buttons"
                 label="Icon Buttons"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/colors"
                 label="Colors"
               />
             </div>
             <div>
-              <ExpressiveTextLink
+              <ExpressiveLink
+                variant={ExpressiveLink.variant.Text}
                 href="/radius"
                 label="Radius"
               />
@@ -120,7 +132,7 @@ export function SplitRoute(): ReactElement {
       right
       top
       bottom
-      padding={24}
+      padding={16}
     >
       <ExpressivePaneGrid
         columns="max-content 1fr"

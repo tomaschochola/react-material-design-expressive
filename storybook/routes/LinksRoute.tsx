@@ -11,12 +11,8 @@
  */
 
 import type { ReactElement } from 'react';
-import { ExpressiveElevatedLink } from '../../src/components/ExpressiveElevatedLink';
-import { ExpressiveFilledLink } from '../../src/components/ExpressiveFilledLink';
-import { ExpressiveOutlinedLink } from '../../src/components/ExpressiveOutlinedLink';
+import { ExpressiveLink } from '../../src/components/ExpressiveLink';
 import { ExpressiveRandomSymbol } from '../../src/components/ExpressiveRandomSymbol';
-import { ExpressiveTextLink } from '../../src/components/ExpressiveTextLink';
-import { ExpressiveTonalLink } from '../../src/components/ExpressiveTonalLink';
 import { StorybookDisplay } from '../components/StorybookDisplay';
 
 export function LinksRoute(): ReactElement {
@@ -25,22 +21,26 @@ export function LinksRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Elevated Link"
       >
-        <ExpressiveElevatedLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Elevated}
           label="Elevated Link"
           symbol={<ExpressiveRandomSymbol />}
           href="#fake"
         />
-        <ExpressiveElevatedLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Elevated}
           label="Elevated Link"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
           href="#fake"
         />
-        <ExpressiveElevatedLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Elevated}
           label="Elevated Link"
           href="#fake"
         />
-        <ExpressiveElevatedLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Elevated}
           label="Elevated Link"
           isDisabled
           href="#fake"
@@ -49,22 +49,26 @@ export function LinksRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Tonal Link"
       >
-        <ExpressiveTonalLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Tonal}
           label="Tonal Link"
           symbol={<ExpressiveRandomSymbol />}
           href="#fake"
         />
-        <ExpressiveTonalLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Tonal}
           label="Tonal Link"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
           href="#fake"
         />
-        <ExpressiveTonalLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Tonal}
           label="Tonal Link"
           href="#fake"
         />
-        <ExpressiveTonalLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Tonal}
           label="Tonal Link"
           isDisabled
           href="#fake"
@@ -73,22 +77,26 @@ export function LinksRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Filled Link"
       >
-        <ExpressiveFilledLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Filled}
           label="Filled Link"
           symbol={<ExpressiveRandomSymbol />}
           href="#fake"
         />
-        <ExpressiveFilledLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Filled}
           label="Filled Link"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
           href="#fake"
         />
-        <ExpressiveFilledLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Filled}
           label="Filled Link"
           href="#fake"
         />
-        <ExpressiveFilledLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Filled}
           label="Filled Link"
           isDisabled
           href="#fake"
@@ -97,22 +105,26 @@ export function LinksRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Outlined Link"
       >
-        <ExpressiveOutlinedLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Outlined}
           label="Outlined Link"
           symbol={<ExpressiveRandomSymbol />}
           href="#fake"
         />
-        <ExpressiveOutlinedLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Outlined}
           label="Outlined Link"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
           href="#fake"
         />
-        <ExpressiveOutlinedLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Outlined}
           label="Outlined Link"
           href="#fake"
         />
-        <ExpressiveOutlinedLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Outlined}
           label="Outlined Link"
           isDisabled
           href="#fake"
@@ -121,22 +133,26 @@ export function LinksRoute(): ReactElement {
       <StorybookDisplay.Items
         label="Text Link"
       >
-        <ExpressiveTextLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Text}
           label="Text Link"
           symbol={<ExpressiveRandomSymbol />}
           href="#fake"
         />
-        <ExpressiveTextLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Text}
           label="Text Link"
           symbol={<ExpressiveRandomSymbol />}
           isDisabled
           href="#fake"
         />
-        <ExpressiveTextLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Text}
           label="Text Link"
           href="#fake"
         />
-        <ExpressiveTextLink
+        <ExpressiveLink
+          variant={ExpressiveLink.variant.Text}
           label="Text Link"
           isDisabled
           href="#fake"
