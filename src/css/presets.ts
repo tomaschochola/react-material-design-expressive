@@ -28,6 +28,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.display-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.display-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.display-large.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.DisplayMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.display-medium.font-family'],
@@ -38,6 +40,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.display-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.display-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.display-medium.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.DisplaySmall]: {
       fontFamily: expressiveTokens['md.sys.typography.display-small.font-family'],
@@ -48,6 +52,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.display-small.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.display-small.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.display-small.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.HeadlineLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.headline-large.font-family'],
@@ -58,6 +64,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.headline-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.headline-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.headline-large.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.HeadlineMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.headline-medium.font-family'],
@@ -68,6 +76,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.headline-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.headline-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.headline-medium.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.HeadlineSmall]: {
       fontFamily: expressiveTokens['md.sys.typography.headline-small.font-family'],
@@ -78,6 +88,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.headline-small.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.headline-small.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.headline-small.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.TitleLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.title-large.font-family'],
@@ -88,6 +100,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.title-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.title-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.title-large.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.TitleMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.title-medium.font-family'],
@@ -98,6 +112,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.title-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.title-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.title-medium.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.TitleSmall]: {
       fontFamily: expressiveTokens['md.sys.typography.title-small.font-family'],
@@ -108,6 +124,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.title-small.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.title-small.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.title-small.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.BodyLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.body-large.font-family'],
@@ -118,6 +136,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.body-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.body-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.body-large.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.BodyMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.body-medium.font-family'],
@@ -128,6 +148,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.body-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.body-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.body-medium.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.BodySmall]: {
       fontFamily: expressiveTokens['md.sys.typography.body-small.font-family'],
@@ -138,6 +160,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.body-small.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.body-small.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.body-small.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.LabelLarge]: {
       fontFamily: expressiveTokens['md.sys.typography.label-large.font-family'],
@@ -148,6 +172,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.label-large.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.label-large.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.label-large.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.LabelMedium]: {
       fontFamily: expressiveTokens['md.sys.typography.label-medium.font-family'],
@@ -158,6 +184,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.label-medium.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.label-medium.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.label-medium.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
     [ExpressiveTypographyEnum.LabelSmall]: {
       fontFamily: expressiveTokens['md.sys.typography.label-small.font-family'],
@@ -168,6 +196,8 @@ export const expressivePresets = {
       lineHeight: expressiveTokens['md.sys.typography.label-small.line-height'],
       textDecoration: expressiveTokens['md.sys.typography.label-small.text-decoration'],
       textTransform: expressiveTokens['md.sys.typography.label-small.text-transform'],
+      fontStretch: '100%',
+      fontOpticalSizing: 'auto',
     },
   },
   motion: {

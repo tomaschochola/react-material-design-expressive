@@ -12,4 +12,8 @@
 
 :root {
   min-height: 100vh;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  scrollbar-color: var(--md-sys-color-outline) transparent;
+  font-family: 'Google Sans Flex', 'Roboto', 'Noto Sans', system-ui, sans-serif;
 }
