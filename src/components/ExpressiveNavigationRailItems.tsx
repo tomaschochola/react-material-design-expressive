@@ -12,7 +12,7 @@
 
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
-import { mergeStyles } from '../css/helpers';
+import { mergeStyles } from '../helpers';
 
 export interface ExpressiveNavigationRailItemsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
   readonly style?: CSSProperties;

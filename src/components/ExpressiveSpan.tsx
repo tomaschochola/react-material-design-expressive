@@ -11,9 +11,9 @@
  */
 
 import type { CSSProperties, HTMLAttributes, ReactElement, ReactNode } from 'react';
-import { mergeStyles } from '../css/helpers';
 import { expressivePresets } from '../css/presets';
 import { ExpressiveTypographyEnum } from '../enums';
+import { mergeStyles } from '../helpers';
 
 export interface ExpressiveSpanProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'style'> {
   readonly font?: ExpressiveTypographyEnum;

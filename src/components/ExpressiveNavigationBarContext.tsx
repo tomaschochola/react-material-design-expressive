@@ -10,5 +10,10 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-@use '../src/schemes/cmf_light_official';
-@use '../src/css/styles';
+import { createContext, useContext } from 'react';
+
+export const ExpressiveNavigationBarContext = createContext<boolean>(false);
+
+export function useExpressiveNavigationBarContext(): boolean {
+  return useContext(ExpressiveNavigationBarContext);
+}

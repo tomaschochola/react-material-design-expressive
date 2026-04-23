@@ -12,9 +12,9 @@
 
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
-import { mergeStyles } from '../css/helpers';
 import { expressivePresets } from '../css/presets';
 import { expressiveTokens } from '../css/tokens';
+import { mergeStyles } from '../helpers';
 
 export interface ExpressiveNavigationRailProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
   readonly style?: CSSProperties;

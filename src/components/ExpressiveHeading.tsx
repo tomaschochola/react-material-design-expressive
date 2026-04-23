@@ -11,15 +11,15 @@
  */
 
 import {
-  useContext,
-  type CSSProperties,
-  type HTMLAttributes,
-  type ReactElement,
-  type ReactNode,
+    useContext,
+    type CSSProperties,
+    type HTMLAttributes,
+    type ReactElement,
+    type ReactNode,
 } from 'react';
-import { mergeStyles } from '../css/helpers';
 import { expressivePresets } from '../css/presets';
 import { ExpressiveTypographyEnum } from '../enums';
+import { mergeStyles } from '../helpers';
 import { ExpressiveHeadingContextValue } from './ExpressiveHeadingContext';
 
 type ExpressiveHeadingLevelEnum = 1 | 2 | 3 | 4 | 5 | 6;

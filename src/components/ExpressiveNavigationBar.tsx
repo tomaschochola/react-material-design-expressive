@@ -11,45 +11,79 @@
  */
 
 import type { StandardLonghandProperties } from 'csstype';
-import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
-import { mergeStyles } from '../css/helpers';
+import { Children, type CSSProperties, type HTMLAttributes, type ReactElement, type ReactNode } from 'react';
 import { expressivePresets } from '../css/presets';
 import { expressiveTokens } from '../css/tokens';
+import { mergeStyles } from '../helpers';
+import { ExpressiveNavigationBarContext } from './ExpressiveNavigationBarContext';
 
 export interface ExpressiveNavigationBarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+  readonly fixed?: boolean;
+  readonly horizontal?: boolean;
   readonly style?: CSSProperties;
 }
+
+const horizontalNavbarPaddingByCount: Record<number, string> = {
+  1: '160px',
+  2: '160px',
+  3: '160px',
+  4: '120px',
+  5: '80px',
+  6: '40px',
+};
 
 const styles = {
   root: {
     base: {
       backgroundColor: expressiveTokens['md.sys.color.surface-container'],
       color: expressiveTokens['md.sys.color.on-surface-variant'],
-      columnGap: '8px',
       display: 'flex',
-      height: '80px',
+      minHeight: '64px',
       overflowX: 'hidden',
       overflowY: 'hidden',
-      rowGap: '8px',
       transitionProperty: 'transform',
+    },
+    fixed: {
       position: 'fixed',
-      left: 0,
-      right: 0,
-      bottom: 0,
+      left: '0px',
+      right: '0px',
+      bottom: '0px',
     },
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveNavigationBar({ style, ...props }: Readonly<ExpressiveNavigationBarProps>): ReactElement {
+export function ExpressiveNavigationBar({
+  fixed = false,
+  horizontal = false,
+  style,
+  children,
+  ...props
+}: Readonly<ExpressiveNavigationBarProps & { readonly children?: ReactNode }>): ReactElement {
+  const itemCount = Children.count(children);
+  const horizontalPadding = horizontalNavbarPaddingByCount[itemCount] ?? '40px';
+
   return (
-    <div
-      style={mergeStyles(
-        expressivePresets.motion.spatialDefault,
-        expressivePresets.typography.labelMedium,
-        styles.root.base,
-        style,
-      )}
-      {...props}
-    />
+    <ExpressiveNavigationBarContext.Provider
+      value={horizontal}
+    >
+      <div
+        style={mergeStyles(
+          expressivePresets.motion.spatialDefault,
+          expressivePresets.typography.labelMedium,
+          styles.root.base,
+          horizontal
+            ? {
+                paddingLeft: horizontalPadding,
+                paddingRight: horizontalPadding,
+              }
+            : null,
+          fixed ? styles.root.fixed : null,
+          style,
+        )}
+        {...props}
+      >
+        {children}
+      </div>
+    </ExpressiveNavigationBarContext.Provider>
   );
 }

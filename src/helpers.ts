@@ -39,3 +39,19 @@ export function toRem(size: number | string): string {
 
   throw new Error(`toRem: unsupported string value [${size}]`);
 }
+
+export function toPx(size: number | string): string {
+  if (typeof size === 'number') {
+    return `${size.toFixed()}px`;
+  }
+
+  if (size.endsWith('rem')) {
+    return `calc(${size.slice(0, -3)} * 16)`;
+  }
+
+  if (size.startsWith('calc(') && size.endsWith(')')) {
+    return size;
+  }
+
+  throw new Error(`toPx: unsupported string value [${size}]`);
+}

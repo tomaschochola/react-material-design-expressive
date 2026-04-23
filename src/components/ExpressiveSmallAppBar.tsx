@@ -12,9 +12,9 @@
 
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement, ReactNode } from 'react';
-import { mergeStyles } from '../css/helpers';
 import { expressivePresets } from '../css/presets';
 import { expressiveTokens } from '../css/tokens';
+import { mergeStyles } from '../helpers';
 
 export interface ExpressiveSmallAppBarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
   readonly headline?: ReactNode;

@@ -1,8 +1,10 @@
 {
-  "background_color": "white",
+  "background_color": "#fdf7ff",
   "description": "tomaschochola/react-material-design-expressive",
   "display": "standalone",
-  "display_override": ["window-controls-overlay"],
+  "display_override": [
+    "window-controls-overlay"
+  ],
   "icons": [
     {
       "purpose": "any",
@@ -76,5 +78,5 @@
   "scope": "/",
   "short_name": "tomaschochola/react-material-design-expressive",
   "start_url": "/",
-  "theme_color": "white"
+  "theme_color": "#5b4497"
 }

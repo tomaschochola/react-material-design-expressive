@@ -13,8 +13,8 @@
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
 import { useLayoutEffect, useRef } from 'react';
-import { mergeStyles } from '../css/helpers';
 import { expressiveTokens } from '../css/tokens';
+import { mergeStyles } from '../helpers';
 
 export interface ExpressiveFocusedOutlineLayerProps
   extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
@@ -85,9 +85,10 @@ export function ExpressiveFocusedOutlineLayer({
     }
 
     const computedStyle = getComputedStyle(element);
-    const durationToken = computedStyle.getPropertyValue('--md-sys-duration-spatial-default').trim();
-    const timingFunction = computedStyle.getPropertyValue('--md-sys-timing-function-effects-default').trim();
-    const duration = Number.parseFloat(durationToken) * (durationToken.endsWith('ms') ? 1 : 1000);
+    const durationToken = computedStyle.getPropertyValue('--md-sys-motion-duration-long2').trim();
+    const timingFunction = computedStyle.getPropertyValue('--md-sys-motion-easing-effects').trim();
+    const rawDuration = Number.parseFloat(durationToken) * (durationToken.endsWith('ms') ? 1 : 1000);
+    const duration = Number.isFinite(rawDuration) && rawDuration >= 0 ? rawDuration : 500;
 
     const animation = element.animate(
       isInset

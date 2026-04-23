@@ -13,8 +13,8 @@
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, ReactElement } from 'react';
 import { mergeProps, useSeparator, type SeparatorProps } from 'react-aria';
-import { mergeStyles } from '../css/helpers';
 import { expressiveTokens } from '../css/tokens';
+import { mergeStyles } from '../helpers';
 
 export interface ExpressiveHorizontalDividerProps extends Omit<SeparatorProps, 'style' | 'children'> {
   readonly style?: CSSProperties;

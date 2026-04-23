@@ -14,8 +14,8 @@ import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, ReactElement } from 'react';
 import { useId } from 'react';
 import { useSeparator, type SeparatorProps } from 'react-aria';
-import { mergeStyles } from '../css/helpers';
 import { expressiveTokens } from '../css/tokens';
+import { mergeStyles } from '../helpers';
 
 export interface ExpressiveWiggleHorizontalDividerProps extends Omit<SeparatorProps, 'style' | 'children'> {
   readonly style?: CSSProperties;

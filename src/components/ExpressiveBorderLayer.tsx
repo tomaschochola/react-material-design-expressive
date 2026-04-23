@@ -12,9 +12,9 @@
 
 import type { StandardLonghandProperties } from 'csstype';
 import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
-import { mergeStyles } from '../css/helpers';
 import { internalPresets } from '../css/internal';
 import { expressiveTokens } from '../css/tokens';
+import { mergeStyles } from '../helpers';
 
 export interface ExpressiveBorderLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
   readonly isDisabled?: boolean;
