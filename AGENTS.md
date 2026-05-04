@@ -54,9 +54,9 @@ Editor settings enforced:
 | Tool       | Config                                                                                       | Notes                                                                                            |
 | ---------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | TypeScript | `tsconfig.json` → extends `@tomaschochola/tooling-typescript/src/browser_webpack_babel.json` | Strict, browser target                                                                           |
-| Babel      | `babel.config.js` → `.env()`, `.typescript()`, `.react()`, `.reactCompiler()`                | React Compiler enabled                                                                           |
+| Babel      | `babel.config.js` → `.presetEnv()`, `.presetTypeScript()`, `.presetReact()`, `.pluginReactCompiler()`                | React Compiler enabled                                                                           |
 | Webpack    | `webpack.config.js` → `@tomaschochola/tooling-webpack`                                       | Entry: `storybook/index.ts` + `storybook/index.scss`                                             |
-| PostCSS    | `postcss.config.js` → `@tomaschochola/tooling-postcss`                                       | `.env()` preset                                                                                  |
+| PostCSS    | `postcss.config.js` → `@tomaschochola/tooling-postcss`                                       | `.presetEnv()` preset                                                                                  |
 | ESLint     | `eslint.config.js`                                                                           | Flat config, includes: recommended, typescript, stylistic, react, jsx-a11y, react-hooks, sonarjs |
 | Prettier   | `prettier.config.js`                                                                         | With XML plugin                                                                                  |
 | Stylelint  | `stylelint.config.js`                                                                        | standard + prettier                                                                              |
