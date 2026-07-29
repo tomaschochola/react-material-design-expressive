@@ -11,11 +11,11 @@
  */
 
 import {
-    useContext,
-    type CSSProperties,
-    type HTMLAttributes,
-    type ReactElement,
-    type ReactNode,
+  useContext,
+  type CSSProperties,
+  type HTMLAttributes,
+  type ReactElement,
+  type ReactNode,
 } from 'react';
 import { expressivePresets } from '../css/presets';
 import { ExpressiveTypographyEnum } from '../enums';

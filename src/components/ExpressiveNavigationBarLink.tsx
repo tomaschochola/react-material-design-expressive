@@ -24,9 +24,9 @@ import { useExpressiveNavigationBarContext } from './ExpressiveNavigationBarCont
 import { ExpressiveStateLayer } from './ExpressiveStateLayer';
 
 export interface ExpressiveNavigationBarLinkProps extends Omit<AriaLinkOptions, 'children' | 'style'> {
-  readonly 'symbol': ReactNode;
-  readonly 'label': ReactNode;
-  readonly 'style'?: CSSProperties;
+  readonly symbol: ReactNode;
+  readonly label: ReactNode;
+  readonly style?: CSSProperties;
 }
 
 const styles = {
