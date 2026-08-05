@@ -1,6 +1,6 @@
 {
   "background_color": "#fdf7ff",
-  "description": "tomaschochola/react-material-design-expressive",
+  "description": "React component library implementing Material Design 3 Expressive patterns and themes.",
   "display": "standalone",
   "display_override": ["window-controls-overlay"],
   "icons": [
@@ -41,16 +41,16 @@
       "type": "image/png"
     }
   ],
-  "id": "/v1",
+  "id": "/",
   "launch_handler": {
     "client_mode": "focus-existing"
   },
-  "name": "tomaschochola/react-material-design-expressive",
+  "name": "Material Design 3 Expressive",
   "orientation": "any",
   "prefer_related_applications": false,
   "related_applications": [],
   "scope": "/",
-  "short_name": "tomaschochola/react-material-design-expressive",
+  "short_name": "Expressive",
   "start_url": "/",
   "theme_color": "#5b4497"
 }

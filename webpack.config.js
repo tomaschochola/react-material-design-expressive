@@ -13,7 +13,6 @@
 import { resolve } from 'node:path';
 import { WebpackConfigBuilder } from '@tomaschochola/tooling-webpack';
 
-// eslint-disable-next-line no-restricted-exports
 export default function (env = {}, argv = {}) {
   let tooling = new WebpackConfigBuilder({
     env,
@@ -23,14 +22,15 @@ export default function (env = {}, argv = {}) {
   const appEnv = tooling.appEnv;
   const appName = tooling.appName;
   const appVersion = tooling.appVersion;
-  const webpackMode = tooling.webpackMode;
+
+  const isProductionApp = tooling.isProductionMode && appEnv === 'production';
 
   tooling = tooling
     .setOutputPath(resolve('dist'))
-    .setDevServerPort(61401)
     .setEntries({
       index: ['./storybook/index.ts', './storybook/index.scss'],
     })
+    .setDevServerPort(61401)
     .addBabelLoader()
     .addStyleLoaders()
     .addHtmlLoader()
@@ -39,13 +39,14 @@ export default function (env = {}, argv = {}) {
       'process.env.APP_ENV': JSON.stringify(appEnv),
       'process.env.APP_NAME': JSON.stringify(appName),
       'process.env.APP_VERSION': JSON.stringify(appVersion),
-      'process.env.WEBPACK_MODE': JSON.stringify(webpackMode),
     })
     .addHtmlPlugin({
       template: './storybook/index.html',
-      filename: 'index.html',
     })
     .addPublicCopyPlugin()
+    .addRobotsPlugin({
+      indexable: isProductionApp,
+    })
     .addCopyFrom('./generated')
     .addTerserMinimizer()
     .addCssMinimizer()
@@ -60,17 +61,9 @@ export default function (env = {}, argv = {}) {
       .addWorkboxServiceWorkerPlugin();
   }
 
-  const config = tooling.toConfig();
-
   if (appEnv === 'playwright') {
-    config.devServer = {
-      ...config.devServer,
-      client: false,
-      hot: false,
-      liveReload: false,
-      webSocketServer: false,
-    };
+    tooling = tooling.disableDevServerLiveUpdates();
   }
 
-  return config;
+  return tooling.toConfig();
 }
