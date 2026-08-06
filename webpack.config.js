@@ -28,9 +28,10 @@ export default function (env = {}, argv = {}) {
   tooling = tooling
     .setOutputPath(resolve('dist'))
     .setEntries({
-      index: ['./storybook/index.ts', './storybook/index.scss'],
+      index: ['./storybook/polyfills.ts', './storybook/index.ts', './storybook/index.scss'],
     })
-    .setDevServerPort(61401)
+    .setDevServerPort(62170)
+    .enableDevServerHistoryApiFallback()
     .addBabelLoader()
     .addStyleLoaders()
     .addHtmlLoader()
@@ -59,10 +60,6 @@ export default function (env = {}, argv = {}) {
       .addGzipCompressionPlugin()
       .addBrotliCompressionPlugin()
       .addWorkboxServiceWorkerPlugin();
-  }
-
-  if (appEnv === 'playwright') {
-    tooling = tooling.disableDevServerLiveUpdates();
   }
 
   return tooling.toConfig();

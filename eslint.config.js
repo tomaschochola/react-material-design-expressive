@@ -20,48 +20,13 @@ export default new ESLintConfigBuilder()
   .addBrowserGlobals()
   .addGitIgnoreFile(import.meta.url)
   .addJavaScriptRecommendedRules()
-  .addJavaScriptPolicyRules()
-  .addRawConfig({
-    files: filePatterns.allConfigScriptFiles,
-    rules: {
-      'no-restricted-exports': 'off',
-    },
-  })
   .addTypeScriptStrictTypeCheckedRules({ files: typescriptFiles })
-  .addTypeScriptStylisticTypeCheckedRules({ files: typescriptFiles })
   .enableTypeScriptProjectService({ files: typescriptFiles })
   .enableTypeScriptProject({
     files: filePatterns.playwrightTypeScriptFiles,
     project: './tsconfig.playwright.json',
   })
-  .addTypeScriptPolicyRules({ files: typescriptFiles })
-  .addRawConfig({
-    files: filePatterns.allTypeScriptDeclarationFiles,
-    rules: {
-      'no-restricted-exports': 'off',
-    },
-  })
   .disableTypeScriptTypeChecking({ files: javascriptFiles })
-  .addReactRecommendedRules()
-  .addReactJsxRuntimeRules()
-  .addReactVersionDetection()
-  .addReactPolicyRules()
-  .addReactPolicyRules({
-    files: ['./storybook/**/*'],
-    rules: {
-      'react/jsx-no-literals': 'off',
-    },
-  })
-  .addJsxAccessibilityStrictRules()
-  .addJsxAccessibilityPolicyRules()
   .addReactHooksRecommendedLatestRules()
-  .addStylisticCustomizedRules()
-  .addStylisticPolicyRules()
-  .disableStylisticLegacyRules()
   .addSonarJsRecommendedRules()
-  .addSonarJsPolicyOverrides({
-    rules: {
-      'sonarjs/cognitive-complexity': 'off',
-    },
-  })
   .toConfig();
