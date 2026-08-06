@@ -36,11 +36,7 @@ const styles = {
 export function ExpressiveNavigationRail({ style, ...props }: Readonly<ExpressiveNavigationRailProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        expressivePresets.motion.spatialDefault,
-        styles.root.base,
-        style,
-      )}
+      style={mergeStyles(expressivePresets.motion.spatialDefault, styles.root.base, style)}
       {...props}
     />
   );

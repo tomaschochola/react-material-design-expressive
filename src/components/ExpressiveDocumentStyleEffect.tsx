@@ -13,9 +13,7 @@
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';
 
-export function expressiveDocumentStyle(
-  style: Readonly<Record<string, string>>,
-): void {
+export function expressiveDocumentStyle(style: Readonly<Record<string, string>>): void {
   const documentStyle = document.documentElement.style;
 
   for (const [key, value] of Object.entries(style)) {
@@ -32,10 +30,7 @@ export interface ExpressiveDocumentStyleEffectProps {
   readonly children?: ReactElement;
 }
 
-export function ExpressiveDocumentStyleEffect({
-  style,
-  children,
-}: Readonly<ExpressiveDocumentStyleEffectProps>): ReactElement | undefined {
+export function ExpressiveDocumentStyleEffect({ style, children }: Readonly<ExpressiveDocumentStyleEffectProps>): ReactElement | undefined {
   useEffect(() => {
     expressiveDocumentStyle(style);
   }, [style]);

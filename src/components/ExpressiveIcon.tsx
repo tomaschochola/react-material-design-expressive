@@ -38,12 +38,7 @@ const styles = {
 export function ExpressiveIcon({ size = 24, symbol, style, ...props }: Readonly<ExpressiveIconProps>): ReactElement {
   return (
     <span
-      style={mergeStyles(
-        internalPresets.base.oneliner,
-        styles.root.base,
-        { fontSize: size },
-        style,
-      )}
+      style={mergeStyles(internalPresets.base.oneliner, styles.root.base, { fontSize: size }, style)}
       {...props}
     >
       {symbol}

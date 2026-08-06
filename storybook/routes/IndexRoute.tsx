@@ -29,9 +29,7 @@ export function IndexRoute(): ReactElement {
 
   return (
     <main>
-      <h1>
-        {trans.format('routes.index.h1')}
-      </h1>
+      <h1>{trans.format('routes.index.h1')}</h1>
       <ul>
         <li>
           <ExpressiveLink
@@ -46,9 +44,7 @@ export function IndexRoute(): ReactElement {
           />
         </li>
       </ul>
-      <ExpressiveNavigationBar
-        fixed
-      >
+      <ExpressiveNavigationBar fixed>
         <ExpressiveNavigationBarLink
           aria-current
           href="/"

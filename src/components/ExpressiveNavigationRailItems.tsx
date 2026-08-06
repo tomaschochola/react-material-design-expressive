@@ -33,10 +33,7 @@ const styles = {
 export function ExpressiveNavigationRailItems({ style, ...props }: Readonly<ExpressiveNavigationRailItemsProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        styles.root.base,
-        style,
-      )}
+      style={mergeStyles(styles.root.base, style)}
       {...props}
     />
   );

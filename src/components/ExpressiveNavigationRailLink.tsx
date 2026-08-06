@@ -92,11 +92,7 @@ export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }:
 
   return (
     <a
-      {...mergeProps(
-        linkProps,
-        hoverProps,
-        focusProps,
-      )}
+      {...mergeProps(linkProps, hoverProps, focusProps)}
       ref={ref}
       style={mergeStyles(
         internalPresets.base.anchor,
@@ -108,16 +104,8 @@ export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }:
         style,
       )}
     >
-      <div
-        style={mergeStyles(
-          styles.indicator.base,
-          isCurrent ? styles.indicator.active : null,
-          isDisabled ? internalPresets.disabled.content : null,
-        )}
-      >
-        <ExpressiveActivationLayer
-          isActive={isCurrent}
-        />
+      <div style={mergeStyles(styles.indicator.base, isCurrent ? styles.indicator.active : null, isDisabled ? internalPresets.disabled.content : null)}>
+        <ExpressiveActivationLayer isActive={isCurrent} />
         <ExpressiveStateLayer
           opacity={expressiveTokens['md.sys.opacity.state.hovered']}
           isVisible={isHovered}
@@ -134,18 +122,9 @@ export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }:
           size={24}
           symbol={symbol}
         />
-        <ExpressiveFocusedOutlineLayer
-          isFocusVisible={isFocusVisible}
-        />
+        <ExpressiveFocusedOutlineLayer isFocusVisible={isFocusVisible} />
       </div>
-      <div
-        style={mergeStyles(
-          internalPresets.base.ellipsis,
-          styles.label.base,
-        )}
-      >
-        {label}
-      </div>
+      <div style={mergeStyles(internalPresets.base.ellipsis, styles.label.base)}>{label}</div>
     </a>
   );
 }

@@ -52,20 +52,12 @@ const styles = {
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveNavigationBar({
-  fixed = false,
-  horizontal = false,
-  style,
-  children,
-  ...props
-}: Readonly<ExpressiveNavigationBarProps & { readonly children?: ReactNode }>): ReactElement {
+export function ExpressiveNavigationBar({ fixed = false, horizontal = false, style, children, ...props }: Readonly<ExpressiveNavigationBarProps & { readonly children?: ReactNode }>): ReactElement {
   const itemCount = Children.count(children);
   const horizontalPadding = horizontalNavbarPaddingByCount[itemCount] ?? '40px';
 
   return (
-    <ExpressiveNavigationBarContext.Provider
-      value={horizontal}
-    >
+    <ExpressiveNavigationBarContext.Provider value={horizontal}>
       <div
         style={mergeStyles(
           expressivePresets.motion.spatialDefault,

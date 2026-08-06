@@ -38,9 +38,7 @@ createRoot(el).render(
           useHref={useHref}
         >
           <LocaleProvider>
-            <RouterProvider
-              router={router}
-            />
+            <RouterProvider router={router} />
           </LocaleProvider>
         </AriaRouterProvider>
       </ExpressiveHeadingContext>

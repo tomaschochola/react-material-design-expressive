@@ -16,8 +16,7 @@ import { useLayoutEffect, useRef } from 'react';
 import { expressiveTokens } from '../css/tokens';
 import { mergeStyles } from '../helpers';
 
-export interface ExpressiveFocusedOutlineLayerProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
+export interface ExpressiveFocusedOutlineLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
   readonly isFocusVisible?: boolean;
   readonly isInset?: boolean;
   readonly style?: CSSProperties;
@@ -69,12 +68,15 @@ const styles = {
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveFocusedOutlineLayer({
-  isFocusVisible = false,
-  isInset = false,
-  style,
-  ...props
-}: Readonly<ExpressiveFocusedOutlineLayerProps>): ReactElement {
+function resolveFocusStyle(isFocusVisible: boolean, isInset: boolean): CSSProperties | null {
+  if (!isFocusVisible) {
+    return null;
+  }
+
+  return isInset ? styles.root.inset : styles.root.outline;
+}
+
+export function ExpressiveFocusedOutlineLayer({ isFocusVisible = false, isInset = false, style, ...props }: Readonly<ExpressiveFocusedOutlineLayerProps>): ReactElement {
   const ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -139,11 +141,7 @@ export function ExpressiveFocusedOutlineLayer({
   return (
     <div
       ref={ref}
-      style={mergeStyles(
-        styles.root.base,
-        isFocusVisible ? (isInset ? styles.root.inset : styles.root.outline) : null,
-        style,
-      )}
+      style={mergeStyles(styles.root.base, resolveFocusStyle(isFocusVisible, isInset), style)}
       {...props}
     />
   );

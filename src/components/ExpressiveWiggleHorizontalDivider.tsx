@@ -44,10 +44,7 @@ export function ExpressiveWiggleHorizontalDivider({ style, ...props }: Readonly<
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...separatorProps}
-      style={mergeStyles(
-        styles.root.base,
-        style,
-      )}
+      style={mergeStyles(styles.root.base, style)}
     >
       <pattern
         id={id}

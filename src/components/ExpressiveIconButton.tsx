@@ -98,11 +98,7 @@ export function ExpressiveIconButton({ variant = ExpressiveIconButtonVariantEnum
 
   return (
     <button
-      {...mergeProps(
-        buttonProps,
-        hoverProps,
-        focusProps,
-      )}
+      {...mergeProps(buttonProps, hoverProps, focusProps)}
       ref={ref}
       style={mergeStyles(
         internalPresets.base.button,
@@ -131,9 +127,7 @@ export function ExpressiveIconButton({ variant = ExpressiveIconButtonVariantEnum
         size="calc(24 / 16 * 1rem)"
         symbol={symbol}
       />
-      <ExpressiveFocusedOutlineLayer
-        isFocusVisible={isFocusVisible}
-      />
+      <ExpressiveFocusedOutlineLayer isFocusVisible={isFocusVisible} />
     </button>
   );
 }

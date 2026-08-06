@@ -74,67 +74,18 @@ const styles = {
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveSmallAppBar({
-  leading,
-  trailing,
-  headline,
-  subhead,
-  style,
-  ...props
-}: Readonly<ExpressiveSmallAppBarProps>): ReactElement {
+export function ExpressiveSmallAppBar({ leading, trailing, headline, subhead, style, ...props }: Readonly<ExpressiveSmallAppBarProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        expressivePresets.motion.spatialDefault,
-        styles.root.base,
-        style,
-      )}
+      style={mergeStyles(expressivePresets.motion.spatialDefault, styles.root.base, style)}
       {...props}
     >
-      <div
-        style={mergeStyles(
-          styles.leading.base,
-        )}
-      >
-        {leading}
+      <div style={mergeStyles(styles.leading.base)}>{leading}</div>
+      <div style={mergeStyles(styles.content.base)}>
+        {headline !== undefined ? <div style={mergeStyles(expressivePresets.typography.titleLarge, styles.headline.base)}>{headline}</div> : null}
+        {subhead !== undefined ? <div style={mergeStyles(expressivePresets.typography.labelLarge, styles.subhead.base)}>{subhead}</div> : null}
       </div>
-      <div
-        style={mergeStyles(
-          styles.content.base,
-        )}
-      >
-        {headline !== undefined
-          ? (
-              <div
-                style={mergeStyles(
-                  expressivePresets.typography.titleLarge,
-                  styles.headline.base,
-                )}
-              >
-                {headline}
-              </div>
-            )
-          : null}
-        {subhead !== undefined
-          ? (
-              <div
-                style={mergeStyles(
-                  expressivePresets.typography.labelLarge,
-                  styles.subhead.base,
-                )}
-              >
-                {subhead}
-              </div>
-            )
-          : null}
-      </div>
-      <div
-        style={mergeStyles(
-          styles.trailing.base,
-        )}
-      >
-        {trailing}
-      </div>
+      <div style={mergeStyles(styles.trailing.base)}>{trailing}</div>
     </div>
   );
 }

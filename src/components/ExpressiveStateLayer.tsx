@@ -50,13 +50,7 @@ const styles = {
 export function ExpressiveStateLayer({ isVisible = false, opacity, style, ...props }: Readonly<ExpressiveStateLayerProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        expressivePresets.motion.effectsSlow,
-        styles.root.base,
-        isVisible ? styles.root.visible : null,
-        isVisible ? { opacity } : null,
-        style,
-      )}
+      style={mergeStyles(expressivePresets.motion.effectsSlow, styles.root.base, isVisible ? styles.root.visible : null, isVisible ? { opacity } : null, style)}
       {...props}
     />
   );

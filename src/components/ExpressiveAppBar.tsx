@@ -95,22 +95,10 @@ const styles = {
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveAppBar({
-  fixed = false,
-  scrolled = false,
-  children,
-  style,
-  ...props
-}: Readonly<ExpressiveAppBarProps>): ReactElement {
+export function ExpressiveAppBar({ fixed = false, scrolled = false, children, style, ...props }: Readonly<ExpressiveAppBarProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        expressivePresets.motion.spatialDefault,
-        styles.root.base,
-        scrolled ? styles.root.scrolled : null,
-        fixed ? styles.root.fixed : null,
-        style,
-      )}
+      style={mergeStyles(expressivePresets.motion.spatialDefault, styles.root.base, scrolled ? styles.root.scrolled : null, fixed ? styles.root.fixed : null, style)}
       {...props}
     >
       {children}
@@ -118,17 +106,10 @@ export function ExpressiveAppBar({
   );
 }
 
-export function ExpressiveAppBarLeading({
-  children,
-  style,
-  ...props
-}: Readonly<ExpressiveAppBarLeadingProps>): ReactElement {
+export function ExpressiveAppBarLeading({ children, style, ...props }: Readonly<ExpressiveAppBarLeadingProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        styles.leading.base,
-        style,
-      )}
+      style={mergeStyles(styles.leading.base, style)}
       {...props}
     >
       {children}
@@ -136,43 +117,21 @@ export function ExpressiveAppBarLeading({
   );
 }
 
-export function ExpressiveAppBarTexts({
-  headline,
-  style,
-  ...props
-}: Readonly<ExpressiveAppBarTextsProps>): ReactElement {
+export function ExpressiveAppBarTexts({ headline, style, ...props }: Readonly<ExpressiveAppBarTextsProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        styles.texts.base,
-        style,
-      )}
+      style={mergeStyles(styles.texts.base, style)}
       {...props}
     >
-      <div
-        style={mergeStyles(
-          internalPresets.base.ellipsis,
-          expressivePresets.typography.titleLarge,
-          styles.headline.base,
-        )}
-      >
-        {headline}
-      </div>
+      <div style={mergeStyles(internalPresets.base.ellipsis, expressivePresets.typography.titleLarge, styles.headline.base)}>{headline}</div>
     </div>
   );
 }
 
-export function ExpressiveAppBarTrailing({
-  children,
-  style,
-  ...props
-}: Readonly<ExpressiveAppBarTrailingProps>): ReactElement {
+export function ExpressiveAppBarTrailing({ children, style, ...props }: Readonly<ExpressiveAppBarTrailingProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        styles.trailing.base,
-        style,
-      )}
+      style={mergeStyles(styles.trailing.base, style)}
       {...props}
     >
       {children}

@@ -33,9 +33,7 @@ export function AppBarRoute(): ReactElement {
           title="App bars"
           paragraph="App bars communicate the current screen and provide a stable place for top-level actions and navigation affordances."
         >
-          <StorybookLayout.Section
-            label="App Bar"
-          >
+          <StorybookLayout.Section label="App Bar">
             <div
               style={{
                 display: 'grid',
@@ -43,16 +41,10 @@ export function AppBarRoute(): ReactElement {
               }}
             >
               <ExpressiveAppBar>
-                <ExpressiveAppBar.Texts
-                  headline="Label"
-                />
+                <ExpressiveAppBar.Texts headline="Label" />
               </ExpressiveAppBar>
-              <ExpressiveAppBar
-                scrolled
-              >
-                <ExpressiveAppBar.Texts
-                  headline="Label"
-                />
+              <ExpressiveAppBar scrolled>
+                <ExpressiveAppBar.Texts headline="Label" />
               </ExpressiveAppBar>
             </div>
           </StorybookLayout.Section>

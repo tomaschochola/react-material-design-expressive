@@ -71,11 +71,7 @@ const styles = {
 export function ExpressiveCard({ variant = ExpressiveCardVariantEnum.Filled, children, style, ...props }: Readonly<ExpressiveCardProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        styles.root.base,
-        styles.root[variant],
-        style,
-      )}
+      style={mergeStyles(styles.root.base, styles.root[variant], style)}
       {...props}
     >
       {children}

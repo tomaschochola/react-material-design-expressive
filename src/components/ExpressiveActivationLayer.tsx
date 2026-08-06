@@ -52,12 +52,7 @@ const styles = {
 export function ExpressiveActivationLayer({ isActive = false, style, ...props }: Readonly<ExpressiveActivationLayerProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        expressivePresets.motion.spatialFast,
-        styles.root.base,
-        isActive ? styles.root.active : styles.root.inactive,
-        style,
-      )}
+      style={mergeStyles(expressivePresets.motion.spatialFast, styles.root.base, isActive ? styles.root.active : styles.root.inactive, style)}
       {...props}
     />
   );

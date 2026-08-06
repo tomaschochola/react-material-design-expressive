@@ -18,13 +18,7 @@ import { ExpressiveSymbolPill } from '../symbols/ExpressiveSymbolPill';
 import { ExpressiveSymbolRect } from '../symbols/ExpressiveSymbolRect';
 import { ExpressiveSymbolTriangle } from '../symbols/ExpressiveSymbolTriangle';
 
-export const ExpressiveRandomSymbolPool = [
-  ExpressiveSymbolCircle,
-  ExpressiveSymbolFlower,
-  ExpressiveSymbolPill,
-  ExpressiveSymbolRect,
-  ExpressiveSymbolTriangle,
-];
+export const ExpressiveRandomSymbolPool = [ExpressiveSymbolCircle, ExpressiveSymbolFlower, ExpressiveSymbolPill, ExpressiveSymbolRect, ExpressiveSymbolTriangle];
 
 let counter = 0;
 
@@ -45,9 +39,5 @@ export function ExpressiveRandomSymbol(props: Readonly<ExpressiveRandomSymbolPro
     throw new Error(`ExpressiveRandomSymbol: no symbol component found for index ${draw.toString()}`);
   }
 
-  return (
-    <SymbolComponent
-      {...props}
-    />
-  );
+  return <SymbolComponent {...props} />;
 }

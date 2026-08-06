@@ -142,11 +142,7 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
   if (!horizontal) {
     return (
       <a
-        {...mergeProps(
-          linkProps,
-          hoverProps,
-          focusProps,
-        )}
+        {...mergeProps(linkProps, hoverProps, focusProps)}
         ref={ref}
         style={mergeStyles(
           internalPresets.base.anchor,
@@ -159,16 +155,8 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
           style,
         )}
       >
-        <div
-          style={mergeStyles(
-            styles.indicator.base,
-            isCurrent ? styles.indicator.active : null,
-            isDisabled ? internalPresets.disabled.content : null,
-          )}
-        >
-          <ExpressiveActivationLayer
-            isActive={isCurrent}
-          />
+        <div style={mergeStyles(styles.indicator.base, isCurrent ? styles.indicator.active : null, isDisabled ? internalPresets.disabled.content : null)}>
+          <ExpressiveActivationLayer isActive={isCurrent} />
           <ExpressiveStateLayer
             opacity={expressiveTokens['md.sys.opacity.state.hovered']}
             isVisible={isHovered}
@@ -186,14 +174,7 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
             symbol={symbol}
           />
         </div>
-        <div
-          style={mergeStyles(
-            internalPresets.base.ellipsis,
-            styles.label.base,
-          )}
-        >
-          {label}
-        </div>
+        <div style={mergeStyles(internalPresets.base.ellipsis, styles.label.base)}>{label}</div>
         <ExpressiveFocusedOutlineLayer
           isFocusVisible={isFocusVisible}
           isInset
@@ -204,11 +185,7 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
 
   return (
     <a
-      {...mergeProps(
-        linkProps,
-        hoverProps,
-        focusProps,
-      )}
+      {...mergeProps(linkProps, hoverProps, focusProps)}
       ref={ref}
       style={mergeStyles(
         internalPresets.base.anchor,
@@ -221,16 +198,8 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
         style,
       )}
     >
-      <div
-        style={mergeStyles(
-          styles.pill.base,
-          isCurrent ? styles.pill.active : null,
-          isDisabled ? internalPresets.disabled.content : null,
-        )}
-      >
-        <ExpressiveActivationLayer
-          isActive={isCurrent}
-        />
+      <div style={mergeStyles(styles.pill.base, isCurrent ? styles.pill.active : null, isDisabled ? internalPresets.disabled.content : null)}>
+        <ExpressiveActivationLayer isActive={isCurrent} />
         <ExpressiveStateLayer
           opacity={expressiveTokens['md.sys.opacity.state.hovered']}
           isVisible={isHovered}
@@ -247,13 +216,7 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
           size={24}
           symbol={symbol}
         />
-        <div
-          style={mergeStyles(
-            styles.pillLabel.base,
-          )}
-        >
-          {label}
-        </div>
+        <div style={mergeStyles(styles.pillLabel.base)}>{label}</div>
       </div>
       <ExpressiveFocusedOutlineLayer
         isFocusVisible={isFocusVisible}

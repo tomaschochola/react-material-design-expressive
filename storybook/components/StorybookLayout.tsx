@@ -52,14 +52,11 @@ function StorybookSection({ label, children }: Readonly<StorybookSectionProps>):
   return (
     <div>
       <div
-        style={mergeStyles(
-          expressivePresets.typography.titleSmall,
-          {
-            color: expressiveTokens['md.sys.color.primary'],
-            marginBottom: '1lh',
-            textAlign: 'center',
-          },
-        )}
+        style={mergeStyles(expressivePresets.typography.titleSmall, {
+          color: expressiveTokens['md.sys.color.primary'],
+          marginBottom: '1lh',
+          textAlign: 'center',
+        })}
       >
         {label}
       </div>
@@ -112,18 +109,11 @@ export function StorybookLayout({ title, paragraph, children }: Readonly<Storybo
           paddingTop: '32px',
         }}
       >
-        <ExpressiveHeading
-          font={ExpressiveTypographyEnum.DisplayMedium}
-        >
-          {title}
-        </ExpressiveHeading>
+        <ExpressiveHeading font={ExpressiveTypographyEnum.DisplayMedium}>{title}</ExpressiveHeading>
         <p
-          style={mergeStyles(
-            expressivePresets.typography.bodyLarge,
-            {
-              maxWidth: '40em',
-            },
-          )}
+          style={mergeStyles(expressivePresets.typography.bodyLarge, {
+            maxWidth: '40em',
+          })}
         >
           {paragraph}
         </p>

@@ -47,14 +47,8 @@ export function ExpressiveHorizontalDivider({ style, ...props }: Readonly<Expres
 
   return (
     <hr
-      {...mergeProps(
-        separatorProps,
-        props,
-      )}
-      style={mergeStyles(
-        styles.root.base,
-        style,
-      )}
+      {...mergeProps(separatorProps, props)}
+      style={mergeStyles(styles.root.base, style)}
     />
   );
 }

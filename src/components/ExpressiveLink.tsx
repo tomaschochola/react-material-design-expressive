@@ -179,7 +179,15 @@ const styles = {
   },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveLink({ variant = ExpressiveButtonVariantEnum.Text, size = ExpressiveButtonSizeEnum.Small, shape = ExpressiveButtonShapeEnum.Rounded, symbol, label, style, ...props }: Readonly<ExpressiveLinkProps>): ReactElement {
+export function ExpressiveLink({
+  variant = ExpressiveButtonVariantEnum.Text,
+  size = ExpressiveButtonSizeEnum.Small,
+  shape = ExpressiveButtonShapeEnum.Rounded,
+  symbol,
+  label,
+  style,
+  ...props
+}: Readonly<ExpressiveLinkProps>): ReactElement {
   const ref = useRef<HTMLAnchorElement>(null);
 
   const { linkProps, isPressed } = useLink(props, ref);
@@ -200,11 +208,7 @@ export function ExpressiveLink({ variant = ExpressiveButtonVariantEnum.Text, siz
 
   return (
     <a
-      {...mergeProps(
-        linkProps,
-        hoverProps,
-        focusProps,
-      )}
+      {...mergeProps(linkProps, hoverProps, focusProps)}
       ref={ref}
       style={mergeStyles(
         internalPresets.base.anchor,
@@ -231,32 +235,15 @@ export function ExpressiveLink({ variant = ExpressiveButtonVariantEnum.Text, siz
         opacity={expressiveTokens['md.sys.opacity.state.focused']}
         isVisible={isFocusVisible}
       />
-      {symbol !== undefined
-        ? (
-            <ExpressiveIcon
-              size={iconSize}
-              symbol={symbol}
-            />
-          )
-        : null}
-      <span
-        style={mergeStyles(
-          fontPreset,
-          styles.label.base,
-        )}
-      >
-        {label}
-      </span>
-      {variant === ExpressiveButtonVariantEnum.Outlined
-        ? (
-            <ExpressiveBorderLayer
-              isDisabled={isDisabled}
-            />
-          )
-        : null}
-      <ExpressiveFocusedOutlineLayer
-        isFocusVisible={isFocusVisible}
-      />
+      {symbol !== undefined ? (
+        <ExpressiveIcon
+          size={iconSize}
+          symbol={symbol}
+        />
+      ) : null}
+      <span style={mergeStyles(fontPreset, styles.label.base)}>{label}</span>
+      {variant === ExpressiveButtonVariantEnum.Outlined ? <ExpressiveBorderLayer isDisabled={isDisabled} /> : null}
+      <ExpressiveFocusedOutlineLayer isFocusVisible={isFocusVisible} />
     </a>
   );
 }

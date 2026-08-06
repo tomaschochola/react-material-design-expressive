@@ -10,11 +10,7 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-import {
-  ExpressiveElevationEnum,
-  ExpressiveMotionEnum,
-  ExpressiveTypographyEnum,
-} from '../enums';
+import { ExpressiveElevationEnum, ExpressiveMotionEnum, ExpressiveTypographyEnum } from '../enums';
 import { expressiveTokens } from './tokens';
 
 export const expressivePresets = {

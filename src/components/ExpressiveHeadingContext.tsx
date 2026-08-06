@@ -34,11 +34,5 @@ export function ExpressiveHeadingContext({ children }: Readonly<ExpressiveHeadin
 
   assertExpressiveHeadingLevel(level);
 
-  return (
-    <ExpressiveHeadingContextValue.Provider
-      value={level}
-    >
-      {children}
-    </ExpressiveHeadingContextValue.Provider>
-  );
+  return <ExpressiveHeadingContextValue.Provider value={level}>{children}</ExpressiveHeadingContextValue.Provider>;
 }

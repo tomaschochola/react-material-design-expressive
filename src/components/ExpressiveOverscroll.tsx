@@ -30,10 +30,7 @@ const styles = {
 export function ExpressiveOverscroll({ children, style, ...props }: Readonly<ExpressiveOverscrollProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        styles.root.base,
-        style,
-      )}
+      style={mergeStyles(styles.root.base, style)}
       {...props}
     >
       {children}

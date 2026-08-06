@@ -10,13 +10,7 @@
  * @see {@link https://github.com/sponsors/tomaschochola} GitHub Sponsors
  */
 
-import {
-  useContext,
-  type CSSProperties,
-  type HTMLAttributes,
-  type ReactElement,
-  type ReactNode,
-} from 'react';
+import { useContext, type CSSProperties, type HTMLAttributes, type ReactElement, type ReactNode } from 'react';
 import { expressivePresets } from '../css/presets';
 import { ExpressiveTypographyEnum } from '../enums';
 import { mergeStyles } from '../helpers';
@@ -24,28 +18,18 @@ import { ExpressiveHeadingContextValue } from './ExpressiveHeadingContext';
 
 type ExpressiveHeadingLevelEnum = 1 | 2 | 3 | 4 | 5 | 6;
 
-export interface ExpressiveHeadingProps
-  extends Omit<HTMLAttributes<HTMLHeadingElement>, 'style'> {
+export interface ExpressiveHeadingProps extends Omit<HTMLAttributes<HTMLHeadingElement>, 'style'> {
   readonly font?: ExpressiveTypographyEnum;
   readonly children: ReactNode;
   readonly level?: ExpressiveHeadingLevelEnum;
   readonly style?: CSSProperties;
 }
 
-export function ExpressiveHeading({
-  font,
-  children,
-  level,
-  style,
-  ...props
-}: Readonly<ExpressiveHeadingProps>): ReactElement {
+export function ExpressiveHeading({ font, children, level, style, ...props }: Readonly<ExpressiveHeadingProps>): ReactElement {
   const context = useContext(ExpressiveHeadingContextValue);
   const resolvedLevel = level ?? context ?? 1;
 
-  const headingStyle = mergeStyles(
-    font !== undefined ? expressivePresets.typography[font] : null,
-    style,
-  );
+  const headingStyle = mergeStyles(font !== undefined ? expressivePresets.typography[font] : null, style);
 
   if (resolvedLevel === 2) {
     return (

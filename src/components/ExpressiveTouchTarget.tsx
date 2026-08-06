@@ -35,10 +35,7 @@ const styles = {
 export function ExpressiveTouchTarget({ children, style, ...props }: Readonly<ExpressiveTouchTargetProps>): ReactElement {
   return (
     <span
-      style={mergeStyles(
-        styles.root.base,
-        style,
-      )}
+      style={mergeStyles(styles.root.base, style)}
       {...props}
     >
       {children}

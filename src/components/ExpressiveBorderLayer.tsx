@@ -58,11 +58,7 @@ const styles = {
 export function ExpressiveBorderLayer({ isDisabled = false, style, ...props }: Readonly<ExpressiveBorderLayerProps>): ReactElement {
   return (
     <div
-      style={mergeStyles(
-        styles.root.base,
-        isDisabled ? internalPresets.disabled.outline : null,
-        style,
-      )}
+      style={mergeStyles(styles.root.base, isDisabled ? internalPresets.disabled.outline : null, style)}
       {...props}
     />
   );

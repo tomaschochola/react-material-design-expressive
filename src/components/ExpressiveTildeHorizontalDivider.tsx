@@ -43,10 +43,7 @@ export function ExpressiveTildeHorizontalDivider({ style, ...props }: Readonly<E
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...separatorProps}
-      style={mergeStyles(
-        styles.root.base,
-        style,
-      )}
+      style={mergeStyles(styles.root.base, style)}
     >
       <path
         d="M1.5 4.5c5.067-4.667 10.133-4.667 15.2 0s10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0"

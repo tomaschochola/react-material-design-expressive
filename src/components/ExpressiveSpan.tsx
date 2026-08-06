@@ -24,10 +24,7 @@ export interface ExpressiveSpanProps extends Omit<HTMLAttributes<HTMLSpanElement
 export function ExpressiveSpan({ font, children, style, ...props }: Readonly<ExpressiveSpanProps>): ReactElement {
   return (
     <span
-      style={mergeStyles(
-        font !== undefined ? expressivePresets.typography[font] : null,
-        style,
-      )}
+      style={mergeStyles(font !== undefined ? expressivePresets.typography[font] : null, style)}
       {...props}
     >
       {children}
