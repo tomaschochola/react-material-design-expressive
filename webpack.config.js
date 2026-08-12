@@ -27,8 +27,16 @@ export default function (env = {}, argv = {}) {
 
   tooling = tooling
     .setOutputPath(resolve('dist'))
+    .setDevtool(tooling.isProductionMode ? false : 'source-map')
     .setEntries({
-      index: ['./storybook/polyfills.ts', './storybook/index.ts', './storybook/index.scss'],
+      index: [
+        // './storybook/polyfills.ts',
+        // './storybook/observability.ts',
+        '@fontsource-variable/roboto-flex/standard.css',
+        './storybook/index.scss',
+        './storybook/index.ts',
+        './storybook/workbox.ts',
+      ],
     })
     .setDevServerPort(62170)
     .enableDevServerHistoryApiFallback()
@@ -48,15 +56,27 @@ export default function (env = {}, argv = {}) {
     .addRobotsPlugin({
       indexable: isProductionApp,
     })
-    .addCopyFrom('./generated')
+    .addCopyPlugin([
+      {
+        from: './generated/favicons',
+        to: '.',
+      },
+    ])
     .addTerserMinimizer()
     .addCssMinimizer()
     .addHtmlMinimizer()
     .addJsonMinimizer()
     .addImageMinimizer();
 
-  if (tooling.isProductionMode) {
+  if (isProductionApp) {
     tooling = tooling.addGzipCompressionPlugin().addBrotliCompressionPlugin().addWorkboxServiceWorkerPlugin();
+  } else {
+    tooling = tooling.addCopyPlugin([
+      {
+        from: './assets/service-worker-retirement.js',
+        to: 'sw.js',
+      },
+    ]);
   }
 
   return tooling.toConfig();
