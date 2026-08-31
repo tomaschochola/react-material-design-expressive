@@ -19,28 +19,28 @@ import { NotFoundRoute } from './routes/NotFoundRoute';
 import { RootRoute } from './routes/RootRoute';
 
 export function createRouter() {
-  return createBrowserRouter([
-    {
-      element: <RootRoute />,
-      errorElement: <RouteErrorBoundary />,
-      children: [
+    return createBrowserRouter([
         {
-          index: true,
-          element: <IndexRoute />,
+            element: <RootRoute />,
+            errorElement: <RouteErrorBoundary />,
+            children: [
+                {
+                    index: true,
+                    element: <IndexRoute />,
+                },
+                {
+                    path: 'app-bar',
+                    element: <AppBarRoute />,
+                },
+                {
+                    path: 'navigation-bar',
+                    element: <NavigationBarRoute />,
+                },
+                {
+                    path: '*',
+                    element: <NotFoundRoute />,
+                },
+            ],
         },
-        {
-          path: 'app-bar',
-          element: <AppBarRoute />,
-        },
-        {
-          path: 'navigation-bar',
-          element: <NavigationBarRoute />,
-        },
-        {
-          path: '*',
-          element: <NotFoundRoute />,
-        },
-      ],
-    },
-  ]);
+    ]);
 }

@@ -19,81 +19,81 @@ import { ExpressiveHeadingContextValue } from './ExpressiveHeadingContext';
 type ExpressiveHeadingLevelEnum = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface ExpressiveHeadingProps extends Omit<HTMLAttributes<HTMLHeadingElement>, 'style'> {
-  readonly font?: ExpressiveTypographyEnum;
-  readonly children: ReactNode;
-  readonly level?: ExpressiveHeadingLevelEnum;
-  readonly style?: CSSProperties;
+    readonly font?: ExpressiveTypographyEnum;
+    readonly children: ReactNode;
+    readonly level?: ExpressiveHeadingLevelEnum;
+    readonly style?: CSSProperties;
 }
 
 export function ExpressiveHeading({ font, children, level, style, ...props }: Readonly<ExpressiveHeadingProps>): ReactElement {
-  const context = useContext(ExpressiveHeadingContextValue);
-  const resolvedLevel = level ?? context ?? 1;
+    const context = useContext(ExpressiveHeadingContextValue);
+    const resolvedLevel = level ?? context ?? 1;
 
-  const headingStyle = mergeStyles(font !== undefined ? expressivePresets.typography[font] : null, style);
+    const headingStyle = mergeStyles(font !== undefined ? expressivePresets.typography[font] : null, style);
 
-  if (resolvedLevel === 2) {
+    if (resolvedLevel === 2) {
+        return (
+            <h2
+                style={headingStyle}
+                {...props}
+            >
+                {children}
+            </h2>
+        );
+    }
+
+    if (resolvedLevel === 3) {
+        return (
+            <h3
+                style={headingStyle}
+                {...props}
+            >
+                {children}
+            </h3>
+        );
+    }
+
+    if (resolvedLevel === 4) {
+        return (
+            <h4
+                style={headingStyle}
+                {...props}
+            >
+                {children}
+            </h4>
+        );
+    }
+
+    if (resolvedLevel === 5) {
+        return (
+            <h5
+                style={headingStyle}
+                {...props}
+            >
+                {children}
+            </h5>
+        );
+    }
+
+    if (resolvedLevel === 6) {
+        return (
+            <h6
+                style={headingStyle}
+                {...props}
+            >
+                {children}
+            </h6>
+        );
+    }
+
     return (
-      <h2
-        style={headingStyle}
-        {...props}
-      >
-        {children}
-      </h2>
+        <h1
+            style={headingStyle}
+            {...props}
+        >
+            {children}
+        </h1>
     );
-  }
-
-  if (resolvedLevel === 3) {
-    return (
-      <h3
-        style={headingStyle}
-        {...props}
-      >
-        {children}
-      </h3>
-    );
-  }
-
-  if (resolvedLevel === 4) {
-    return (
-      <h4
-        style={headingStyle}
-        {...props}
-      >
-        {children}
-      </h4>
-    );
-  }
-
-  if (resolvedLevel === 5) {
-    return (
-      <h5
-        style={headingStyle}
-        {...props}
-      >
-        {children}
-      </h5>
-    );
-  }
-
-  if (resolvedLevel === 6) {
-    return (
-      <h6
-        style={headingStyle}
-        {...props}
-      >
-        {children}
-      </h6>
-    );
-  }
-
-  return (
-    <h1
-      style={headingStyle}
-      {...props}
-    >
-      {children}
-    </h1>
-  );
 }
 
 ExpressiveHeading.font = ExpressiveTypographyEnum;

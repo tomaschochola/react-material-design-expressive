@@ -23,108 +23,108 @@ import { ExpressiveIcon } from './ExpressiveIcon';
 import { ExpressiveStateLayer } from './ExpressiveStateLayer';
 
 export interface ExpressiveNavigationRailLinkProps extends Omit<AriaLinkOptions, 'children' | 'style'> {
-  readonly symbol?: ReactNode;
-  readonly label?: ReactNode;
-  readonly style?: CSSProperties;
+    readonly symbol?: ReactNode;
+    readonly label?: ReactNode;
+    readonly style?: CSSProperties;
 }
 
 const styles = {
-  root: {
-    base: {
-      borderBottomLeftRadius: expressiveTokens['md.sys.corner.radius.large'],
-      borderBottomRightRadius: expressiveTokens['md.sys.corner.radius.large'],
-      borderTopLeftRadius: expressiveTokens['md.sys.corner.radius.large'],
-      borderTopRightRadius: expressiveTokens['md.sys.corner.radius.large'],
-      color: expressiveTokens['md.sys.color.on-surface-variant'],
-      display: 'block',
-      minWidth: '0px',
-      paddingBottom: '12px',
-      position: 'relative',
-      textAlign: 'center',
+    root: {
+        base: {
+            borderBottomLeftRadius: expressiveTokens['md.sys.corner.radius.large'],
+            borderBottomRightRadius: expressiveTokens['md.sys.corner.radius.large'],
+            borderTopLeftRadius: expressiveTokens['md.sys.corner.radius.large'],
+            borderTopRightRadius: expressiveTokens['md.sys.corner.radius.large'],
+            color: expressiveTokens['md.sys.color.on-surface-variant'],
+            display: 'block',
+            minWidth: '0px',
+            paddingBottom: '12px',
+            position: 'relative',
+            textAlign: 'center',
+        },
+        active: {
+            color: expressiveTokens['md.sys.color.on-surface'],
+        },
     },
-    active: {
-      color: expressiveTokens['md.sys.color.on-surface'],
+    indicator: {
+        base: {
+            alignItems: 'center',
+            borderBottomLeftRadius: '16px',
+            borderBottomRightRadius: '16px',
+            borderTopLeftRadius: '16px',
+            borderTopRightRadius: '16px',
+            display: 'flex',
+            height: '32px',
+            justifyContent: 'center',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            position: 'relative',
+            textAlign: 'center',
+            width: '56px',
+        },
+        active: {
+            color: expressiveTokens['md.sys.color.on-secondary-container'],
+        },
     },
-  },
-  indicator: {
-    base: {
-      alignItems: 'center',
-      borderBottomLeftRadius: '16px',
-      borderBottomRightRadius: '16px',
-      borderTopLeftRadius: '16px',
-      borderTopRightRadius: '16px',
-      display: 'flex',
-      height: '32px',
-      justifyContent: 'center',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      position: 'relative',
-      textAlign: 'center',
-      width: '56px',
+    label: {
+        base: {
+            marginTop: '4px',
+        },
     },
-    active: {
-      color: expressiveTokens['md.sys.color.on-secondary-container'],
-    },
-  },
-  label: {
-    base: {
-      marginTop: '4px',
-    },
-  },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 export function ExpressiveNavigationRailLink({ label, symbol, style, ...props }: Readonly<ExpressiveNavigationRailLinkProps>): ReactElement {
-  const ref = useRef<HTMLAnchorElement>(null);
+    const ref = useRef<HTMLAnchorElement>(null);
 
-  const { linkProps, isPressed } = useLink(props, ref);
+    const { linkProps, isPressed } = useLink(props, ref);
 
-  const isCurrent = Boolean(linkProps['aria-current']);
-  const isAutoFocus = Boolean(props.autoFocus);
-  const isDisabled = Boolean(props.isDisabled);
+    const isCurrent = Boolean(linkProps['aria-current']);
+    const isAutoFocus = Boolean(props.autoFocus);
+    const isDisabled = Boolean(props.isDisabled);
 
-  const { hoverProps, isHovered } = useHover({
-    isDisabled: isDisabled,
-  });
+    const { hoverProps, isHovered } = useHover({
+        isDisabled: isDisabled,
+    });
 
-  const { focusProps, isFocusVisible } = useFocusRing({
-    autoFocus: isAutoFocus,
-  });
+    const { focusProps, isFocusVisible } = useFocusRing({
+        autoFocus: isAutoFocus,
+    });
 
-  return (
-    <a
-      {...mergeProps(linkProps, hoverProps, focusProps)}
-      ref={ref}
-      style={mergeStyles(
-        internalPresets.base.anchor,
-        expressivePresets.typography.labelMedium,
-        expressivePresets.motion.effectsFast,
-        styles.root.base,
-        isCurrent || isHovered ? styles.root.active : null,
-        isDisabled ? internalPresets.disabled.content : null,
-        style,
-      )}
-    >
-      <div style={mergeStyles(styles.indicator.base, isCurrent ? styles.indicator.active : null, isDisabled ? internalPresets.disabled.content : null)}>
-        <ExpressiveActivationLayer isActive={isCurrent} />
-        <ExpressiveStateLayer
-          opacity={expressiveTokens['md.sys.opacity.state.hovered']}
-          isVisible={isHovered}
-        />
-        <ExpressiveStateLayer
-          opacity={expressiveTokens['md.sys.opacity.state.pressed']}
-          isVisible={isPressed}
-        />
-        <ExpressiveStateLayer
-          opacity={expressiveTokens['md.sys.opacity.state.focused']}
-          isVisible={isFocusVisible}
-        />
-        <ExpressiveIcon
-          size={24}
-          symbol={symbol}
-        />
-        <ExpressiveFocusedOutlineLayer isFocusVisible={isFocusVisible} />
-      </div>
-      <div style={mergeStyles(internalPresets.base.ellipsis, styles.label.base)}>{label}</div>
-    </a>
-  );
+    return (
+        <a
+            {...mergeProps(linkProps, hoverProps, focusProps)}
+            ref={ref}
+            style={mergeStyles(
+                internalPresets.base.anchor,
+                expressivePresets.typography.labelMedium,
+                expressivePresets.motion.effectsFast,
+                styles.root.base,
+                isCurrent || isHovered ? styles.root.active : null,
+                isDisabled ? internalPresets.disabled.content : null,
+                style,
+            )}
+        >
+            <div style={mergeStyles(styles.indicator.base, isCurrent ? styles.indicator.active : null, isDisabled ? internalPresets.disabled.content : null)}>
+                <ExpressiveActivationLayer isActive={isCurrent} />
+                <ExpressiveStateLayer
+                    opacity={expressiveTokens['md.sys.opacity.state.hovered']}
+                    isVisible={isHovered}
+                />
+                <ExpressiveStateLayer
+                    opacity={expressiveTokens['md.sys.opacity.state.pressed']}
+                    isVisible={isPressed}
+                />
+                <ExpressiveStateLayer
+                    opacity={expressiveTokens['md.sys.opacity.state.focused']}
+                    isVisible={isFocusVisible}
+                />
+                <ExpressiveIcon
+                    size={24}
+                    symbol={symbol}
+                />
+                <ExpressiveFocusedOutlineLayer isFocusVisible={isFocusVisible} />
+            </div>
+            <div style={mergeStyles(internalPresets.base.ellipsis, styles.label.base)}>{label}</div>
+        </a>
+    );
 }

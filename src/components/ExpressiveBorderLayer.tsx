@@ -17,49 +17,49 @@ import { expressiveTokens } from '../css/tokens';
 import { mergeStyles } from '../helpers';
 
 export interface ExpressiveBorderLayerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
-  readonly isDisabled?: boolean;
-  readonly style?: CSSProperties;
+    readonly isDisabled?: boolean;
+    readonly style?: CSSProperties;
 }
 
 const styles = {
-  root: {
-    base: {
-      borderBottomColor: 'currentColor',
-      borderBottomLeftRadius: 'inherit',
-      borderBottomRightRadius: 'inherit',
-      borderBottomStyle: 'solid',
-      borderBottomWidth: '1px',
-      borderLeftColor: 'currentColor',
-      borderLeftStyle: 'solid',
-      borderLeftWidth: '1px',
-      borderRightColor: 'currentColor',
-      borderRightStyle: 'solid',
-      borderRightWidth: '1px',
-      borderTopColor: 'currentColor',
-      borderTopLeftRadius: 'inherit',
-      borderTopRightRadius: 'inherit',
-      borderTopStyle: 'solid',
-      borderTopWidth: '1px',
-      bottom: '0px',
-      color: expressiveTokens['md.sys.color.outline'],
-      left: '0px',
-      opacity: 1,
-      overflowX: 'hidden',
-      overflowY: 'hidden',
-      pointerEvents: 'none',
-      position: 'absolute',
-      right: '0px',
-      top: '0px',
-      userSelect: 'none',
+    root: {
+        base: {
+            borderBottomColor: 'currentColor',
+            borderBottomLeftRadius: 'inherit',
+            borderBottomRightRadius: 'inherit',
+            borderBottomStyle: 'solid',
+            borderBottomWidth: '1px',
+            borderLeftColor: 'currentColor',
+            borderLeftStyle: 'solid',
+            borderLeftWidth: '1px',
+            borderRightColor: 'currentColor',
+            borderRightStyle: 'solid',
+            borderRightWidth: '1px',
+            borderTopColor: 'currentColor',
+            borderTopLeftRadius: 'inherit',
+            borderTopRightRadius: 'inherit',
+            borderTopStyle: 'solid',
+            borderTopWidth: '1px',
+            bottom: '0px',
+            color: expressiveTokens['md.sys.color.outline'],
+            left: '0px',
+            opacity: 1,
+            overflowX: 'hidden',
+            overflowY: 'hidden',
+            pointerEvents: 'none',
+            position: 'absolute',
+            right: '0px',
+            top: '0px',
+            userSelect: 'none',
+        },
     },
-  },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 export function ExpressiveBorderLayer({ isDisabled = false, style, ...props }: Readonly<ExpressiveBorderLayerProps>): ReactElement {
-  return (
-    <div
-      style={mergeStyles(styles.root.base, isDisabled ? internalPresets.disabled.outline : null, style)}
-      {...props}
-    />
-  );
+    return (
+        <div
+            style={mergeStyles(styles.root.base, isDisabled ? internalPresets.disabled.outline : null, style)}
+            {...props}
+        />
+    );
 }

@@ -17,75 +17,75 @@ import { expressiveTokens } from '../css/tokens';
 import { mergeStyles } from '../helpers';
 
 export interface ExpressiveSmallAppBarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style' | 'children'> {
-  readonly headline?: ReactNode;
-  readonly subhead?: ReactNode;
-  readonly leading?: ReactNode;
-  readonly trailing?: ReactNode;
-  readonly style?: CSSProperties;
+    readonly headline?: ReactNode;
+    readonly subhead?: ReactNode;
+    readonly leading?: ReactNode;
+    readonly trailing?: ReactNode;
+    readonly style?: CSSProperties;
 }
 
 const styles = {
-  root: {
-    base: {
-      alignItems: 'center',
-      backgroundColor: expressiveTokens['md.sys.color.surface'],
-      color: expressiveTokens['md.sys.color.on-surface'],
-      columnGap: '16px',
-      display: 'grid',
-      gridTemplateColumns: 'auto 1fr auto',
-      minHeight: '64px',
-      paddingLeft: '16px',
-      paddingRight: '16px',
-      position: 'relative',
-      transitionProperty: 'left, right, top, bottom, transform',
+    root: {
+        base: {
+            alignItems: 'center',
+            backgroundColor: expressiveTokens['md.sys.color.surface'],
+            color: expressiveTokens['md.sys.color.on-surface'],
+            columnGap: '16px',
+            display: 'grid',
+            gridTemplateColumns: 'auto 1fr auto',
+            minHeight: '64px',
+            paddingLeft: '16px',
+            paddingRight: '16px',
+            position: 'relative',
+            transitionProperty: 'left, right, top, bottom, transform',
+        },
     },
-  },
-  leading: {
-    base: {
-      alignItems: 'center',
-      color: expressiveTokens['md.sys.color.on-surface'],
-      display: 'flex',
+    leading: {
+        base: {
+            alignItems: 'center',
+            color: expressiveTokens['md.sys.color.on-surface'],
+            display: 'flex',
+        },
     },
-  },
-  content: {
-    base: {
-      color: expressiveTokens['md.sys.color.on-surface'],
+    content: {
+        base: {
+            color: expressiveTokens['md.sys.color.on-surface'],
+        },
     },
-  },
-  trailing: {
-    base: {
-      alignItems: 'center',
-      color: expressiveTokens['md.sys.color.on-surface-variant'],
-      display: 'flex',
-      justifySelf: 'end',
+    trailing: {
+        base: {
+            alignItems: 'center',
+            color: expressiveTokens['md.sys.color.on-surface-variant'],
+            display: 'flex',
+            justifySelf: 'end',
+        },
     },
-  },
-  headline: {
-    base: {
-      color: expressiveTokens['md.sys.color.on-surface'],
-      lineHeight: '1',
+    headline: {
+        base: {
+            color: expressiveTokens['md.sys.color.on-surface'],
+            lineHeight: '1',
+        },
     },
-  },
-  subhead: {
-    base: {
-      color: expressiveTokens['md.sys.color.on-surface-variant'],
-      lineHeight: '1',
+    subhead: {
+        base: {
+            color: expressiveTokens['md.sys.color.on-surface-variant'],
+            lineHeight: '1',
+        },
     },
-  },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 export function ExpressiveSmallAppBar({ leading, trailing, headline, subhead, style, ...props }: Readonly<ExpressiveSmallAppBarProps>): ReactElement {
-  return (
-    <div
-      style={mergeStyles(expressivePresets.motion.spatialDefault, styles.root.base, style)}
-      {...props}
-    >
-      <div style={mergeStyles(styles.leading.base)}>{leading}</div>
-      <div style={mergeStyles(styles.content.base)}>
-        {headline !== undefined ? <div style={mergeStyles(expressivePresets.typography.titleLarge, styles.headline.base)}>{headline}</div> : null}
-        {subhead !== undefined ? <div style={mergeStyles(expressivePresets.typography.labelLarge, styles.subhead.base)}>{subhead}</div> : null}
-      </div>
-      <div style={mergeStyles(styles.trailing.base)}>{trailing}</div>
-    </div>
-  );
+    return (
+        <div
+            style={mergeStyles(expressivePresets.motion.spatialDefault, styles.root.base, style)}
+            {...props}
+        >
+            <div style={mergeStyles(styles.leading.base)}>{leading}</div>
+            <div style={mergeStyles(styles.content.base)}>
+                {headline !== undefined ? <div style={mergeStyles(expressivePresets.typography.titleLarge, styles.headline.base)}>{headline}</div> : null}
+                {subhead !== undefined ? <div style={mergeStyles(expressivePresets.typography.labelLarge, styles.subhead.base)}>{subhead}</div> : null}
+            </div>
+            <div style={mergeStyles(styles.trailing.base)}>{trailing}</div>
+        </div>
+    );
 }

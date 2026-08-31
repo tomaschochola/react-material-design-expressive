@@ -18,51 +18,51 @@ import { expressiveTokens } from '../css/tokens';
 import { mergeStyles } from '../helpers';
 
 export interface ExpressiveWiggleHorizontalDividerProps extends Omit<SeparatorProps, 'style' | 'children'> {
-  readonly style?: CSSProperties;
+    readonly style?: CSSProperties;
 }
 
 const styles = {
-  root: {
-    base: {
-      color: expressiveTokens['md.sys.color.outline-variant'],
-      display: 'block',
-      position: 'relative',
+    root: {
+        base: {
+            color: expressiveTokens['md.sys.color.outline-variant'],
+            display: 'block',
+            position: 'relative',
+        },
     },
-  },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 export function ExpressiveWiggleHorizontalDivider({ style, ...props }: Readonly<ExpressiveWiggleHorizontalDividerProps>): ReactElement {
-  const id = useId();
+    const id = useId();
 
-  const { separatorProps } = useSeparator(props);
+    const { separatorProps } = useSeparator(props);
 
-  return (
-    <svg
-      aria-hidden="true"
-      width="100%"
-      height="8"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...separatorProps}
-      style={mergeStyles(styles.root.base, style)}
-    >
-      <pattern
-        id={id}
-        width="91"
-        height="8"
-        patternUnits="userSpaceOnUse"
-      >
-        <path
-          d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0"
-          stroke="currentColor"
-          strokeLinecap="square"
-        />
-      </pattern>
-      <rect
-        width="100%"
-        height="100%"
-        fill={`url(#${id})`}
-      />
-    </svg>
-  );
+    return (
+        <svg
+            aria-hidden="true"
+            width="100%"
+            height="8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            {...separatorProps}
+            style={mergeStyles(styles.root.base, style)}
+        >
+            <pattern
+                id={id}
+                width="91"
+                height="8"
+                patternUnits="userSpaceOnUse"
+            >
+                <path
+                    d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0"
+                    stroke="currentColor"
+                    strokeLinecap="square"
+                />
+            </pattern>
+            <rect
+                width="100%"
+                height="100%"
+                fill={`url(#${id})`}
+            />
+        </svg>
+    );
 }

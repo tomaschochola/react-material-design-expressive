@@ -13,45 +13,45 @@
 import type { CSSProperties } from 'react';
 
 export function mergeStyles(...properties: (CSSProperties | null | undefined | boolean)[]): CSSProperties {
-  const result: CSSProperties = {};
+    const result: CSSProperties = {};
 
-  for (const prop of properties) {
-    if (typeof prop === 'object' && prop !== null) {
-      Object.assign(result, prop);
+    for (const prop of properties) {
+        if (typeof prop === 'object' && prop !== null) {
+            Object.assign(result, prop);
+        }
     }
-  }
 
-  return result;
+    return result;
 }
 
 export function toRem(size: number | string): string {
-  if (typeof size === 'number') {
-    return `calc(${size.toFixed()} / 16 * 1rem)`;
-  }
+    if (typeof size === 'number') {
+        return `calc(${size.toFixed()} / 16 * 1rem)`;
+    }
 
-  if (size.endsWith('px')) {
-    return `calc(${size.slice(0, -2)} / 16 * 1rem)`;
-  }
+    if (size.endsWith('px')) {
+        return `calc(${size.slice(0, -2)} / 16 * 1rem)`;
+    }
 
-  if (size.startsWith('calc(') && size.endsWith(')')) {
-    return size;
-  }
+    if (size.startsWith('calc(') && size.endsWith(')')) {
+        return size;
+    }
 
-  throw new Error(`toRem: unsupported string value [${size}]`);
+    throw new Error(`toRem: unsupported string value [${size}]`);
 }
 
 export function toPx(size: number | string): string {
-  if (typeof size === 'number') {
-    return `${size.toFixed()}px`;
-  }
+    if (typeof size === 'number') {
+        return `${size.toFixed()}px`;
+    }
 
-  if (size.endsWith('rem')) {
-    return `calc(${size.slice(0, -3)} * 16)`;
-  }
+    if (size.endsWith('rem')) {
+        return `calc(${size.slice(0, -3)} * 16)`;
+    }
 
-  if (size.startsWith('calc(') && size.endsWith(')')) {
-    return size;
-  }
+    if (size.startsWith('calc(') && size.endsWith(')')) {
+        return size;
+    }
 
-  throw new Error(`toPx: unsupported string value [${size}]`);
+    throw new Error(`toPx: unsupported string value [${size}]`);
 }

@@ -28,101 +28,101 @@ export const expressivePrefersDarkMedia: MediaQueryList = window.matchMedia(expr
 export const expressivePrefersReduceMotionMedia: MediaQueryList = window.matchMedia(expressiveQueries.prefersReduceMotion);
 
 export function useExpressiveMedia(media: MediaQueryList): boolean {
-  return useSyncExternalStore(
-    (onStoreChange) => {
-      const handleChange = (): void => {
-        onStoreChange();
-      };
+    return useSyncExternalStore(
+        (onStoreChange) => {
+            const handleChange = (): void => {
+                onStoreChange();
+            };
 
-      media.addEventListener('change', handleChange);
+            media.addEventListener('change', handleChange);
 
-      return (): void => {
-        media.removeEventListener('change', handleChange);
-      };
-    },
-    () => media.matches,
-    () => false,
-  );
+            return (): void => {
+                media.removeEventListener('change', handleChange);
+            };
+        },
+        () => media.matches,
+        () => false,
+    );
 }
 
 export function useExpressiveCompactMedia(): boolean {
-  return useExpressiveMedia(expressiveCompactMedia);
+    return useExpressiveMedia(expressiveCompactMedia);
 }
 
 export function useExpressiveMediumMedia(): boolean {
-  return useExpressiveMedia(expressiveMediumMedia);
+    return useExpressiveMedia(expressiveMediumMedia);
 }
 
 export function useExpressiveExpandedMedia(): boolean {
-  return useExpressiveMedia(expressiveExpandedMedia);
+    return useExpressiveMedia(expressiveExpandedMedia);
 }
 
 export function useExpressiveLargeMedia(): boolean {
-  return useExpressiveMedia(expressiveLargeMedia);
+    return useExpressiveMedia(expressiveLargeMedia);
 }
 
 export function useExpressiveExtraLargeMedia(): boolean {
-  return useExpressiveMedia(expressiveExtraLargeMedia);
+    return useExpressiveMedia(expressiveExtraLargeMedia);
 }
 
 export function useExpressivePortraitMedia(): boolean {
-  return useExpressiveMedia(expressivePortraitMedia);
+    return useExpressiveMedia(expressivePortraitMedia);
 }
 
 export function useExpressiveLandscapeMedia(): boolean {
-  return useExpressiveMedia(expressiveLandscapeMedia);
+    return useExpressiveMedia(expressiveLandscapeMedia);
 }
 
 export function useExpressivePhoneMedia(): boolean {
-  return useExpressiveMedia(expressivePhoneMedia);
+    return useExpressiveMedia(expressivePhoneMedia);
 }
 
 export function useExpressiveTabletMedia(): boolean {
-  return useExpressiveMedia(expressiveTabletMedia);
+    return useExpressiveMedia(expressiveTabletMedia);
 }
 
 export function useExpressiveDesktopMedia(): boolean {
-  return useExpressiveMedia(expressiveDesktopMedia);
+    return useExpressiveMedia(expressiveDesktopMedia);
 }
 
 export function useExpressiveDarkMedia(): boolean {
-  return useExpressiveMedia(expressivePrefersDarkMedia);
+    return useExpressiveMedia(expressivePrefersDarkMedia);
 }
 
 export function useExpressivePrefersReduceMotionMedia(): boolean {
-  return useExpressiveMedia(expressivePrefersReduceMotionMedia);
+    return useExpressiveMedia(expressivePrefersReduceMotionMedia);
 }
 
 export function useExpressiveDevice(): ExpressiveDeviceEnum {
-  const isPhone = useExpressiveMedia(expressivePhoneMedia);
-  const isTablet = useExpressiveMedia(expressiveTabletMedia);
+    const isPhone = useExpressiveMedia(expressivePhoneMedia);
+    const isTablet = useExpressiveMedia(expressiveTabletMedia);
 
-  if (isPhone) return ExpressiveDeviceEnum.Phone;
+    if (isPhone) return ExpressiveDeviceEnum.Phone;
 
-  if (isTablet) return ExpressiveDeviceEnum.Tablet;
+    if (isTablet) return ExpressiveDeviceEnum.Tablet;
 
-  return ExpressiveDeviceEnum.Desktop;
+    return ExpressiveDeviceEnum.Desktop;
 }
 
 export function useExpressiveScreen(): ExpressiveScreenEnum {
-  const isCompact = useExpressiveMedia(expressiveCompactMedia);
-  const isMedium = useExpressiveMedia(expressiveMediumMedia);
-  const isExpanded = useExpressiveMedia(expressiveExpandedMedia);
-  const isLarge = useExpressiveMedia(expressiveLargeMedia);
+    const isCompact = useExpressiveMedia(expressiveCompactMedia);
+    const isMedium = useExpressiveMedia(expressiveMediumMedia);
+    const isExpanded = useExpressiveMedia(expressiveExpandedMedia);
+    const isLarge = useExpressiveMedia(expressiveLargeMedia);
 
-  if (isCompact) return ExpressiveScreenEnum.Compact;
+    if (isCompact) return ExpressiveScreenEnum.Compact;
 
-  if (isMedium) return ExpressiveScreenEnum.Medium;
+    if (isMedium) return ExpressiveScreenEnum.Medium;
 
-  if (isExpanded) return ExpressiveScreenEnum.Expanded;
+    if (isExpanded) return ExpressiveScreenEnum.Expanded;
 
-  if (isLarge) return ExpressiveScreenEnum.Large;
+    if (isLarge) return ExpressiveScreenEnum.Large;
 
-  return ExpressiveScreenEnum.ExtraLarge;
+    return ExpressiveScreenEnum.ExtraLarge;
 }
 
 export function useExpressiveMediaQuery(query: string): boolean {
-  const media = useMemo(() => window.matchMedia(query), [query]);
+    const media = useMemo(() => window.matchMedia(query), [query]);
 
-  return useExpressiveMedia(media);
+    return useExpressiveMedia(media);
 }

@@ -26,22 +26,22 @@ document.body.appendChild(el);
 const router = createRouter();
 
 function handleNavigate(to: To, opts: NavigateOptions | undefined): void {
-  void router.navigate(to, opts);
+    void router.navigate(to, opts);
 }
 
 createRoot(el).render(
-  <StrictMode>
-    <ErrorBoundary>
-      <ExpressiveHeadingContext>
-        <AriaRouterProvider
-          navigate={handleNavigate}
-          useHref={useHref}
-        >
-          <LocaleProvider>
-            <RouterProvider router={router} />
-          </LocaleProvider>
-        </AriaRouterProvider>
-      </ExpressiveHeadingContext>
-    </ErrorBoundary>
-  </StrictMode>,
+    <StrictMode>
+        <ErrorBoundary>
+            <ExpressiveHeadingContext>
+                <AriaRouterProvider
+                    navigate={handleNavigate}
+                    useHref={useHref}
+                >
+                    <LocaleProvider>
+                        <RouterProvider router={router} />
+                    </LocaleProvider>
+                </AriaRouterProvider>
+            </ExpressiveHeadingContext>
+        </ErrorBoundary>
+    </StrictMode>,
 );

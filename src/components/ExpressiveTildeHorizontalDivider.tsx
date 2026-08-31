@@ -17,40 +17,40 @@ import { expressiveTokens } from '../css/tokens';
 import { mergeStyles } from '../helpers';
 
 export interface ExpressiveTildeHorizontalDividerProps extends Omit<SeparatorProps, 'style' | 'children'> {
-  readonly style?: CSSProperties;
+    readonly style?: CSSProperties;
 }
 
 const styles = {
-  root: {
-    base: {
-      color: expressiveTokens['md.sys.color.outline-variant'],
-      display: 'block',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      position: 'relative',
+    root: {
+        base: {
+            color: expressiveTokens['md.sys.color.outline-variant'],
+            display: 'block',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            position: 'relative',
+        },
     },
-  },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
 export function ExpressiveTildeHorizontalDivider({ style, ...props }: Readonly<ExpressiveTildeHorizontalDividerProps>): ReactElement {
-  const { separatorProps } = useSeparator(props);
+    const { separatorProps } = useSeparator(props);
 
-  return (
-    <svg
-      aria-hidden="true"
-      width="155"
-      height="9"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...separatorProps}
-      style={mergeStyles(styles.root.base, style)}
-    >
-      <path
-        d="M1.5 4.5c5.067-4.667 10.133-4.667 15.2 0s10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-      />
-    </svg>
-  );
+    return (
+        <svg
+            aria-hidden="true"
+            width="155"
+            height="9"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            {...separatorProps}
+            style={mergeStyles(styles.root.base, style)}
+        >
+            <path
+                d="M1.5 4.5c5.067-4.667 10.133-4.667 15.2 0s10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+            />
+        </svg>
+    );
 }
