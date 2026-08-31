@@ -30,7 +30,6 @@ export function NavigationBarRoute(): ReactElement {
 
   useSeo({
     title: trans.format('routes.navigation_bar.seo.title'),
-    keywords: trans.format('routes.navigation_bar.seo.keywords'),
     description: trans.format('routes.navigation_bar.seo.description'),
   });
 

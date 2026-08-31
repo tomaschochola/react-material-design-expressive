@@ -23,7 +23,6 @@ export function IndexRoute(): ReactElement {
 
   useSeo({
     title: trans.format('routes.index.seo.title'),
-    keywords: trans.format('routes.index.seo.keywords'),
     description: trans.format('routes.index.seo.description'),
   });
 

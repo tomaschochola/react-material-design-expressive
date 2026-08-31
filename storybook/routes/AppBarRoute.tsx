@@ -22,7 +22,6 @@ export function AppBarRoute(): ReactElement {
 
   useSeo({
     title: trans.format('routes.app_bar.seo.title'),
-    keywords: trans.format('routes.app_bar.seo.keywords'),
     description: trans.format('routes.app_bar.seo.description'),
   });
 

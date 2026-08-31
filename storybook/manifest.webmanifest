@@ -2,55 +2,44 @@
   "background_color": "#fdf7ff",
   "description": "React component library implementing Material Design 3 Expressive patterns and themes.",
   "display": "standalone",
-  "display_override": ["window-controls-overlay"],
   "icons": [
     {
-      "purpose": "any",
       "sizes": "192x192",
-      "src": "/icon-192x192.png",
+      "src": "../build/favicons/icon-192x192.png",
       "type": "image/png"
     },
     {
-      "purpose": "any",
       "sizes": "384x384",
-      "src": "/icon-384x384.png",
+      "src": "../build/favicons/icon-384x384.png",
       "type": "image/png"
     },
     {
-      "purpose": "any",
       "sizes": "512x512",
-      "src": "/icon-512x512.png",
+      "src": "../build/favicons/icon-512x512.png",
       "type": "image/png"
     },
     {
-      "purpose": "any",
       "sizes": "1024x1024",
-      "src": "/icon-1024x1024.png",
+      "src": "../build/favicons/icon-1024x1024.png",
       "type": "image/png"
     },
     {
       "purpose": "maskable",
       "sizes": "512x512",
-      "src": "/maskable-icon-512x512.png",
+      "src": "../build/favicons/maskable-icon-512x512.png",
       "type": "image/png"
     },
     {
       "purpose": "maskable",
       "sizes": "1024x1024",
-      "src": "/maskable-icon-1024x1024.png",
+      "src": "../build/favicons/maskable-icon-1024x1024.png",
       "type": "image/png"
     }
   ],
-  "id": "/",
-  "launch_handler": {
-    "client_mode": "focus-existing"
-  },
+  "lang": "en",
   "name": "Material Design 3 Expressive",
-  "orientation": "any",
-  "prefer_related_applications": false,
-  "related_applications": [],
-  "scope": "/",
+  "scope": "./",
   "short_name": "Expressive",
-  "start_url": "/",
+  "start_url": "./",
   "theme_color": "#5b4497"
 }
