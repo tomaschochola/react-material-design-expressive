@@ -45,7 +45,7 @@
     },
     "description": "React component library implementing Material Design 3 Expressive patterns and themes.",
     "devDependencies": {
-        "@playwright/test": "1.62.1",
+        "@playwright/test": "1.63.0",
         "@tomaschochola/tooling-babel": "git+https://github.com/tomaschochola/tooling-babel.git#main",
         "@tomaschochola/tooling-eslint": "git+https://github.com/tomaschochola/tooling-eslint.git#main",
         "@tomaschochola/tooling-favicons": "git+https://github.com/tomaschochola/tooling-favicons.git#main",
