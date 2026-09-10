@@ -1,8 +1,7 @@
 {
     "appPort": ["62170:62170", "127.0.0.1:62171-62172:62171-62172", "62173:62173", "127.0.0.1:62174-62179:62174-62179"],
     "build": {
-        "dockerfile": "Dockerfile",
-        "options": ["--platform=linux/amd64"]
+        "dockerfile": "Dockerfile"
     },
     "customizations": {
         "vscode": {
@@ -17,7 +16,7 @@
     "init": true,
     "postCreateCommand": ["make", "postcreate"],
     "remoteUser": "ubuntu",
-    "runArgs": ["--ipc=host", "--platform=linux/amd64"],
+    "runArgs": ["--ipc=host"],
     "updateRemoteUserUID": true,
     "userEnvProbe": "none",
     "waitFor": "postCreateCommand",
