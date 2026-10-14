@@ -1,8 +1,4 @@
 {
-    "appPort": ["62170:62170", "127.0.0.1:62171-62172:62171-62172", "62173:62173", "127.0.0.1:62174-62179:62174-62179"],
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
     "customizations": {
         "vscode": {
             "extensions": ["EditorConfig.EditorConfig"],
@@ -13,12 +9,14 @@
             }
         }
     },
-    "init": true,
+    "dockerComposeFile": "docker-compose.yml",
+    "overrideCommand": false,
     "postCreateCommand": ["make", "postcreate"],
     "remoteUser": "ubuntu",
-    "runArgs": ["--ipc=host"],
+    "service": "devcontainer",
+    "shutdownAction": "stopCompose",
     "updateRemoteUserUID": true,
     "userEnvProbe": "none",
     "waitFor": "postCreateCommand",
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+    "workspaceFolder": "/workspace"
 }
