@@ -20,8 +20,8 @@ import { StorybookLayout } from '../components/StorybookLayout';
 import { useSeo } from '../lang/seo';
 import { useTrans } from '../lang/trans';
 
-function resolveAriaCurrent(hash: string, href: string): 'page' | undefined {
-    return hash === href ? 'page' : undefined;
+function resolveCurrentProps(hash: string, href: string): { readonly 'aria-current'?: 'page' } {
+    return hash === href ? { 'aria-current': 'page' } : {};
 }
 
 export function NavigationBarRoute(): ReactElement {
@@ -44,19 +44,19 @@ export function NavigationBarRoute(): ReactElement {
                         <ExpressiveNavigationBar>
                             <ExpressiveNavigationBarLink
                                 href="#v3-1"
-                                aria-current={resolveAriaCurrent(hash, '#v3-1')}
+                                {...resolveCurrentProps(hash, '#v3-1')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#v3-2"
-                                aria-current={resolveAriaCurrent(hash, '#v3-2')}
+                                {...resolveCurrentProps(hash, '#v3-2')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#v3-3"
-                                aria-current={resolveAriaCurrent(hash, '#v3-3')}
+                                {...resolveCurrentProps(hash, '#v3-3')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
@@ -64,25 +64,25 @@ export function NavigationBarRoute(): ReactElement {
                         <ExpressiveNavigationBar>
                             <ExpressiveNavigationBarLink
                                 href="#v4-1"
-                                aria-current={resolveAriaCurrent(hash, '#v4-1')}
+                                {...resolveCurrentProps(hash, '#v4-1')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#v4-2"
-                                aria-current={resolveAriaCurrent(hash, '#v4-2')}
+                                {...resolveCurrentProps(hash, '#v4-2')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#v4-3"
-                                aria-current={resolveAriaCurrent(hash, '#v4-3')}
+                                {...resolveCurrentProps(hash, '#v4-3')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#v4-4"
-                                aria-current={resolveAriaCurrent(hash, '#v4-4')}
+                                {...resolveCurrentProps(hash, '#v4-4')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
@@ -90,31 +90,31 @@ export function NavigationBarRoute(): ReactElement {
                         <ExpressiveNavigationBar>
                             <ExpressiveNavigationBarLink
                                 href="#v5-1"
-                                aria-current={resolveAriaCurrent(hash, '#v5-1')}
+                                {...resolveCurrentProps(hash, '#v5-1')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#v5-2"
-                                aria-current={resolveAriaCurrent(hash, '#v5-2')}
+                                {...resolveCurrentProps(hash, '#v5-2')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#v5-3"
-                                aria-current={resolveAriaCurrent(hash, '#v5-3')}
+                                {...resolveCurrentProps(hash, '#v5-3')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#v5-4"
-                                aria-current={resolveAriaCurrent(hash, '#v5-4')}
+                                {...resolveCurrentProps(hash, '#v5-4')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#v5-5"
-                                aria-current={resolveAriaCurrent(hash, '#v5-5')}
+                                {...resolveCurrentProps(hash, '#v5-5')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
@@ -124,19 +124,19 @@ export function NavigationBarRoute(): ReactElement {
                         <ExpressiveNavigationBar horizontal>
                             <ExpressiveNavigationBarLink
                                 href="#h3-1"
-                                aria-current={resolveAriaCurrent(hash, '#h3-1')}
+                                {...resolveCurrentProps(hash, '#h3-1')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h3-2"
-                                aria-current={resolveAriaCurrent(hash, '#h3-2')}
+                                {...resolveCurrentProps(hash, '#h3-2')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h3-3"
-                                aria-current={resolveAriaCurrent(hash, '#h3-3')}
+                                {...resolveCurrentProps(hash, '#h3-3')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
@@ -144,25 +144,25 @@ export function NavigationBarRoute(): ReactElement {
                         <ExpressiveNavigationBar horizontal>
                             <ExpressiveNavigationBarLink
                                 href="#h4-1"
-                                aria-current={resolveAriaCurrent(hash, '#h4-1')}
+                                {...resolveCurrentProps(hash, '#h4-1')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h4-2"
-                                aria-current={resolveAriaCurrent(hash, '#h4-2')}
+                                {...resolveCurrentProps(hash, '#h4-2')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h4-3"
-                                aria-current={resolveAriaCurrent(hash, '#h4-3')}
+                                {...resolveCurrentProps(hash, '#h4-3')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h4-4"
-                                aria-current={resolveAriaCurrent(hash, '#h4-4')}
+                                {...resolveCurrentProps(hash, '#h4-4')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
@@ -170,31 +170,31 @@ export function NavigationBarRoute(): ReactElement {
                         <ExpressiveNavigationBar horizontal>
                             <ExpressiveNavigationBarLink
                                 href="#h5-1"
-                                aria-current={resolveAriaCurrent(hash, '#h5-1')}
+                                {...resolveCurrentProps(hash, '#h5-1')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h5-2"
-                                aria-current={resolveAriaCurrent(hash, '#h5-2')}
+                                {...resolveCurrentProps(hash, '#h5-2')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h5-3"
-                                aria-current={resolveAriaCurrent(hash, '#h5-3')}
+                                {...resolveCurrentProps(hash, '#h5-3')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h5-4"
-                                aria-current={resolveAriaCurrent(hash, '#h5-4')}
+                                {...resolveCurrentProps(hash, '#h5-4')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h5-5"
-                                aria-current={resolveAriaCurrent(hash, '#h5-5')}
+                                {...resolveCurrentProps(hash, '#h5-5')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
@@ -202,37 +202,37 @@ export function NavigationBarRoute(): ReactElement {
                         <ExpressiveNavigationBar horizontal>
                             <ExpressiveNavigationBarLink
                                 href="#h6-1"
-                                aria-current={resolveAriaCurrent(hash, '#h6-1')}
+                                {...resolveCurrentProps(hash, '#h6-1')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h6-2"
-                                aria-current={resolveAriaCurrent(hash, '#h6-2')}
+                                {...resolveCurrentProps(hash, '#h6-2')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h6-3"
-                                aria-current={resolveAriaCurrent(hash, '#h6-3')}
+                                {...resolveCurrentProps(hash, '#h6-3')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h6-4"
-                                aria-current={resolveAriaCurrent(hash, '#h6-4')}
+                                {...resolveCurrentProps(hash, '#h6-4')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h6-5"
-                                aria-current={resolveAriaCurrent(hash, '#h6-5')}
+                                {...resolveCurrentProps(hash, '#h6-5')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
                             <ExpressiveNavigationBarLink
                                 href="#h6-6"
-                                aria-current={resolveAriaCurrent(hash, '#h6-6')}
+                                {...resolveCurrentProps(hash, '#h6-6')}
                                 symbol={<ExpressiveRandomSymbol />}
                                 label="Label"
                             />
