@@ -70,11 +70,7 @@
         "TomasChochola",
         "Tomas Chochola",
         "Tomáš Chochola",
-        "accessibility",
-        "components",
-        "design-system",
-        "material-design",
-        "react"
+        "react-material-design-expressive"
     ],
     "license": "CC-BY-ND-4.0",
     "name": "@tomaschochola/react-material-design-expressive",

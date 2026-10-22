@@ -38,9 +38,9 @@
     ],
     "id": "./",
     "lang": "en",
-    "name": "Material Design 3 Expressive",
+    "name": "tomaschochola/react-material-design-expressive",
     "scope": "./",
-    "short_name": "Expressive",
+    "short_name": "tomaschochola/react-material-design-expressive",
     "start_url": "./",
     "theme_color": "#5b4497"
 }
