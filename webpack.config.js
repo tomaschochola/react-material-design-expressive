@@ -31,7 +31,7 @@ export default function (env = {}, argv = {}) {
                 './storybook/index.ts',
             ],
         })
-        .setDevServerPort(62170)
+        .setDevServerPort(8080)
         .addBrowserLoaders({
             html: {
                 variables: {
