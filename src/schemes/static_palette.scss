@@ -1,5 +1,4 @@
 :root {
-    /* Baseline – Primary */
     --md-ref-color-primary100: #fff;
     --md-ref-color-primary99: #fffbfe;
     --md-ref-color-primary98: #fef7ff;
@@ -15,7 +14,6 @@
     --md-ref-color-primary10: #21005d;
     --md-ref-color-primary0: #000;
 
-    /* Baseline – Secondary */
     --md-ref-color-secondary100: #fff;
     --md-ref-color-secondary99: #fffbfe;
     --md-ref-color-secondary98: #fef7ff;
@@ -31,7 +29,6 @@
     --md-ref-color-secondary10: #1d192b;
     --md-ref-color-secondary0: #000;
 
-    /* Baseline – Tertiary */
     --md-ref-color-tertiary100: #fff;
     --md-ref-color-tertiary99: #fffbfa;
     --md-ref-color-tertiary98: #fff8f8;
@@ -47,7 +44,6 @@
     --md-ref-color-tertiary10: #31111d;
     --md-ref-color-tertiary0: #000;
 
-    /* Baseline – Error */
     --md-ref-color-error100: #fff;
     --md-ref-color-error99: #fffbf9;
     --md-ref-color-error98: #fff8f7;
@@ -63,7 +59,6 @@
     --md-ref-color-error10: #410e0b;
     --md-ref-color-error0: #000;
 
-    /* Baseline – Neutral */
     --md-ref-color-neutral100: #fff;
     --md-ref-color-neutral99: #fffbff;
     --md-ref-color-neutral98: #fef7ff;
@@ -89,7 +84,6 @@
     --md-ref-color-neutral4: #0f0d13;
     --md-ref-color-neutral0: #000;
 
-    /* Baseline – Neutral Variant */
     --md-ref-color-neutral-variant100: #fff;
     --md-ref-color-neutral-variant99: #fffbfe;
     --md-ref-color-neutral-variant98: #fdf7ff;
@@ -105,11 +99,9 @@
     --md-ref-color-neutral-variant10: #1d1a22;
     --md-ref-color-neutral-variant0: #000;
 
-    /* Static – Black & White */
     --md-ref-color-white: #fff;
     --md-ref-color-black: #000;
 
-    /* Static – Blue */
     --md-ref-color-blue100: #fff;
     --md-ref-color-blue98: #f5faff;
     --md-ref-color-blue95: #e7f2ff;
@@ -124,7 +116,6 @@
     --md-ref-color-blue10: #001944;
     --md-ref-color-blue0: #000;
 
-    /* Static – Yellow */
     --md-ref-color-yellow100: #fff;
     --md-ref-color-yellow98: #fffade;
     --md-ref-color-yellow95: #fff2b4;
@@ -139,7 +130,6 @@
     --md-ref-color-yellow10: #2f1400;
     --md-ref-color-yellow0: #000;
 
-    /* Static – Red */
     --md-ref-color-red100: #fff;
     --md-ref-color-red98: #fff8f8;
     --md-ref-color-red95: #ffecee;
@@ -154,7 +144,6 @@
     --md-ref-color-red10: #3a0907;
     --md-ref-color-red0: #000;
 
-    /* Static – Purple */
     --md-ref-color-purple100: #fff;
     --md-ref-color-purple98: #fdf8ff;
     --md-ref-color-purple95: #f7ecfe;
@@ -169,7 +158,6 @@
     --md-ref-color-purple10: #280255;
     --md-ref-color-purple0: #000;
 
-    /* Static – Blue Variant */
     --md-ref-color-blue-variant100: #fff;
     --md-ref-color-blue-variant98: #f4faff;
     --md-ref-color-blue-variant95: #e0f4ff;
@@ -184,7 +172,6 @@
     --md-ref-color-blue-variant10: #001f2d;
     --md-ref-color-blue-variant0: #000;
 
-    /* Static – Cyan */
     --md-ref-color-cyan100: #fff;
     --md-ref-color-cyan98: #f0fbff;
     --md-ref-color-cyan95: #d8f6ff;
@@ -199,7 +186,6 @@
     --md-ref-color-cyan10: #001f26;
     --md-ref-color-cyan0: #000;
 
-    /* Static – Grey */
     --md-ref-color-grey100: #fff;
     --md-ref-color-grey98: #f9f9f9;
     --md-ref-color-grey95: #f2f2f2;
@@ -214,7 +200,6 @@
     --md-ref-color-grey10: #1b1b1c;
     --md-ref-color-grey0: #000;
 
-    /* Static – Green */
     --md-ref-color-green100: #fff;
     --md-ref-color-green98: #f2fcef;
     --md-ref-color-green95: #ddf8d8;
@@ -229,7 +214,6 @@
     --md-ref-color-green10: #002110;
     --md-ref-color-green0: #000;
 
-    /* Static – Grey Variant */
     --md-ref-color-grey-variant100: #fff;
     --md-ref-color-grey-variant98: #f7faf7;
     --md-ref-color-grey-variant95: #eff2ef;
@@ -244,7 +228,6 @@
     --md-ref-color-grey-variant10: #191d1c;
     --md-ref-color-grey-variant0: #000;
 
-    /* Static – Orange */
     --md-ref-color-orange100: #fff;
     --md-ref-color-orange98: #fff8f4;
     --md-ref-color-orange95: #ffede1;
@@ -259,7 +242,6 @@
     --md-ref-color-orange10: #321200;
     --md-ref-color-orange0: #000;
 
-    /* Static – Pink */
     --md-ref-color-pink100: #fff;
     --md-ref-color-pink98: #fff7fc;
     --md-ref-color-pink95: #ffecf6;
