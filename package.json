@@ -72,7 +72,7 @@
         "Tomáš Chochola",
         "react-material-design-expressive"
     ],
-    "license": "CC-BY-ND-4.0",
+    "license": "BSD-3-Clause",
     "name": "@tomaschochola/react-material-design-expressive",
     "private": true,
     "repository": {
