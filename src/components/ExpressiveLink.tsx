@@ -167,15 +167,7 @@ const styles = {
     },
 } as const satisfies Record<string, Record<string, StandardLonghandProperties>>;
 
-export function ExpressiveLink({
-    variant = ExpressiveButtonVariantEnum.Text,
-    size = ExpressiveButtonSizeEnum.Small,
-    shape = ExpressiveButtonShapeEnum.Rounded,
-    symbol,
-    label,
-    style,
-    ...props
-}: Readonly<ExpressiveLinkProps>): ReactElement {
+export function ExpressiveLink({ variant = ExpressiveButtonVariantEnum.Text, size = ExpressiveButtonSizeEnum.Small, shape = ExpressiveButtonShapeEnum.Rounded, symbol, label, style, ...props }: Readonly<ExpressiveLinkProps>): ReactElement {
     const ref = useRef<HTMLAnchorElement>(null);
 
     const { linkProps, isPressed } = useLink(props, ref);
@@ -198,18 +190,7 @@ export function ExpressiveLink({
         <a
             {...mergeProps(linkProps, hoverProps, focusProps)}
             ref={ref}
-            style={mergeStyles(
-                internalPresets.base.anchor,
-                expressivePresets.motion.effectsFast,
-                styles.root.base,
-                styles.root[variant],
-                styles.root[size],
-                variant === ExpressiveButtonVariantEnum.Text ? styles.textPadding[size] : null,
-                shape === ExpressiveButtonShapeEnum.Square ? styles.squareRadius[size] : null,
-                isDisabled && variant !== ExpressiveButtonVariantEnum.Text ? internalPresets.disabled.container : null,
-                isDisabled ? internalPresets.disabled.content : null,
-                style,
-            )}
+            style={mergeStyles(internalPresets.base.anchor, expressivePresets.motion.effectsFast, styles.root.base, styles.root[variant], styles.root[size], variant === ExpressiveButtonVariantEnum.Text ? styles.textPadding[size] : null, shape === ExpressiveButtonShapeEnum.Square ? styles.squareRadius[size] : null, isDisabled && variant !== ExpressiveButtonVariantEnum.Text ? internalPresets.disabled.container : null, isDisabled ? internalPresets.disabled.content : null, style)}
         >
             <ExpressiveStateLayer
                 opacity={expressiveTokens['md.sys.opacity.state.hovered']}

@@ -132,16 +132,7 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
             <a
                 {...mergeProps(linkProps, hoverProps, focusProps)}
                 ref={ref}
-                style={mergeStyles(
-                    internalPresets.base.anchor,
-                    expressivePresets.typography.labelMedium,
-                    expressivePresets.motion.effectsFast,
-                    styles.root.base,
-                    styles.mobileRoot.base,
-                    isCurrent ? styles.root.active : null,
-                    isDisabled ? internalPresets.disabled.content : null,
-                    style,
-                )}
+                style={mergeStyles(internalPresets.base.anchor, expressivePresets.typography.labelMedium, expressivePresets.motion.effectsFast, styles.root.base, styles.mobileRoot.base, isCurrent ? styles.root.active : null, isDisabled ? internalPresets.disabled.content : null, style)}
             >
                 <div style={mergeStyles(styles.indicator.base, isCurrent ? styles.indicator.active : null, isDisabled ? internalPresets.disabled.content : null)}>
                     <ExpressiveActivationLayer isActive={isCurrent} />
@@ -175,16 +166,7 @@ export function ExpressiveNavigationBarLink({ label, symbol, style, ...props }: 
         <a
             {...mergeProps(linkProps, hoverProps, focusProps)}
             ref={ref}
-            style={mergeStyles(
-                internalPresets.base.anchor,
-                expressivePresets.typography.labelMedium,
-                expressivePresets.motion.effectsFast,
-                styles.root.base,
-                styles.nonMobileRoot.base,
-                isCurrent ? styles.root.active : null,
-                isDisabled ? internalPresets.disabled.content : null,
-                style,
-            )}
+            style={mergeStyles(internalPresets.base.anchor, expressivePresets.typography.labelMedium, expressivePresets.motion.effectsFast, styles.root.base, styles.nonMobileRoot.base, isCurrent ? styles.root.active : null, isDisabled ? internalPresets.disabled.content : null, style)}
         >
             <div style={mergeStyles(styles.pill.base, isCurrent ? styles.pill.active : null, isDisabled ? internalPresets.disabled.content : null)}>
                 <ExpressiveActivationLayer isActive={isCurrent} />

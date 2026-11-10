@@ -88,16 +88,7 @@ export function ExpressiveIconButton({ variant = ExpressiveIconButtonVariantEnum
         <button
             {...mergeProps(buttonProps, hoverProps, focusProps)}
             ref={ref}
-            style={mergeStyles(
-                internalPresets.base.button,
-                expressivePresets.motion.effectsFast,
-                styles.root.base,
-                styles.root[variant],
-                isDisabled && (variant === ExpressiveIconButtonVariantEnum.Filled || variant === ExpressiveIconButtonVariantEnum.Tonal) ? internalPresets.disabled.container : null,
-                isDisabled && variant === ExpressiveIconButtonVariantEnum.Outlined ? internalPresets.disabled.outline : null,
-                isDisabled ? internalPresets.disabled.content : null,
-                style,
-            )}
+            style={mergeStyles(internalPresets.base.button, expressivePresets.motion.effectsFast, styles.root.base, styles.root[variant], isDisabled && (variant === ExpressiveIconButtonVariantEnum.Filled || variant === ExpressiveIconButtonVariantEnum.Tonal) ? internalPresets.disabled.container : null, isDisabled && variant === ExpressiveIconButtonVariantEnum.Outlined ? internalPresets.disabled.outline : null, isDisabled ? internalPresets.disabled.content : null, style)}
         >
             <ExpressiveStateLayer
                 opacity={expressiveTokens['md.sys.opacity.state.hovered']}
